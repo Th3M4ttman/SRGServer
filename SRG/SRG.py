@@ -160,31 +160,31 @@ def add_text(im,text,W,H,bordercolor=(0,0,0,255),so=[False,False,False],ro=[Fals
 	
 	#draw Frame
 	
-	draw.rectangle([x1, y1, x2, y2], width=int(W/50), outline=tuple(int(ti/1.5) for int(ti) bordercolor))
+	draw.rectangle([x1, y1, x2, y2], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti bordercolor))
 	
 	draw.rectangle([x1, y1, x2, y2], width=int(W/100), outline=bordercolor)
 	
 	#draw top left corner
 	
-	draw.rectangle([0, 0, int(W/5), int(H/5)], width=int(W/50), outline=tuple(int(ti/1.5) for int(ti) in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
+	draw.rectangle([0, 0, int(W/5), int(H/5)], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
 	
 	draw.rectangle([0, 0, int(W/5), int(H/5)], width=int(W/100), outline=bordercolor)
 	
 	#draw top right corner
 	
-	draw.rectangle([int(W-(W/5)), 0, W, int(H/5)], width=int(W/50), outline=tuple(int(ti/1.5) for int(ti) in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
+	draw.rectangle([int(W-(W/5)), 0, W, int(H/5)], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
 	
 	draw.rectangle([int(W-(W/5)), 0, W, int(H/5)], width=int(W/100), outline=bordercolor)
 	
 	#draw bottom left corner
 	
-	draw.rectangle([0, int(H-(H/5)),int(W/5),H], width=int(W/50), outline=tuple(int(ti/1.5) for int(ti) in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
+	draw.rectangle([0, int(H-(H/5)),int(W/5),H], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
 	
 	draw.rectangle([0, int(H-(H/5)),int(W/5),H], width=int(W/100), outline=bordercolor)
 		
 	#draw bottom right corner
 	
-	draw.rectangle([int(W-(W/5)), int(H-(H/5)),W,H], width=int(W/50), outline=tuple(int(ti/1.5) for int(ti) in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
+	draw.rectangle([int(W-(W/5)), int(H-(H/5)),W,H], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
 	
 	draw.rectangle([int(W-(W/5)), int(H-(H/5)),W,H], width=int(W/100), outline=bordercolor)
 	
