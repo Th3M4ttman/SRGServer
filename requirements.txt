@@ -6,3 +6,4 @@ pyinputplus
 numpy
 pillow
 imgurpython
+wtforms
