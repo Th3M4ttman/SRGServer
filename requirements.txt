@@ -7,3 +7,4 @@ numpy
 pillow
 imgurpython
 wtforms
+flask_wtf
