@@ -1,6 +1,6 @@
 from flask import Flask, render_template, flash, request
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
-import SRG.SRG
+import SRG
 from SRG.forms import SRGForm
 
 application = Flask(__name__)
