@@ -1,5 +1,5 @@
 from wtforms import Form, fields, TextField, TextAreaField, validators, StringField, SubmitField
-
+from wtforms.fields.html5 import DecimalRangeField
 from flask_wtf import FlaskForm
 class SRGForm(FlaskForm):
         Gm = fields.BooleanField('Do you identify as Male')
@@ -13,6 +13,13 @@ class SRGForm(FlaskForm):
 
         T = fields.BooleanField('Do you wish to identify as Trans')
         Q = fields.BooleanField('Are you certain of your orientation')
+        SPP = StringField("Second Person Pronoun")
+        TPP = StringField("Third Person Pronoun")
+        S = DecimalRangeField('Age', default=500)
+        R = DecimalRangeField('Age', default=255)
+        G = DecimalRangeField('Age', default=255)
+        B = DecimalRangeField('Age', default=255)
+        
         Submit = SubmitField("Create SRG")
 
         FromNum = StringField("SRG")
