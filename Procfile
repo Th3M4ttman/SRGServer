@@ -1,1 +1,1 @@
-web: gunicorn forms --log-file -
+web: gunicorn main --log-file -
