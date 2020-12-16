@@ -237,7 +237,7 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
 	gender_colour(bools,arr,width,height)
 	if debug: print("Array created")
 	
-	temp=tempfile.NamedTemporaryFile(dir="temp",suffix=".png",delete=False)
+	temp=tempfile.NamedTemporaryFile(suffix=".png",delete=False)
 	time.sleep(.2)
 	name = str(temp.name)
 	p=Path(temp.name)
