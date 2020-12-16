@@ -36,6 +36,18 @@ def create():
                 T=True
             elif x == "Q":
                 F=False
+            elif x == "R":
+                R=result.get("R")
+            elif x == "G":
+                G=result.get("G")
+            elif x == "B":
+                B=result.get("B")
+            elif x == "SPP":
+                SPP=result.get("SPP")
+            elif x == "TPP":
+                TPP=result.get("TPP")
+            elif x == "S":
+                S=result.get("S")
 
         bytetext=str(byte)
         if T:
