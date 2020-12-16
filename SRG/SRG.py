@@ -247,29 +247,13 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
 	
 	add_text(img,bs,width,height,(cr,cg,cb),so,ro,ps,pt)
 	img.save(p)
-	ul=input("Upload to imgur y/n? ")
-	if ul not in["y","Y"]:
-		if F==None:
-			F=pyip.inputStr("Filename: ")+".png"
-		else:
-			if debug: print(temp.name)
-			F=name+".png"
-		img.save(F)
-		if debug: print(F)
-		print("Saved SRG "+str(srg[0])+" to "+str(F))
-		temp.close()
-		os.remove(temp.name)
-		if debug: print('deleted file')
-		return srg[0]
-	else:
-	       from imgurpython import ImgurClient
-	       
-	       client = ImgurClient("1ad9fa3c6cc700a", "a17ace1750e1e2c4610fed9ca65c2ee0778510af")
-	       request=client.upload_from_path(temp.name, anon=True)
-	       print("Uploaded to "+request["link"])
-	       temp.close()
-	       os.remove(temp.name)
-	       return request["link"]
+	from imgurpython import ImgurClient
+	client = ImgurClient("1ad9fa3c6cc700a", "a17ace1750e1e2c4610fed9ca65c2ee0778510af")
+	request=client.upload_from_path(temp.name, anon=True)
+	print("Uploaded to "+request["link"])
+	temp.close()
+	os.remove(temp.name)
+	return request["link"]
         
 
 def main(imported=False):
