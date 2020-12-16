@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} SRG Creator {% endblock %}</h1>
+	<h2> Create SRG </h2>
+	<form action="" method="post">
+		<p>
+			{{form.Gm.label}} <br>
+			{{form.Gm(size=30)}} <br>
+		</p>
+		<p>
+			{{form.Gf.label}} <br>
+			{{form.Gf(size=30)}} <br>
+		</p>
+		<p>
+			{{form.Rm.label}} <br>
+			{{form.Rm(size=30)}} <br>
+		</p>
+		<p>
+			{{form.Rf.label}} <br>
+			{{form.Rf(size=30)}} <br>
+		</p>
+		<p>
+			{{form.Rn.label}} <br>
+			{{form.Rn(size=30)}} <br>
+		</p>
+		<p>
+			{{form.Sm.label}} <br>
+			{{form.Sm(size=30)}} <br>
+		</p>
+		<p>
+			{{form.Sf.label}} <br>
+			{{form.Sf(size=30)}} <br>
+		</p>
+		<p>
+			{{form.Sn.label}} <br>
+			{{form.Sn(size=30)}} <br>
+		</p>
+		</p>
+		<p>
+			{{form.T.label}} <br>
+			{{form.T(size=30)}} <br>
+		</p>
+		</p>
+		<p>
+			{{form.Q.label}} <br>
+			{{form.Q(size=30)}} <br>
+		</p>
+		<p>
+			{{form.Submit(size=30)}} <br>
+		</p>
+	</form>
+{% endblock %}
