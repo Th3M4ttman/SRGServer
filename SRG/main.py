@@ -3,10 +3,10 @@ from wtforms import Form, TextField, TextAreaField, validators, StringField, Sub
 import SRG.SRG
 from SRG.forms import SRGForm
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'poop'
+application = Flask(__name__)
+application.config['SECRET_KEY'] = 'poop'
 
-@app.route('/', methods=['GET','POST'])
+@application.route('/', methods=['GET','POST'])
 def create():
     form = SRGForm()
     if form.is_submitted():
@@ -62,7 +62,7 @@ def search():
 def data():
     return render_template('index.html')
 '''
-@app.route('/about')
+@application.route('/about')
 def about():
     return render_template('about.html')
 
