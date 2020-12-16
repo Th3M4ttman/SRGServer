@@ -43,7 +43,7 @@ def create():
             bytetext+="?"
         print("Creating " + str(byte))
         help(SRG.SRG)
-        tempsrgurl = SRG.SRG.create([byte,Q,T],"","","Test")
+        tempsrgurl = SRG.SRG.create([byte,Q,T],"","",255,255,255,size)
         tempsrgurl = list(tempsrgurl)
         del tempsrgurl[4]
         srgurl=""
