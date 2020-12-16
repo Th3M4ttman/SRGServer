@@ -122,7 +122,7 @@ def gender_colour(x,array,width,height,p=False):
 		array[:,:] = [50, 50, 50, 255]
 
 		
-def add_text(im,text,W,H,bordercolor=(0,0,0,255),so=[False,False,False],ro=[False,False,False],p1="They", p2="Them"):
+def add_text(im,text,W,H,bordercolor=(0,0,0),so=[False,False,False],ro=[False,False,False],p1="They", p2="Them"):
 	
 	
 	bigFont = ImageFont.truetype("Font.ttf", int(W/4))
@@ -160,7 +160,7 @@ def add_text(im,text,W,H,bordercolor=(0,0,0,255),so=[False,False,False],ro=[Fals
 	
 	#draw Frame
 	
-	draw.rectangle([x1, y1, x2, y2], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor))
+	draw.rectangle([x1, y1, x2, y2], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
 	
 	draw.rectangle([x1, y1, x2, y2], width=int(W/100), outline=bordercolor)
 	
@@ -244,6 +244,7 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
 	if debug: print("Tempfile created")
 	
 	img = Image.fromarray(arr)
+	
 	add_text(img,bs,width,height,(cr,cg,cb),so,ro,ps,pt)
 	img.save(p)
 	ul=input("Upload to imgur y/n? ")
