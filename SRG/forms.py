@@ -15,7 +15,7 @@ class SRGForm(FlaskForm):
         Q = fields.BooleanField('Are you certain of your orientation')
         SPP = StringField("Second Person Pronoun")
         TPP = StringField("Third Person Pronoun")
-        S = DecimalRangeField('Size', default=500)
+        S = DecimalRangeField('Size', default=1080)
         R = DecimalRangeField('Border Red', default=255)
         G = DecimalRangeField('Border Green', default=255)
         B = DecimalRangeField('Border Blue', default=255)
