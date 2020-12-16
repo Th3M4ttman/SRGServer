@@ -15,6 +15,7 @@ def create():
         T=False
         Q=False
         for x in result:
+            print(x)
             if x == "Gm":
                 byte+=1
             elif x == "Gf":
@@ -42,7 +43,7 @@ def create():
         if Q:
             bytetext+="?"
         print("Creating " + str(byte))
-        tempsrgurl = SRG.SRG.create([byte,Q,T],result.SPP,result.TPP,result.R,result.G,Result.B,result.S)
+        tempsrgurl = SRG.SRG.create([byte,Q,T],SPP,TPP,R,G,B,S)
         tempsrgurl = list(tempsrgurl)
         del tempsrgurl[4]
         srgurl=""
