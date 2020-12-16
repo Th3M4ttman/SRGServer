@@ -160,7 +160,7 @@ def add_text(im,text,W,H,bordercolor=(0,0,0,255),so=[False,False,False],ro=[Fals
 	
 	#draw Frame
 	
-	draw.rectangle([x1, y1, x2, y2], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti bordercolor))
+	draw.rectangle([x1, y1, x2, y2], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor))
 	
 	draw.rectangle([x1, y1, x2, y2], width=int(W/100), outline=bordercolor)
 	
