@@ -2,7 +2,7 @@ from flask import Flask, render_template, flash, request
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 import SRG.SRG
 from SRG.forms import SRGForm
-help(SRG)
+
 application = Flask(__name__)
 application.config['SECRET_KEY'] = 'poop'
 
@@ -42,8 +42,7 @@ def create():
         if Q:
             bytetext+="?"
         print("Creating " + str(byte))
-        help(SRG.SRG)
-        tempsrgurl = SRG.SRG.create([byte,Q,T],"","",255,255,255,size)
+        tempsrgurl = SRG.SRG.create([byte,Q,T],"","",255,255,255,500)
         tempsrgurl = list(tempsrgurl)
         del tempsrgurl[4]
         srgurl=""
