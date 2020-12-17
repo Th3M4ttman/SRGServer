@@ -10,7 +10,32 @@ flex-direction: column;
     <h1>{% block title %} Your SRG {% endblock %}</h1><br>
 	<a href={{srgurl}}> 
 	<img src={{srgurl}} alt={{bytetext}} style="width:25%;height:25%;">  
-	</a>  	
+	</a>
+	<table style="height: 70%; background-color: #211c2e; margin-left: auto; margin-right: auto;" border="5" width="70%">
+	<tbody>
+	<tr>
+	<td style="width: 70%; text-align: center;">
+	<h1><span style="color: #ffffff;">Your SRG</span></h1>
+	</td>
+	</tr>
+	<tr>
+	<td style="width: 100%;">
+	<table style="height: 50%; margin-left: auto; margin-right: auto;" border="1" width="100%" cellpadding="5">
+	<tbody>
+	<tr>
+	<td style="width: 50%;"><img style="display: block; margin-left: auto; margin-right: auto;" src={{srgurl}} alt={{bytetext}} height="50%" /></td>
+	<td style="width: 50%; text-align: left;">
+	<h3 style="text-align: center; color: #ffffff;">Your SRG Is: {{bytetext}}</h3>
+	<p style="color: #ffffff;">You can now use this image to quickly identify your Gender and Romantic/Sexual Orientation.</p>
+	<p style="color: #ffffff;">If you wish to add your SRG to a photo and are unsure how,&nbsp;<a href="https://srgindex.herokuapp.com/pictut" target="_blank" rel="noopener">Click Here</a>&nbsp;for our easy tutorial.</p>
+	</td>
+	</tr>
+	</tbody>
+	</table>
+	</td>
+	</tr>
+	</tbody>
+	</table>  	
 
 		
 {% endblock %}
