@@ -237,7 +237,7 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
 	gender_colour(bools,arr,width,height,True)
 	
 	if debug: print("Array created")
-	temp=tempfile.NamedTemporaryFile(dir="temp",suffix=".png",delete=False)
+	temp=tempfile.NamedTemporaryFile(suffix=".png",delete=False)
 	time.sleep(.2)
 	name = str(temp.name)
 	p=Path(temp.name)
@@ -249,7 +249,7 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
 	
 	from imgurpython import ImgurClient
 	client = ImgurClient("1ad9fa3c6cc700a", "a17ace1750e1e2c4610fed9ca65c2ee0778510af")
-	request=client.upload_from_path(temp.name, anon=True)
+	request=client.upload_from_path(p, anon=True)
 	print("Uploaded to "+request["link"])
 	temp.close()
 	os.remove(temp.name)
