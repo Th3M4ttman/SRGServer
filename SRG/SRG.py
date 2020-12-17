@@ -235,18 +235,13 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
 	
 	arr = np.zeros([height, width, 4], dtype=np.uint8)
 	gender_colour(bools,arr,width,height,True)
+	
 	if debug: print("Array created")
-	
-	temp=tempfile.NamedTemporaryFile(suffix=".png",delete=False)
-	time.sleep(.2)
-	name = str(temp.name)
-	p=Path(temp.name)
-	if debug: print("Tempfile "+temp.name+" created")
-	
 	img = Image.fromarray(arr)
-	
 	add_text(img,bs,width,height,(cr,cg,cb),so,ro,ps,pt)
 	img.save("output.png")
+	print(path("output.png"))
+	
 	from imgurpython import ImgurClient
 	client = ImgurClient("1ad9fa3c6cc700a", "a17ace1750e1e2c4610fed9ca65c2ee0778510af")
 	request=client.upload_from_path("output.png", anon=True)
