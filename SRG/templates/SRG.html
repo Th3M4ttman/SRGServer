@@ -1,11 +1,5 @@
 {% extends 'base.html' %}
 <style>
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  flex: 50%;
-}
 .flex-container {
 display: flex;
 flex-direction: column;
@@ -14,9 +8,8 @@ flex-direction: column;
 
 {% block content %}
     <h1>{% block title %} Your SRG {% endblock %}</h1><br>
-
 	<a href={{srgurl}}> 
-	<img src={{srgurl}} alt={{bytetext}} class="img">  
+	<img src={{srgurl}} alt={{bytetext}} style="width:400px;height:400px;">  
 	</a>  	
 
 		
