@@ -56,6 +56,8 @@ def create(debug=False):
                 S=result.get("S")
                 S=round(float(S))
                 S=round(int(S)*10.80)
+                if S<100:
+                    S=100
 
         bytetext=str(byte)
         if T:
