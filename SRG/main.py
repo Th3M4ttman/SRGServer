@@ -38,24 +38,24 @@ def create(debug=False):
                 F=False
             elif x == "R":
                 R=result.get("R")
-                round(float(R))
-                R=int(int(R)*2.55)
+                R=round(float(R))
+                R=round(int(R)*2.55)
             elif x == "G":
                 G=result.get("G")
-                round(float(G))
-                G=int(int(G)*2.55)
+                G=round(float(G))
+                G=round(int(G)*2.55)
             elif x == "B":
                 B=result.get("B")
-                round(float(B))
-                B=int(int(B)*2.55)
+                B=round(float(B))
+                B=round(int(B)*2.55)
             elif x == "SPP":
                 SPP=result.get("SPP")
             elif x == "TPP":
                 TPP=result.get("TPP")
             elif x == "S":
                 S=result.get("S")
-                round(float(S))
-                S=int(int(S)*10.80)
+                S=round(float(S))
+                S=round(int(S)*10.80)
 
         bytetext=str(byte)
         if T:
