@@ -1,7 +1,7 @@
 <!doctype html>
 
 <html lang="en">
-  <body style="background-color:LightSlateGray;">
+  <body style="background-color:#696667FF;">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -23,6 +23,9 @@
 	.content {
 		overflow-y: auto
 	}
+	.navbar-custom { 
+    background-color: #696667FF; 
+	} 
 	</style>
 	
     <title>{% block title %} {% endblock %}</title>
@@ -30,7 +33,7 @@
   
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">SRG</a>
+        <a class="navbar-custom" href="/">SRG</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="True" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
