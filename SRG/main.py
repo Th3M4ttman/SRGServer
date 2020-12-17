@@ -17,7 +17,7 @@ def create(debug=False):
         result = request.form
         byte=0
         T=False
-        Q=False
+        Q=True
         for x in result:
             if debug: print(x)
             if x == "Gm":
