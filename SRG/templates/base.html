@@ -15,7 +15,7 @@
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <a class="navbar-brand" href="{{ url_for('create')}}">SRG</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="True" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -26,7 +26,7 @@
             </ul>
         </div>
     </nav>
-	<div style="width: 80%; margin: 0px auto; display: block; margin-left: auto; margin-right: auto; width: 50%; text-align: center; display: flex; flex-wrap: wrap;">
+	<div style="width: 80%; margin: 0px auto; display: block; margin-left: auto; margin-right: auto; width: 50%; text-align: center; display: flex;">
 		{% block content %} {% endblock %}
 	</div>
 
