@@ -89,3 +89,7 @@ def data():
 def about():
     return render_template('about.html')
 
+@app.route('/pictut')
+def data():
+    return render_template('PicTutorial.html')
+
