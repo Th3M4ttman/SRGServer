@@ -85,6 +85,6 @@ def about():
     return render_template('about.html')
 
 @application.route('/pictut')
-def data():
+def pictut():
     return render_template('PicTutorial.html')
 

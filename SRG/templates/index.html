@@ -1,18 +1,13 @@
-<!doctype html>
-<html>
-<head>
-  <title>SRG</title>
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
-  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+{% extends 'base.html' %}
 
-  <h1>SRG</h1>
+{% block content %}
+    <h1>{% block title %} SRG {% endblock %}</h1><br>
+	<br>
+	
+	
+	
+{% endblock %}
 
-  <h2>Last 10 visits</h2>
-  {% for time in times %}
-    <p>{{ time }}</p>
-  {% endfor %}
 
-</body>
-</html>
+
+
