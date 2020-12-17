@@ -6,7 +6,11 @@ from SRG.forms import SRGForm
 application = Flask(__name__)
 application.config['SECRET_KEY'] = 'poop'
 
-@application.route('/', methods=['GET','POST'])
+@application.route('/')
+def about():
+    return render_template('index.html')
+
+@application.route('/create', methods=['GET','POST'])
 def create(debug=False):
     form = SRGForm()
     if form.is_submitted():
@@ -89,7 +93,7 @@ def data():
 def about():
     return render_template('about.html')
 
-@app.route('/pictut')
+@application.route('/pictut')
 def data():
     return render_template('PicTutorial.html')
 
