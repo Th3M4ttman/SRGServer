@@ -7,7 +7,7 @@ application = Flask(__name__)
 application.config['SECRET_KEY'] = 'poop'
 
 @application.route('/')
-def about():
+def index():
     return render_template('index.html')
 
 @application.route('/create', methods=['GET','POST'])
