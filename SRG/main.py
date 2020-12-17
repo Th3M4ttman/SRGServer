@@ -80,15 +80,6 @@ def create(debug=False):
  
     return render_template('create.html', form=form)
 
-'''
-@app.route('/search')
-def search():
-    return render_template('index.html')
-
-@app.route('/data')
-def data():
-    return render_template('index.html')
-'''
 @application.route('/about')
 def about():
     return render_template('about.html')
