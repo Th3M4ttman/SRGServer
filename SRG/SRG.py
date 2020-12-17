@@ -252,7 +252,7 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
 	request=client.upload_from_path("output.png", anon=True)
 	print("Uploaded to "+request["link"])
 	temp.close()
-	os.remove(temp.name)
+	os.remove("output.png")
 	return request["link"]
         
 
