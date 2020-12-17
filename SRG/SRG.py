@@ -241,7 +241,7 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
 	time.sleep(.2)
 	name = str(temp.name)
 	p=Path(temp.name)
-	if debug: print("Tempfile created")
+	if debug: print("Tempfile "+temp.name+" created")
 	
 	img = Image.fromarray(arr)
 	
