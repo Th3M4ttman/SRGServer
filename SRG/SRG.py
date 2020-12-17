@@ -208,9 +208,9 @@ def add_text(im,text,W,H,bordercolor=(0,0,0),so=[False,False,False],ro=[False,Fa
 def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=500,F=None,debug=False):
         
 	if srg[0] == None:
-		print("None")
+		if debug: print("None")
 		x=input_srg()
-		print(x[0])
+		if debug: print(x[0])
 		b=int(x[1])
 		bs=x[0]
 		bools=srgint_to_bools(b)
