@@ -38,15 +38,15 @@ def create(debug=False):
                 F=False
             elif x == "R":
                 R=result.get("R")
-                R.round()
+                round(float(R))
                 R=int(int(R)*2.55)
             elif x == "G":
                 G=result.get("G")
-                G.round()
+                round(float(G))
                 G=int(int(G)*2.55)
             elif x == "B":
                 B=result.get("B")
-                B.round()
+                round(float(B))
                 B=int(int(B)*2.55)
             elif x == "SPP":
                 SPP=result.get("SPP")
@@ -54,7 +54,7 @@ def create(debug=False):
                 TPP=result.get("TPP")
             elif x == "S":
                 S=result.get("S")
-                S.round()
+                round(float(S))
                 S=int(int(S)*10.80)
 
         bytetext=str(byte)
