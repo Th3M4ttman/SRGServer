@@ -7,7 +7,7 @@ application = Flask(__name__)
 application.config['SECRET_KEY'] = 'poop'
 
 @application.route('/', methods=['GET','POST'])
-def create():
+def create(debug=False):
     form = SRGForm()
     if form.is_submitted():
         result = request.form
@@ -15,7 +15,7 @@ def create():
         T=False
         Q=False
         for x in result:
-            print(x)
+            if debug: print(x)
             if x == "Gm":
                 byte+=1
             elif x == "Gf":
@@ -38,16 +38,20 @@ def create():
                 F=False
             elif x == "R":
                 R=result.get("R")
+                R=int(R*2.55)
             elif x == "G":
                 G=result.get("G")
+                G=int(G*2.55)
             elif x == "B":
                 B=result.get("B")
+                B=int(B*2.55)
             elif x == "SPP":
                 SPP=result.get("SPP")
             elif x == "TPP":
                 TPP=result.get("TPP")
             elif x == "S":
                 S=result.get("S")
+                S=int(S*10.80)
 
         bytetext=str(byte)
         if T:
