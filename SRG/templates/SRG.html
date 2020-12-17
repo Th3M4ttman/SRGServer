@@ -1,45 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} SRG {% endblock %}</h1>
-	<table border="1">
-		{% for key,value in result.items() %}
-			<tr>
-				<th>
-					{{key}}
-				</th>
-				<td>
-					{{value}}
-				</td>
-			</tr>
-		{% endfor %}
-			<tr>
-				<th>
-					Byte with formatting
-				</th>
-				<td>
-					{{bytetext}}
-				</td>
-			</tr>
-			<tr>
-				<th>
-					Byte without formatting
-				</th>
-				<td>
-					{{byte}}
-				</td>
-			</tr>
-			<tr>
-				<th>
-					Image URL
-				</th>
-				
-				<td>
-					<a href={{srgurl}}> 
-					<img src={{srgurl}} alt={{bytetext}} style=” width:100px ; height:100px ; border=0;”>  
-					</a>  	
-				</td>
-			</tr>			
-		please wait a moment to click the link while it uploads...
+    <h1>{% block title %} Your SRG {% endblock %}</h1>
+
+		<a href={{srgurl}}> 
+		<img src={{srgurl}} alt={{bytetext}} style=” width:100px ; height:100px ; border=0;”>  
+		</a>  	
+
 		
 {% endblock %}
