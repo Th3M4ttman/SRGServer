@@ -234,7 +234,7 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
 	height = width
 	
 	arr = np.zeros([height, width, 4], dtype=np.uint8)
-	gender_colour(bools,arr,width,height)
+	gender_colour(bools,arr,width,height,True)
 	if debug: print("Array created")
 	
 	temp=tempfile.NamedTemporaryFile(suffix=".png",delete=False)
