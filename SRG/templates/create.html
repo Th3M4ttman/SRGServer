@@ -2,6 +2,7 @@
 
 {% block content %}
 	<form action="" method="post">
+	<div style="width: 30%;">
 		<table style="height: 30%; width: 30%; background-color: #567572FF; margin-left: auto; margin-right: auto;" border="5" width="30%" cellpadding="5">
 		<tbody>
 		<tr>
@@ -14,7 +15,7 @@
 		<table style="height: 30%; width: 30%; margin-left: auto; margin-right: auto;" border="0" width="30%" cellpadding="5">
 		<tbody>
 		<tr>
-		<td style="width: 30%;text-align: left; color: #ffffff; font-size:2vw"><p>{{form.Gm.label}}</p></td>
+		<td style="width: 30%;text-align: left; color: #ffffff;"><p>{{form.Gm.label}}</p></td>
 		<td style="width: 30%; text-align: center;">
 		<p style="color: #ffffff;">{{form.Gm(size=30)}}</p>
 		</td>
@@ -122,5 +123,6 @@
 		</tbody>
 		</table>
 	</form>
+	</div>
 
 {% endblock %}
