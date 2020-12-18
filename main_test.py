@@ -12,12 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import main
+import SRG.main as main
 
 
 def test_index():
-    main.app.testing = True
-    client = main.app.test_client()
+    main.application.testing = True
+    client = main.application.test_client()
 
     r = client.get('/')
     assert r.status_code == 200
+

@@ -39,7 +39,7 @@ def create(debug=False):
             elif x == "T":
                 T=True
             elif x == "Q":
-                F=False
+                Q=False
             elif x == "R":
                 R=result.get("R")
                 R=round(float(R))
