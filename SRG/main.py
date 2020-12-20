@@ -25,6 +25,27 @@ def create(debug=True):
                 gender=result.get("Go")
                 byte+=3
                 if debug: print("Gender Set To: "+gender)
+
+            if x=="BgRa":
+                print("BgRa")
+                print(result.get("BgRa"))
+            elif x=="BgGa":
+                print("BgGa")
+                print(result.get("BgRa"))
+            elif x=="BgBa":
+                print("BgBa")
+                print(result.get("BgRa"))
+                
+            elif x=="BgRb":
+                print("BgRb")
+                print(result.get("BgRa"))
+            elif x=="BgGb":
+                print("BgGb")
+                print(result.get("BgRa"))
+            elif x=="BgBb":
+                print("BgBb")
+                print(result.get("BgRa"))
+                
             if x == 'Male':
                 byte+=1
                 gender="Male"

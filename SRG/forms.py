@@ -19,6 +19,14 @@ class SRGForm(FlaskForm):
         R = DecimalRangeField('Border Red', default=100)
         G = DecimalRangeField('Border Green', default=100)
         B = DecimalRangeField('Border Blue', default=100)
+
+        BgRa = DecimalRangeField('Custom gender colour left half Red', default=0)
+        BgGa = DecimalRangeField('Custom gender colour left half Green', default=75)
+        BgBa = DecimalRangeField('Custom gender colour left half Blue', default=100)
+
+        BgRb = DecimalRangeField('Custom gender colour right half Red', default=100)
+        BgGb = DecimalRangeField('Custom gender colour right half Green', default=41)
+        BgBb = DecimalRangeField('Custom gender colour right half Blue', default=71)
         
         Submit = SubmitField("Create SRG")
 
