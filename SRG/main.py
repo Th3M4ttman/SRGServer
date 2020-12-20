@@ -25,13 +25,23 @@ def create(debug=True):
         B=255
         S=500
         gender=""
+        if result.get("Gender") == 'Male':
+            byte+=1
+            gender="Male"
+        elif result.get("Gender") == "Female":
+            byte+=2
+            gender="Female"
+        elif result.get("Gender") == 'Agender':
+            byte+=0
+            gender="Agender"
+        else:
+            byte+=3
+            gender=result.get("Go")
+
         for x in result:
             if debug: print(x)
-            if x =="Go":
-                gender=result.get("Go")
-                if gender != "":
-                    byte+=3
-                if debug: print("Gender Set To: "+gender)
+            
+
 
             if x=="BgRa":
                 print("BgRa")
@@ -53,15 +63,7 @@ def create(debug=True):
                 print("BgBb")
                 print(result.get("BgRa"))
                 
-            if result.get("Gender") == 'Male':
-                byte+=1
-                gender="Male"
-            elif result.get("Gender") == "Female":
-                byte+=2
-                gender="Female"
-            elif result.get("Gender") == 'Agender':
-                byte+=0
-                gender="Agender"
+
             elif x == "Rm":
                 byte+=4
             elif x == "Rf":
