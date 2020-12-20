@@ -27,7 +27,7 @@ def create(debug=True):
             if x == 'Male':
                 byte+=1
                 gender="Male"
-            elif x == :
+            elif x == "Female":
                 byte+=2
                 gender="Female"
             elif x == 'Agender' or x == 'Gender':
