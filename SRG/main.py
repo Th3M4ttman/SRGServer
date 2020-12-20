@@ -21,8 +21,9 @@ def create(debug=True):
         gender=""
         for x in result:
             if debug: print(x)
-            if x not in ['Male','Female','Agender','NB',"Rm","Rf","Rn","Sm","Sf","Sn","T","Q","R","G","B","SPP","TPP","S"]:
+            if x not in ['Gender','Submit','Male','Female','Agender','NB',"Rm","Rf","Rn","Sm","Sf","Sn","T","Q","R","G","B","SPP","TPP","S"]:
                 gender=result.get("Go")
+                byte+=3
                 if debug: print("Gender Set To: "+gender)
             if x == 'Male':
                 byte+=1
@@ -33,8 +34,6 @@ def create(debug=True):
             elif x == 'Agender' or x == 'Gender':
                 byte+=0
                 gender="Agender"
-            elif x == 'NB':
-                byte+=3
             elif x == "Rm":
                 byte+=4
             elif x == "Rf":
