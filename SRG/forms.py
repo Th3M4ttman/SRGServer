@@ -2,8 +2,8 @@ from wtforms import Form, fields, TextField, TextAreaField, validators, StringFi
 from wtforms.fields.html5 import DecimalRangeField
 from flask_wtf import FlaskForm
 class SRGForm(FlaskForm):
-        Gm = fields.BooleanField('Do you identify as Male')
-        Gf = fields.BooleanField('Do you identify as Female')
+        Gender = fields.SelectField('Gender', choices=['Agender', 'Male' , 'Female', 'NB' ])
+        Go = fields.StringField('Other')
         Rm = fields.BooleanField('Are you romantically attracted to Males')
         Rf = fields.BooleanField('Are you romantically attracted to Females')
         Rn = fields.BooleanField('Are you romantically attracted to NBs')

@@ -20,10 +20,14 @@ def create(debug=False):
         Q=True
         for x in result:
             if debug: print(x)
-            if x == "Gm":
+            if x == 'Male':
                 byte+=1
-            elif x == "Gf":
+            elif x == 'Female':
                 byte+=2
+            if x == 'Agender' or x == 'Gender':
+                byte+=0
+            elif x == 'NB':
+                byte+=3
             elif x == "Rm":
                 byte+=4
             elif x == "Rf":
