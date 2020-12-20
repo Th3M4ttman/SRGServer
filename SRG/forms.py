@@ -16,7 +16,7 @@ class SRGForm(FlaskForm):
         SPP = StringField("Second Person Pronoun")
         TPP = StringField("Third Person Pronoun")
         S = DecimalRangeField('Resolution', default=50)
-        R = DecimalRangeField('Border Red', default=100)
+        R = DecimalRangeField('Border RGB', default=100)
         G = DecimalRangeField('Border Green', default=100)
         B = DecimalRangeField('Border Blue', default=100)
 
