@@ -11,21 +11,28 @@ def index():
     return render_template('index.html')
 
 @application.route('/create', methods=['GET','POST'])
-def create(debug=False):
+def create(debug=True):
     form = SRGForm()
     if form.is_submitted():
         result = request.form
         byte=0
         T=False
         Q=True
+        gender=""
         for x in result:
             if debug: print(x)
+            if x not in ['Male','Female','Agender','NB',"Rm","Rf","Rn","Sm","Sf","Sn","T","Q","R","G","B","SPP","TPP","S"]:
+                gender=x
+                if debug: print(gender+" recieved")
             if x == 'Male':
                 byte+=1
-            elif x == 'Female':
+                gender="Male"
+            elif x == :
                 byte+=2
-            if x == 'Agender' or x == 'Gender':
+                gender="Female"
+            elif x == 'Agender' or x == 'Gender':
                 byte+=0
+                gender="Agender"
             elif x == 'NB':
                 byte+=3
             elif x == "Rm":
@@ -66,6 +73,7 @@ def create(debug=False):
                 S=round(int(S)*10.80)
                 if S<100:
                     S=100
+            
 
         bytetext=str(byte)
         if T:
