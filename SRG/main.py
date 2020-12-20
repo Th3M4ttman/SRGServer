@@ -22,7 +22,7 @@ def create(debug=True):
         for x in result:
             if debug: print(x)
             if x not in ['Male','Female','Agender','NB',"Rm","Rf","Rn","Sm","Sf","Sn","T","Q","R","G","B","SPP","TPP","S"]:
-                gender=result.get("Gender")
+                gender=result.get("Go")
                 if debug: print("Gender Set To: "+gender)
             if x == 'Male':
                 byte+=1
