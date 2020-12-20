@@ -18,6 +18,8 @@ def create(debug=True):
         byte=0
         T=False
         Q=True
+        SPP=""
+        TPP=""
         gender=""
         for x in result:
             if debug: print(x)
@@ -100,7 +102,7 @@ def create(debug=True):
         if T:
             bytetext+="*"
         if Q:
-            bytetext+="?"
+            bytetext+="?"         
         print("Creating " + str(byte))
         tempsrgurl = SRG.SRG.create([byte,Q,T],SPP,TPP,int(R),int(G),int(B),int(S),"Test")
         tempsrgurl = list(tempsrgurl)
