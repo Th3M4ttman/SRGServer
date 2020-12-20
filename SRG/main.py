@@ -47,13 +47,13 @@ def create(debug=True):
                 print("BgBb")
                 print(result.get("BgRa"))
                 
-            if x == 'Male':
+            if result.get("Gender") == 'Male':
                 byte+=1
                 gender="Male"
-            elif x == "Female":
+            elif result.get("Gender") == "Female":
                 byte+=2
                 gender="Female"
-            elif x == 'Agender' or x == 'Gender':
+            elif result.get("Gender") == 'Agender':
                 byte+=0
                 gender="Agender"
             elif x == "Rm":
