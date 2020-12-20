@@ -20,6 +20,10 @@ def create(debug=True):
         Q=True
         SPP=""
         TPP=""
+        R=255
+        G=255
+        B=255
+        S=500
         gender=""
         for x in result:
             if debug: print(x)
