@@ -100,14 +100,14 @@ def srgint_to_bools(srg,debug=False):
 	return byte
 			
 
-def gender_colour(x,array,width,height,p=False):
+def gender_colour(x,array,width,height,p=False, lc=[0, 191, 255, 255], rc=[255, 105, 180, 255]):
 	'''applys gender colour to background'''
 
 	if x[7] and x[6]:
-		if p: print("Intersex")
+		if p: print("NB")
 
-		array[:,:int(width/2)] = [0, 191, 255, 255] #blue
-		array[:,int(width/2):] = [255, 105, 180, 255] #pink
+		array[:,:int(width/2)] = lc #blue
+		array[:,int(width/2):] = rc #pink
 
 	elif x[7]:
 		if p: print("Male")
@@ -205,111 +205,160 @@ def add_text(im,text,W,H,bordercolor=(0,0,0),so=[False,False,False],ro=[False,Fa
 	if so[0]: draw.text((int(W-(W/6)), int((H/8)*5)), "NB", align='right', font=smallFont, fill='white', stroke_width=5, stroke_fill='black', )
 			
 			
-def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=500,F=None,debug=False):
+def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=500,F=None,debug=False,gc=[[None,None,None],[None,None,None]],o=False):
         
-	if srg[0] == None:
-		if debug: print("None")
-		x=input_srg()
-		if debug: print(x[0])
-		b=int(x[1])
-		bs=x[0]
-		bools=srgint_to_bools(b)
-	else:
-		if debug: print("srg arg: "+str(srg[0]))
-		b=int(srg[0])
-		bools=srgint_to_bools(b)
-		bs=str(srg[0])
-		if srg[1]:
-			bs=bs+"?"
-		if srg[2]:
-			bs=bs+"*"
-			
-	so=[bools[0],bools[1],bools[2]]
-	if debug: print(so)
-	ro=[bools[3],bools[4],bools[5]]
-	if debug: print(ro)
-	if debug: print(bools)
-	
-	width = res
-	height = width
-	
-	arr = np.zeros([height, width, 4], dtype=np.uint8)
-	gender_colour(bools,arr,width,height,True)
-	
-	if debug: print("Array created")
-	temp=tempfile.NamedTemporaryFile(suffix=".png",delete=False)
-	time.sleep(.2)
-	name = str(temp.name)
-	p=Path(temp.name)
-	if debug: print("Tempfile created")
-	
-	img = Image.fromarray(arr)
-	add_text(img,bs,width,height,(cr,cg,cb),so,ro,ps,pt)
-	img.save(p)
-	
-	from imgurpython import ImgurClient
-	client = ImgurClient("1ad9fa3c6cc700a", "a17ace1750e1e2c4610fed9ca65c2ee0778510af")
-	request=client.upload_from_path(p, anon=True)
-	print("Uploaded to "+request["link"])
-	temp.close()
-	os.remove(temp.name)
-	return request["link"]
+    if srg[0] == None:
+        if debug: print("None")
+        x=input_srg()
+        if debug: print(x[0])
+        b=int(x[1])
+        bs=x[0]
+        bools=srgint_to_bools(b)
+    else:
+        if debug: print("srg arg: "+str(srg[0]))
+        b=int(srg[0])
+        bools=srgint_to_bools(b)
+        bs=str(srg[0])
+        if srg[1]:
+            bs=bs+"?"
+        if srg[2]:
+            bs=bs+"*"
+            
+    so=[bools[0],bools[1],bools[2]]
+    if debug: print(so)
+    ro=[bools[3],bools[4],bools[5]]
+    if debug: print(ro)
+    if debug: print(bools)
+    
+    width = res
+    height = width
+    
+    arr = np.zeros([height, width, 4], dtype=np.uint8)
+    if o:
+        if gc[0] != [None,None,None]:
+            gender_colour(bools,arr,width,height,True,gc[0],gc[1])
+        else:
+            gender_colour(bools,arr,width,height,True)
+    else:
+        gender_colour(bools,arr,width,height,True)
+            
+    if debug: print("Array created")
+    temp=tempfile.NamedTemporaryFile(suffix=".png",delete=False)
+    time.sleep(.2)
+    name = str(temp.name)
+    p=Path(temp.name)
+    if debug: print("Tempfile created")
+    
+    img = Image.fromarray(arr)
+    add_text(img,bs,width,height,(cr,cg,cb),so,ro,ps,pt)
+    img.save(p)
+    
+    from imgurpython import ImgurClient
+    client = ImgurClient("1ad9fa3c6cc700a", "a17ace1750e1e2c4610fed9ca65c2ee0778510af")
+    request=client.upload_from_path(p, anon=True)
+    print("Uploaded to "+request["link"])
+    temp.close()
+    os.remove(temp.name)
+    return request["link"]
         
 
 def main(imported=False):
-	
-	if imported: return
-	
-	y=pyip.inputInt("Byte: ")
-	print("y for yes anything else for no")
-	z=input("Trans: ")
-	w=input("Questioning: ")
-	if z in ["y","Y"]:
- 	   z = True
-	else:
-		z = False
-	if w in ["y","Y"]:
-		w = True
-	else:
-		w = False
-	r=pyip.inputInt("Border Red: ", blank=True)
-	g=pyip.inputInt("Border Green: ", blank=True)
-	b=pyip.inputInt("Border Blue: ", blank=True)
-	print([r,g,b])
+    
+    if imported: return
+    
+    y=pyip.inputInt("Byte: ")
+    print("y for yes anything else for no")
+    z=input("Trans: ")
+    w=input("Questioning: ")
+    if z in ["y","Y"]:
+       z = True
+    else:
+        z = False
+    if w in ["y","Y"]:
+        w = True
+    else:
+        w = False
 
-	if r=="":
-		r=255
-	elif r==0:
-		r=0
-	else:
-		r=r%256
-	print(r)
-	
-	if g=="":
-		g=255
-	elif g==0:
-		g=0
-	else:
-		g=g%256
-	print(g)
-	
-	if b=="":
-		b=255
-	elif b==0:
-		b=0
-	else:
-		b=b%256
-	print(b)
-	
-	size=pyip.inputInt("Resolution: ")
-	
-	second=input("2nd person pronoun: ")
-	third=input("3rd person pronoun: ")
-	
-	x=create([int(y),w,z],second, third,r,g,b,size)
+    override=input("Override Gender Color: ")
 
-	input("press enter to continue")
-	
+    R=[255, 105, 180, 255]
+    L=[0, 191, 255, 255]
+
+    if override != "":
+            override=True
+            gra=pyip.inputInt("Gender Left Red: ", blank=True)
+            gga=pyip.inputInt("Gender Left Green: ", blank=True)
+            gba=pyip.inputInt("Gender Left Blue: ", blank=True)
+            
+            if gra!="":
+                L[0]=gra
+            else:
+                L[0]=0
+            if gga!="":
+                L[1]=gga
+            else:
+                L[1]=0
+            if gba!="":
+                L[2]=gba
+            else:
+                L[2]=0
+                
+            grb=pyip.inputInt("Gender Right Red: ", blank=True)
+            ggb=pyip.inputInt("Gender Right Green: ", blank=True)
+            gbb=pyip.inputInt("Gender Right Blue: ", blank=True)
+        
+            if gra!="":
+                R[0]=grb
+            else:
+                R[0]=0
+            if gga!="":
+                R[1]=ggb
+            else:
+                R[1]=0
+            if gba!="":
+                R[2]=gbb
+            else:
+                R[2]=0
+    
+    r=pyip.inputInt("Border Red: ", blank=True)
+    g=pyip.inputInt("Border Green: ", blank=True)
+    b=pyip.inputInt("Border Blue: ", blank=True)
+    print([r,g,b])
+
+
+    if r=="":
+        r=255
+    elif r==0:
+        r=0
+    else:
+        r=r%256
+    print(r)
+    
+    if g=="":
+        g=255
+    elif g==0:
+        g=0
+    else:
+        g=g%256
+    print(g)
+    
+    if b=="":
+        b=255
+    elif b==0:
+        b=0
+    else:
+        b=b%256
+    print(b)
+    
+    size=pyip.inputInt("Resolution: ")
+    
+    second=input("Pronoun 1: ")
+    third=input("Pronoun 2: ")
+    
+    x=create([int(y),w,z],second, third,r,g,b,size,gc=[L,R],o=True)
+
+    input("press enter to continue")
+    
 i=True
 if __name__ == "__main__":
    i=False

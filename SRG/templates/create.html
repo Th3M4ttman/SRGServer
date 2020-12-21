@@ -24,12 +24,23 @@
 								<td style="width: 50%; text-align: center;">
 									<p style="color: #ffffff;">
 										{{form.Gender(size=1)}}
-										{{form.Go(size=20)}}<br>
+										{{form.Go(size=10)}}<br>
 										<p style="color: #ffffff;">
 										If NB please specify gender identity
 										</p>
 									</p>
 								</td>
+							</tr>
+							<tr>
+								<td style="width: 50%; text-align: left; color: #ffffff;">
+										{{form.o.label}}
+										
+								</td>
+									<td style="width: 50%; text-align: center;">
+										<p style="color: #ffffff;">
+										{{form.o(size=30)}}
+										</p>
+									</td>
 							</tr>
 								<tr>
 									<td style="width: 50%; text-align: left; color: #ffffff;">
@@ -38,9 +49,9 @@
 									</td>
 									<td style="width: 50%; text-align: center;">
 										<p style="color: #ffffff;">
-										{{form.BgRa(size=30)}}
-										{{form.BgGa(size=30)}}
-										{{form.BgBa(size=30)}}
+										R:{{form.BgRa(size=30)}}
+										G:{{form.BgGa(size=30)}}
+										B:{{form.BgBa(size=30)}}
 										</p>
 									</td>
 								</tr>
@@ -51,9 +62,9 @@
 									</td>
 									<td style="width: 50%; text-align: center;">
 										<p style="color: #ffffff;">
-										{{form.BgRb(size=30)}}
-										{{form.BgGb(size=30)}}
-										{{form.BgBb(size=30)}}
+										R:{{form.BgRb(size=30)}}
+										G:{{form.BgGb(size=30)}}
+										B:{{form.BgBb(size=30)}}
 										</p>
 									</td>
 								</tr>
@@ -118,9 +129,9 @@
 									</td>
 									<td style="width: 50%; text-align: center;">
 										<p style="color: #ffffff;">
-										{{form.R(size=30)}}
-										{{form.G(size=30)}}
-										{{form.B(size=30)}}
+										R:{{form.R(size=30)}}
+										G:{{form.G(size=30)}}
+										B:{{form.B(size=30)}}
 										</p>
 									</td>
 								</tr>

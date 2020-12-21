@@ -103,14 +103,24 @@ def create(debug=True):
                 if S<100:
                     S=100
             
-
+        o=result.get("o")
+        print(o)
+        if o="y":
+            o=True
+            l=[result.get("BgRa"), result.get("BgGa"), result.get("BgBa"), 255]
+            r=[result.get("BgRb"), result.get("BgGb"), result.get("BgBb"), 255]
+        else:
+            o=False
+            l=[255, 105, 180, 255]
+            r=[0, 191, 255, 255]
+            
         bytetext=str(byte)
         if T:
             bytetext+="*"
         if Q:
             bytetext+="?"         
         print("Creating " + str(byte))
-        tempsrgurl = SRG.SRG.create([byte,Q,T],SPP,TPP,int(R),int(G),int(B),int(S),"Test")
+        tempsrgurl = SRG.SRG.create([byte,Q,T],SPP,TPP,int(R),int(G),int(B),int(S),"Test",gc=[l,r],o=o)
         tempsrgurl = list(tempsrgurl)
         del tempsrgurl[4]
         srgurl=""
