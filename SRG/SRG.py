@@ -128,88 +128,112 @@ def gender_colour(x,array,width,height,p=False, lc=[0, 191, 255, 255], rc=[255, 
         array[:,:] = [50, 50, 50, 255]
 
 		
-def add_text(im,text,W,H,bordercolor=(0,0,0),so=[False,False,False],ro=[False,False,False],p1="They", p2="Them",gt=""):
-	
-	
-	bigFont = ImageFont.truetype("Font.ttf", int(W/4))
-	smallFont = ImageFont.truetype("Font.ttf", int(W/10))
+def add_text(im,text,W,H,bordercolor=(0,0,0),so=[False,False,False],ro=[False,False,False],p1="They", p2="Them",gt="",gp=50):
+    
+    
+    bigFont = ImageFont.truetype("Font.ttf", int(W/4))
+    smallFont = ImageFont.truetype("Font.ttf", int(W/10))
 
-	draw = ImageDraw.Draw(im)
-	#w, h = draw.textsize(text)
-	#draw.text(((W-w)/2,(H-h)/2), text, fill="black", align='center', font=bigFont)
-	
-	bounding_box = [0, 0, W, H]
-	x1, y1, x2, y2 = bounding_box  # For easy reading
-	
-	# Calculate the width and height of the text to be drawn, given font size
-	# Calculate the mid points and offset by the upper left corner of the bounding box
-	w, h = draw.textsize(text, font=bigFont)
-	x = (x2 - x1 - w)/2 + x1
-	y = (y2 - y1 - h)/2 + y1
+    draw = ImageDraw.Draw(im)
+    #w, h = draw.textsize(text)
+    #draw.text(((W-w)/2,(H-h)/2), text, fill="black", align='center', font=bigFont)
+    
+    bounding_box = [0, 0, W, H]
+    x1, y1, x2, y2 = bounding_box  # For easy reading
+    
+    # Calculate the width and height of the text to be drawn, given font size
+    # Calculate the mid points and offset by the upper left corner of the bounding box
+    w, h = draw.textsize(text, font=bigFont)
+    x = (x2 - x1 - w)/2 + x1
+    y = (y2 - y1 - h)/2 + y1
 
 
-	# Write the text to the image, where (x,y) is the top left corner of the text
-	draw.text((x, y), text, align='center', font=bigFont, fill='white', stroke_width=5, stroke_fill='black')
-	
-	w, h = draw.textsize(gt, font=smallFont)
-	x = (W - w)/2 
-	y = H/15
+    # Write the text to the image, where (x,y) is the top left corner of the text
+    draw.text((x, y), text, align='center', font=bigFont, fill='white', stroke_width=5, stroke_fill='black')
+    
+    w, h = draw.textsize(gt, font=smallFont)
+    x = (W - w)/2 
+    y = H/15
 
-	draw.text((x, y), gt, align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
-	
-	w, h = draw.textsize(p1+" "+p2, font=smallFont)
-	x = (W - w)/2 
-	y = H-(H/7)
+    draw.text((x, y), gt, align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+    
+    w, h = draw.textsize(p1+" "+p2, font=smallFont)
+    x = (W - w)/2 
+    y = H-(H/6)
 
-	
-	draw.text((x, y), p1+" "+p2, align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
-	
-	#draw Frame
-	
-	draw.rectangle([x1, y1, x2, y2], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor))
-	
-	draw.rectangle([x1, y1, x2, y2], width=int(W/100), outline=bordercolor)
-	
-	#draw top left corner
-	
-	draw.rectangle([0, 0, int(W/5), int(H/5)], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
-	
-	draw.rectangle([0, 0, int(W/5), int(H/5)], width=int(W/100), outline=bordercolor)
-	
-	#draw top right corner
-	
-	draw.rectangle([int(W-(W/5)), 0, W, int(H/5)], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
-	
-	draw.rectangle([int(W-(W/5)), 0, W, int(H/5)], width=int(W/100), outline=bordercolor)
-	
-	#draw bottom left corner
-	
-	draw.rectangle([0, int(H-(H/5)),int(W/5),H], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
-	
-	draw.rectangle([0, int(H-(H/5)),int(W/5),H], width=int(W/100), outline=bordercolor)
-		
-	#draw bottom right corner
-	
-	draw.rectangle([int(W-(W/5)), int(H-(H/5)),W,H], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
-	
-	draw.rectangle([int(W-(W/5)), int(H-(H/5)),W,H], width=int(W/100), outline=bordercolor)
-	
-	draw.text((int(W/30), int((H/8)*2)), "R", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+    
+    draw.text((x, y), p1+" "+p2, align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
 
-	draw.text((int(W-(W/9)), int((H/8)*2)), "S", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black', )
-	
-	if ro[2]: draw.text((int(W/30), int((H/8)*3)), "M", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+    xa = (W/5)
+    xz = W-(W/5)
+    ya = H-(H/20)
+    yz = (H-(H/20))-(H/100)
+    draw.rectangle([xa,ya,xz,yz], width=int(W/100), outline=bordercolor)
+    
+    if gp > 50:
+        xa = (W/2) - (w/50) + (w/50) * (gp-50)
+        xz = (W/2) + (w/50) + (w/50) * (gp-50)
+        ya = H-(H/20)
+        yz = (H-(H/20))-(H/100)
+    elif gp == 50:
+        xa = (W/2) - (w/50)
+        xz = (W/2) + (w/50)
+        ya = H-(H/20)
+        yz = (H-(H/20))-(H/100)
+    else:
+        xa = (W/2) - (w/50) * (gp)
+        xz = (W/2) + (w/50) * (gp)
+        ya = H-(H/20)
+        yz = (H-(H/20))-(H/100)
 
-	if so[2]: draw.text((int(W-(W/9)), int((H/8)*3)), "M", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black', )
+    draw.rectangle([xa,ya,xz,yz], width=int(W/100), outline=(0,0,0,255))
+    
+    #draw Frame
+    
+    draw.rectangle([x1, y1, x2, y2], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor))
+    
+    draw.rectangle([x1, y1, x2, y2], width=int(W/100), outline=bordercolor)
+    
+    #draw top left corner
+    
+    draw.rectangle([0, 0, int(W/5), int(H/5)], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
+    
+    draw.rectangle([0, 0, int(W/5), int(H/5)], width=int(W/100), outline=bordercolor)
+    
+    #draw top right corner
+    
+    draw.rectangle([int(W-(W/5)), 0, W, int(H/5)], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
+    
+    draw.rectangle([int(W-(W/5)), 0, W, int(H/5)], width=int(W/100), outline=bordercolor)
+    
+    #draw bottom left corner
+    
+    draw.rectangle([0, int(H-(H/5)),int(W/5),H], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
+    
+    draw.rectangle([0, int(H-(H/5)),int(W/5),H], width=int(W/100), outline=bordercolor)
+        
+    #draw bottom right corner
+    
+    draw.rectangle([int(W-(W/5)), int(H-(H/5)),W,H], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
+    
+    draw.rectangle([int(W-(W/5)), int(H-(H/5)),W,H], width=int(W/100), outline=bordercolor)
+    
+    draw.text((int(W/30), int((H/8)*2)), "R", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
 
-	if ro[1]: draw.text((int(W/30), int((H/8)*4)), "F", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+    draw.text((int(W-(W/9)), int((H/8)*2)), "S", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black', )
+    
+    if ro[2]: draw.text((int(W/30), int((H/8)*3)), "M", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
 
-	if so[1]: draw.text((int(W-(W/9)), int((H/8)*4)), "F", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black', )
-	
-	if ro[0]: draw.text((int(W/30), int((H/8)*5)), "NB", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+    if so[2]: draw.text((int(W-(W/9)), int((H/8)*3)), "M", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black', )
 
-	if so[0]: draw.text((int(W-(W/6)), int((H/8)*5)), "NB", align='right', font=smallFont, fill='white', stroke_width=5, stroke_fill='black', )
-			
+    if ro[1]: draw.text((int(W/30), int((H/8)*4)), "F", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+
+    if so[1]: draw.text((int(W-(W/9)), int((H/8)*4)), "F", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black', )
+    
+    if ro[0]: draw.text((int(W/30), int((H/8)*5)), "NB", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+
+    if so[0]: draw.text((int(W-(W/6)), int((H/8)*5)), "NB", align='right', font=smallFont, fill='white', stroke_width=5, stroke_fill='black', )
+            
 			
 def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=500,F=None,debug=False,gc=[[None,None,None],[None,None,None]],o=False,gt=""):
         
