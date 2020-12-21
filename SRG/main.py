@@ -107,8 +107,8 @@ def create(debug=True):
         print(o)
         if o=="y":
             o=True
-            l=[round(result.get("BgRa")*2.25), round(result.get("BgGa")*2.25), round(result.get("BgBa")*2.25), 255]
-            r=[round(result.get("BgRb")*2.25), round(result.get("BgGb")*2.25), round(result.get("BgBb")*2.25), 255]
+            l=[round(int(result.get("BgRa"))*2.25), int(round(result.get("BgGa"))*2.25), round(int(result.get("BgBa"))*2.25), 255]
+            r=[round(int(result.get("BgRb"))*2.25), int(round(result.get("BgGb"))*2.25), int(round(result.get("BgBb"))*2.25), 255]
             print(l)
             print(r)
             print("Custom Colour")
