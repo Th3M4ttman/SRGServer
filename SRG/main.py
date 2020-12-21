@@ -109,28 +109,55 @@ def create(debug=True):
             o=True
             lr=str(result.get("BgRa"))
             print(lr)
-            lr=int(lr)
-            lr=round(lr*2.25)
+            if lr==0:
+                print(0)
+            else:
+                lr=lr*2.25
+                lr=round(lr)
+            
             lg=str(result.get("BgGa"))
             print(lg)
-            lg=int(lg)
-            lg=round(lr*2.25)
+            if lg==0:
+                print(0)
+            else:
+                lg=lg*2.25
+                lg=round(lg)
+            
             lb=str(result.get("BgBa"))
             print(lb)
             lb=int(lb)
-            lb=round(lr*2.25)
+            if lb==0:
+                print(0)
+            else:
+                lb=lb*2.25
+                lb=round(lb)
+            
             rr=str(result.get("BgRb"))
             print(rr)
-            rr=int(lr)
-            rr=round(lr*2.25)
+            rr=int(rr)
+            if rr==0:
+                print(0)
+            else:
+                rr=rr*2.25
+                rr=round(rr)
+            
             rg=str(result.get("BgGb"))
             print(rg)
-            rg=int(lg)
-            rg=round(lr*2.25)
+            rg=int(rg)
+            if rg==0:
+                print(0)
+            else:
+                rg=rg*2.25
+                rg=round(rg)
+            
             rb=str(result.get("BgBb"))
             print(rb)
-            rb=int(lb)
-            rb=round(lr*2.25)
+            rb=int(rb)
+            if rb==0:
+                print(0)
+            else:
+                rb=rrb*2.25
+                rb=round(rb)
             
             l=[lr,lg,lb, 255]
             r=[rr,rg,rb, 255]
