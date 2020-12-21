@@ -92,62 +92,86 @@
 								</td>
 							</tr>
 
-								<tr>
-								<td style="width: 50%; text-align: left; color: #ffffff;">{{form.T.label}}</td>
-								<td style="width: 50%; text-align: center;">
-								<p style="color: #ffffff;">{{form.T(size=30)}}</p>
+							<tr>
+								<td style="width: 50%; text-align: left; color: #ffffff;">
+									{{form.T.label}}
 								</td>
-								</tr>
-								<tr>
-								<td style="width: 50%; text-align: left; color: #ffffff;">{{form.Q.label}}</td>
 								<td style="width: 50%; text-align: center;">
-								<p style="color: #ffffff;">{{form.Q(size=30)}}</p>
+									<p style="color: #ffffff;">
+										{{form.T(size=30)}}
+									</p>
 								</td>
-								</tr>
-								<tr>
-									<td style="width: 50%; text-align: left; color: #ffffff;">
-										{{form.R.label}}
+							</tr>
+							<tr>
+								<td style="width: 50%; text-align: left; color: #ffffff;">
+									{{form.Q.label}}
+								</td>
+								<td style="width: 50%; text-align: center;">
+									<p style="color: #ffffff;">
+										{{form.Q(size=30)}}
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="width: 50%; text-align: left; color: #ffffff;">
+									{{form.R.label}}
 																				
-									</td>
-									<td style="width: 50%; text-align: center;">
-										<p style="color: #ffffff;">
+								</td>
+								<td style="width: 50%; text-align: center;">
+									<p style="color: #ffffff;">
 										R:{{form.R(size=30)}}<br>
 										G:{{form.G(size=30)}}<br>
 										B:{{form.B(size=30)}}<br>
+									</p>
+									</td>
+								</tr>
+								<tr>
+									<td style="width: 50%; text-align: left; color: #ffffff;">
+										{{form.SPP.label}}
+									</td>
+									<td style="width: 50%; text-align: center;">
+										<p style="color: #ffffff;">
+											{{form.SPP(size=15)}}
 										</p>
 									</td>
 								</tr>
 								<tr>
-								<td style="width: 50%; text-align: left; color: #ffffff;">{{form.SPP.label}}</td>
-								<td style="width: 50%; text-align: center;">
-								<p style="color: #ffffff;">{{form.SPP(size=15)}}</p>
-								</td>
+									<td style="width: 50%; text-align: left; color: #ffffff;">
+										{{form.TPP.label}}
+									</td>
+									<td style="width: 50%; text-align: center;">
+										<p style="color: #ffffff; width:">
+											{{form.TPP(size=15)}}
+										</p>
+									</td>
 								</tr>
 								<tr>
-								<td style="width: 50%; text-align: left; color: #ffffff;">{{form.TPP.label}}</td>
-								<td style="width: 50%; text-align: center;">
-								<p style="color: #ffffff; width:">{{form.TPP(size=15)}}</p>
-								</td>
+									<td style="width: 50%; text-align: left; color: #ffffff;">
+										{{form.S.label}}
+									</td>
+									<td style="width: 50%; text-align: center;">
+										<p style="color: #ffffff;">
+											{{form.S(size=30)}}
+										</p>
+									</td>
 								</tr>
 								<tr>
-								<td style="width: 50%; text-align: left; color: #ffffff;">{{form.S.label}}</td>
-								<td style="width: 50%; text-align: center;">
-								<p style="color: #ffffff;">{{form.S(size=30)}}</p>
-								</td>
+									<td style="width: 50%; text-align: left; color: #ffffff;">
+										&nbsp;
+									</td>
+									<td style="width: 50%; text-align: center;">
+										<p style="color: #ffffff;">
+											{{form.Submit(size=30)}}
+										</p>
+									</td>
 								</tr>
-								<tr>
-								<td style="width: 50%; text-align: left; color: #ffffff;">&nbsp;</td>
-								<td style="width: 50%; text-align: center;">
-								<p style="color: #ffffff;">{{form.Submit(size=30)}}</p>
-								</td>
-		</tr>
-		</tbody>
-		</table>
-		</td>
-		</tr>
-		</tbody>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
 		</table>
 	</form>
-	</div>
+</div>
 
 {% endblock %}

@@ -128,7 +128,7 @@ def gender_colour(x,array,width,height,p=False, lc=[0, 191, 255, 255], rc=[255, 
         array[:,:] = [50, 50, 50, 255]
 
 		
-def add_text(im,text,W,H,bordercolor=(0,0,0),so=[False,False,False],ro=[False,False,False],p1="They", p2="Them"):
+def add_text(im,text,W,H,bordercolor=(0,0,0),so=[False,False,False],ro=[False,False,False],p1="They", p2="Them",gt=""):
 	
 	
 	bigFont = ImageFont.truetype("Font.ttf", int(W/4))
@@ -151,18 +151,18 @@ def add_text(im,text,W,H,bordercolor=(0,0,0),so=[False,False,False],ro=[False,Fa
 	# Write the text to the image, where (x,y) is the top left corner of the text
 	draw.text((x, y), text, align='center', font=bigFont, fill='white', stroke_width=5, stroke_fill='black')
 	
-	w, h = draw.textsize(p1, font=smallFont)
+	w, h = draw.textsize(gt, font=smallFont)
 	x = (W - w)/2 
 	y = H/15
 
-	draw.text((x, y), p1, align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+	draw.text((x, y), gt, align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
 	
-	w, h = draw.textsize(p2, font=smallFont)
+	w, h = draw.textsize(p1+" "+p2, font=smallFont)
 	x = (W - w)/2 
 	y = H-(H/7)
 
 	
-	draw.text((x, y), p2, align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+	draw.text((x, y), p1+" "+p2, align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
 	
 	#draw Frame
 	
@@ -211,7 +211,7 @@ def add_text(im,text,W,H,bordercolor=(0,0,0),so=[False,False,False],ro=[False,Fa
 	if so[0]: draw.text((int(W-(W/6)), int((H/8)*5)), "NB", align='right', font=smallFont, fill='white', stroke_width=5, stroke_fill='black', )
 			
 			
-def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=500,F=None,debug=False,gc=[[None,None,None],[None,None,None]],o=False):
+def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=500,F=None,debug=False,gc=[[None,None,None],[None,None,None]],o=False,gt=""):
         
     if srg[0] == None:
         if debug: print("None")
@@ -254,7 +254,7 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
     if debug: print("Tempfile created")
     
     img = Image.fromarray(arr)
-    add_text(img,bs,width,height,(cr,cg,cb),so,ro,ps,pt)
+    add_text(img,bs,width,height,(cr,cg,cb),so,ro,ps,pt,gt)
     img.save(p)
     
     from imgurpython import ImgurClient
@@ -358,8 +358,10 @@ def main(imported=False):
     
     second=input("Pronoun 1: ")
     third=input("Pronoun 2: ")
+
+    gt=input("Gender Text: ")
     
-    x=create([int(y),w,z],second, third,r,g,b,size,gc=[L,R],o=True)
+    x=create([int(y),w,z],second, third,r,g,b,size,gc=[L,R],o=True,gt=gt)
 
     input("press enter to continue")
     

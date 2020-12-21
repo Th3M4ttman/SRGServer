@@ -25,6 +25,8 @@ def create(debug=True):
         B=255
         S=500
         gender=""
+        gt=""
+        
         if result.get("Gender") == 'Male':
             byte+=1
             gender="Male"
@@ -175,9 +177,11 @@ def create(debug=True):
         if T:
             bytetext+="*"
         if Q:
-            bytetext+="?"         
+            bytetext+="?"
+        if not o or result.get("Go") != "":
+            gt=gender
         print("Creating " + str(byte))
-        tempsrgurl = SRG.SRG.create([byte,Q,T],SPP,TPP,int(R),int(G),int(B),int(S),"Test",gc=[l,r],o=o)
+        tempsrgurl = SRG.SRG.create([byte,Q,T],SPP,TPP,int(R),int(G),int(B),int(S),"Test",gc=[l,r],o=o,gt=gt)
         tempsrgurl = list(tempsrgurl)
         del tempsrgurl[4]
         srgurl=""
