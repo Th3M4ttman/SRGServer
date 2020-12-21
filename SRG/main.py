@@ -109,11 +109,13 @@ def create(debug=True):
             o=True
             l=[result.get("BgRa"), result.get("BgGa"), result.get("BgBa"), 255]
             r=[result.get("BgRb"), result.get("BgGb"), result.get("BgBb"), 255]
+            print(l)
+            print(r)
         else:
             o=False
             l=[255, 105, 180, 255]
             r=[0, 191, 255, 255]
-            
+            print("Default Colour")
         bytetext=str(byte)
         if T:
             bytetext+="*"
