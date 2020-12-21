@@ -105,7 +105,7 @@ def create(debug=True):
             
         o=result.get("o")
         print(o)
-        if o="y":
+        if o=="y":
             o=True
             l=[result.get("BgRa"), result.get("BgGa"), result.get("BgBa"), 255]
             r=[result.get("BgRb"), result.get("BgGb"), result.get("BgBb"), 255]
