@@ -104,9 +104,11 @@ def gender_colour(x,array,width,height,p=False, lc=[0, 191, 255, 255], rc=[255, 
     '''applys gender colour to background'''
         
     if O:
-        if p: print("NB")
+        if p: print("OverRiddenColour")
         array[:,:int(width/2)] = lc 
         array[:,int(width/2):] = rc
+        print(lc)
+        print(rc)
         
     elif x[7] and x[6]:
         if p: print("NB")

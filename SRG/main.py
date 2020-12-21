@@ -111,6 +111,7 @@ def create(debug=True):
             r=[result.get("BgRb"), result.get("BgGb"), result.get("BgBb"), 255]
             print(l)
             print(r)
+            print("Custom Colour")
         else:
             o=False
             l=[255, 105, 180, 255]
