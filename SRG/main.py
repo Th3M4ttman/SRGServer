@@ -108,6 +108,7 @@ def create(debug=True):
         if o=="y":
             o=True
             lr=str(result.get("BgRa"))
+            print(lr)
             lr=int(lr)
             lr=round(lr*2.25)
             lg=str(result.get("BgGa"))
