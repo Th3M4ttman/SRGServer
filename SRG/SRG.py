@@ -100,26 +100,30 @@ def srgint_to_bools(srg,debug=False):
 	return byte
 			
 
-def gender_colour(x,array,width,height,p=False, lc=[0, 191, 255, 255], rc=[255, 105, 180, 255]):
-	'''applys gender colour to background'''
+def gender_colour(x,array,width,height,p=False, lc=[0, 191, 255, 255], rc=[255, 105, 180, 255],O=False):
+    '''applys gender colour to background'''
+        
+    if O:
+        if p: print("NB")
+        array[:,:int(width/2)] = lc 
+        array[:,int(width/2):] = rc
+        
+    elif x[7] and x[6]:
+        if p: print("NB")
+        array[:,:int(width/2)] = lc #blue
+        array[:,int(width/2):] = rc #pink
+        
+    elif x[7]:
+        if p: print("Male")
+        array[:,:] = [0, 191, 255, 255]
+    
+    elif x[6]:
+        if p: print("Female")
+        array[:,:] = [255, 105, 180, 255]
 
-	if x[7] and x[6]:
-		if p: print("NB")
-
-		array[:,:int(width/2)] = lc #blue
-		array[:,int(width/2):] = rc #pink
-
-	elif x[7]:
-		if p: print("Male")
-		array[:,:] = [0, 191, 255, 255]
-	
-	elif x[6]:
-		if p: print("Female")
-		array[:,:] = [255, 105, 180, 255]
-
-	else:
-		if p: print("Agender")
-		array[:,:] = [50, 50, 50, 255]
+    else:
+        if p: print("Agender")
+        array[:,:] = [50, 50, 50, 255]
 
 		
 def add_text(im,text,W,H,bordercolor=(0,0,0),so=[False,False,False],ro=[False,False,False],p1="They", p2="Them"):
@@ -235,10 +239,8 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
     
     arr = np.zeros([height, width, 4], dtype=np.uint8)
     if o:
-        if gc[0] != [None,None,None]:
-            gender_colour(bools,arr,width,height,True,gc[0],gc[1])
-        else:
-            gender_colour(bools,arr,width,height,True)
+        gender_colour(bools,arr,width,height,True,gc[0],gc[1])
+
     else:
         gender_colour(bools,arr,width,height,True)
             
