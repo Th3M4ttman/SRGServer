@@ -103,7 +103,7 @@ def create(debug=True):
                 if S<100:
                     S=100
             
-        o=result.get("o")
+        o=result.get("O")
         print(o)
         if o=="y":
             o=True
