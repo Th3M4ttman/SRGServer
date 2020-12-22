@@ -334,22 +334,26 @@ def crest_text(im, text, W, H, so=[False, False, False], ro=[False, False, False
 
     if ro[2]: draw.text((int(W / 3.2), int((H / 7) * 3)), "M", align='center', font=smallFont, fill='white',
                         stroke_width=5, stroke_fill='black')
+    print("Drawing RN")
 
     if so[2]: draw.text((int(W - (W / 2.8)), int((H / 7) * 3)), "M", align='center', font=smallFont, fill='white',
                         stroke_width=5, stroke_fill='black', )
+    print("Drawing SN")
 
     if ro[1]: draw.text((int(W / 3.2), int((H / 8) * 4)), "F", align='center', font=smallFont, fill='white',
                         stroke_width=5, stroke_fill='black')
+    print("Drawing RF")
 
     if so[1]: draw.text((int(W - (W / 2.9)), int((H / 8) * 4)), "F", align='center', font=smallFont, fill='white',
                         stroke_width=5, stroke_fill='black', )
+    print("Drawing SF")
 
     if ro[0]: draw.text((int(W / 3.2), int((H / 8.8) * 5)), "NB", align='center', font=smallFont, fill='white',
                         stroke_width=5, stroke_fill='black')
-
+    print("Drawing RM")
     if so[0]: draw.text((int(W - (W / 2.7)), int((H / 8.8) * 5)), "NB", align='right', font=smallFont, fill='white',
                         stroke_width=5, stroke_fill='black', )
-
+    print("Drawing SM")
 
 def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0,191,255,255),bgr=(255,105,180,255),trim=(218,165,32,255),wings=(0,0,0,255),ad=(255,255,255,255),glow=(218,165,32,75)):
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -407,15 +411,15 @@ def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0
             if new_color != False:
                 im.putpixel((x, y), new_color)
 
-    print("Adding Text")
-    crest_text(im, SRG[0], im.width, im.height,ro,so,p1,p2,gt,gp=50,Q=SRG[1],T=SRG[2],rn=rn)
     print("Completed Colouring")
+    crest_text(im, SRG[0], im.width, im.height,ro,so,p1,p2,gt,gp=50,Q=SRG[1],T=SRG[2],rn=rn)
+    print("Text Added")
     temp=tempfile.NamedTemporaryFile(suffix=".png",delete=False)
     name = str(temp.name)
     p=Path(temp.name)
-
+    print("Saving")
     im.save(p)
-    
+    print("Saved Uploading")
     from imgurpython import ImgurClient
     client = ImgurClient("1ad9fa3c6cc700a", "a17ace1750e1e2c4610fed9ca65c2ee0778510af")
     request=client.upload_from_path(p, anon=True)
