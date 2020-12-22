@@ -353,7 +353,7 @@ def crest_text(im, text, W, H, so=[False, False, False], ro=[False, False, False
 
 def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0,191,255,255),bgr=(255,105,180,255),trim=(218,165,32,255),wings=(0,0,0,255),ad=(255,255,255,255),glow=(218,165,32,75)):
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    i = np.asarray(Image.open(os.path.join(script_dir, 'Crest.png')))
+    i = np.asarray(Image.open(os.path.join(script_dir, 'Crest500.png')))
     im = Image.fromarray(np.uint8(i))
     # Get the size of the image
     width = im.width
@@ -387,7 +387,7 @@ def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0
         for y in range(0, height):
             current_color = im.getpixel((x, y))
             ####################################################################
-            if current_color[3] > 0:
+            if current_color[3] > 20:
                 if current_color[0] >= 250 and current_color[1] >= 250 and current_color[2] >= 250:
                     new_color = glow
                 elif current_color[0] >= 250 and current_color[1] == 0 and current_color[2] == 0:
@@ -406,10 +406,11 @@ def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0
             ####################################################################
             if new_color != False:
                 im.putpixel((x, y), new_color)
+
+    print("Adding Text")
     crest_text(im, SRG[0], im.width, im.height,ro,so,p1,p2,gt,gp=50,Q=SRG[1],T=SRG[2],rn=rn)
     print("Completed Colouring")
     temp=tempfile.NamedTemporaryFile(suffix=".png",delete=False)
-    time.sleep(.2)
     name = str(temp.name)
     p=Path(temp.name)
 
@@ -573,7 +574,7 @@ def main(imported=False):
 
     gt=input("Gender Text: ")
 
-    print("Type c for crest anything else for SEG")
+    print("Type c for crest anything else")
     ty=input("Type: ")
 
     if ty == "c":
