@@ -279,20 +279,24 @@ def toNumeral(Number):
     return output
 
 def crest_text(im, text, W, H, so=[False, False, False], ro=[False, False, False], p1="They", p2="Them", gt="", gp=50, rn=True, Q=False, T=False):
-
+    print("crest text")
     if rn:
         text=int(text)
         text=toNumeral(text)
         if Q:
             text+="?"
+            print("Questioning")
         if T:
             text+="*"
+            print("Trans")
     else:
         text=int(text)
         if Q:
             text+="?"
+            print("Questioning")
         if T:
             text+="*"
+            print("Trans")
     text=str(text)
     print(text)
     print("Setting Fonts")
@@ -415,7 +419,7 @@ def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0
                 im.putpixel((x, y), new_color)
 
     print("Completed Colouring")
-    crest_text(im, SRG[0], im.width, im.height,ro,so,p1,p2,gt,gp=50,Q=SRG[1],T=SRG[2],rn=rn)
+    crest_text(im, SRG[0], im.width, im.height,ro=ro,so=so,p1=p1,p2=p2,gt=gt,gp=50,Q=SRG[1],T=SRG[2],rn=rn)
     print("Text Added")
     temp=tempfile.NamedTemporaryFile(suffix=".png",delete=False)
     name = str(temp.name)
