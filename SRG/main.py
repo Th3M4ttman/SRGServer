@@ -261,6 +261,7 @@ def crest(debug=True):
             lr=float(lr)
             if lr==0:
                 print(0)
+                lr = round(lr)
             else:
                 lr=float(lr)*2.25
                 lr=round(lr)
@@ -270,6 +271,7 @@ def crest(debug=True):
             lg=float(lg)
             if lg==0:
                 print(0)
+                lg = round(lg)
             else:
                 lg=lg*2.25
                 lg=round(lg)
@@ -279,6 +281,7 @@ def crest(debug=True):
             lb=float(lb)
             if lb==0:
                 print(0)
+                lb = round(lb)
             else:
                 lb=lb*2.25
                 lb=round(lb)
@@ -288,6 +291,7 @@ def crest(debug=True):
             rr=float(rr)
             if rr==0:
                 print(0)
+                rr = round(rr)
             else:
                 rr=rr*2.25
                 rr=round(rr)
@@ -297,6 +301,7 @@ def crest(debug=True):
             rg=float(rg)
             if rg==0:
                 print(0)
+                rb = round(rg)
             else:
                 rg=rg*2.25
                 rg=round(rg)
@@ -306,6 +311,7 @@ def crest(debug=True):
             rb=float(rb)
             if rb==0:
                 print(0)
+                rb = round(rb)
             else:
                 rb=rb*2.25
                 rb=round(rb)
