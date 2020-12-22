@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<br>
+	<form action="https://srgindex.herokuapp.com/crest">
+		<input type="submit" value="Switch to Original SRG" />
+	</form>
 	<form action="" method="post">
 	<div style="width: 100%; display: flex; align-items: center;justify-content: center">
 		<table style="height: 50%; width: 50%; background-color: #263238;" border="5" width="50%" cellpadding="5">
 			<tbody>
 				<tr>
 					<td style="width: 50%; text-align: center;">
-						<h1><span style="color: #ffffff;">Create</span></h1>
+						<h1><span style="color: #ffffff;">Crest</span></h1>
 					</td>
 				</tr>
 				<tr>
@@ -49,9 +52,9 @@
 									</td>
 									<td style="width: 50%; text-align: center;">
 										<p style="color: #ffffff;">
-										R:{{form.BgRa(size=30)}}<br>
-										G:{{form.BgGa(size=30)}}<br>
-										B:{{form.BgBa(size=30)}}<br>
+										R:{{form.BgRa(size=1)}}<br>
+										G:{{form.BgGa(size=1)}}<br>
+										B:{{form.BgBa(size=1)}}<br>
 										</p>
 									</td>
 								</tr>
@@ -61,9 +64,9 @@
 								</td>
 								<td style="width: 50%; text-align: center;">
 									<p style="color: #ffffff;">
-										R:{{form.BgRb(size=30)}}<br>
-										G:{{form.BgGb(size=30)}}<br>
-										B:{{form.BgBb(size=30)}}<br>
+										R:{{form.BgRb(size=1)}}<br>
+										G:{{form.BgGb(size=1)}}<br>
+										B:{{form.BgBb(size=1)}}<br>
 									</p>
 								</td>
 							</tr>
