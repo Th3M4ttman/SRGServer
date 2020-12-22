@@ -234,7 +234,188 @@ def add_text(im,text,W,H,bordercolor=(0,0,0),so=[False,False,False],ro=[False,Fa
 
     if so[0]: draw.text((int(W-(W/6)), int((H/8)*5)), "NB", align='right', font=smallFont, fill='white', stroke_width=5, stroke_fill='black', )
             
-			
+
+def toNumeral(Number):
+
+    runningtotal = Number
+    output = ""
+    while runningtotal > 0:
+        if runningtotal >= 100:
+            output += "C"
+            runningtotal -= 100
+        elif runningtotal >= 50:
+            output += "L"
+            runningtotal -= 50
+        elif runningtotal >= 10:
+            output += "X"
+            runningtotal -= 10
+        elif runningtotal == 9:
+            output += "IX"
+            runningtotal -= 9
+        elif runningtotal == 8:
+            output += "VIII"
+            runningtotal -= 8
+        elif runningtotal == 7:
+            output += "VII"
+            runningtotal -= 7
+        elif runningtotal == 6:
+            output += "VI"
+            runningtotal -= 6
+        elif runningtotal == 5:
+            output += "V"
+            runningtotal -= 5
+        elif runningtotal == 4:
+            output += "IV"
+            runningtotal -= 4
+        elif runningtotal == 3:
+            output += "III"
+            runningtotal -= 3
+        elif runningtotal == 1:
+            output += "II"
+            runningtotal -= 2
+        elif runningtotal == 1:
+            output += "I"
+            runningtotal -= 1
+    return output
+
+def crest_text(im, text, W, H, so=[False, False, False], ro=[False, False, False], p1="They", p2="Them", gt="", gp=50, rn=True, Q=False, T=False):
+
+    if rn:
+        text=int(text)
+        text=toNumeral(text)
+        if Q:
+            text+="?"
+        if T:
+            text+="*"
+    else:
+        text=int(text)
+        if Q:
+            text+="?"
+        if T:
+            text+="*"
+    text=str(text)
+    bigFont = ImageFont.truetype("Numerals.ttf", int(W / 15))
+    smallFont = ImageFont.truetype("Numerals.ttf", int(W / 25))
+
+    draw = ImageDraw.Draw(im)
+    # w, h = draw.textsize(text)
+    # draw.text(((W-w)/2,(H-h)/2), text, fill="black", align='center', font=bigFont)
+
+    bounding_box = [0, 0, W, H]
+    x1, y1, x2, y2 = bounding_box  # For easy reading
+
+    # Calculate the width and height of the text to be drawn, given font size
+    # Calculate the mid points and offset by the upper left corner of the bounding box
+
+    w, h = draw.textsize(text, font=bigFont)
+    x = (x2 - x1 - w) / 2 + x1
+    y = (y2 - y1 - h) / 2 + y1
+
+    # Write the text to the image, where (x,y) is the top left corner of the text
+    draw.text((x, y), text, align='center', font=bigFont, fill='white', stroke_width=5, stroke_fill='black')
+
+    w, h = draw.textsize(gt, font=smallFont)
+    x = (W - w) / 2
+    y = H / 3.5
+
+    draw.text((x, y), gt, align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+
+    w, h = draw.textsize(p1 + " " + p2, font=smallFont)
+    x = (W - w) / 2
+    y = H - (H / 3)
+
+    draw.text((x, y), p1 + " " + p2, align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+
+    draw.text((int(W / 3.2), int((H / 6.5) * 2)), "R", align='center', font=smallFont, fill='white', stroke_width=5,
+              stroke_fill='black')
+
+    draw.text((int(W - (W / 2.8)), int((H / 6.5) * 2)), "S", align='center', font=smallFont, fill='white', stroke_width=5,
+              stroke_fill='black', )
+
+    if ro[2]: draw.text((int(W / 3.2), int((H / 7) * 3)), "M", align='center', font=smallFont, fill='white',
+                        stroke_width=5, stroke_fill='black')
+
+    if so[2]: draw.text((int(W - (W / 2.8)), int((H / 7) * 3)), "M", align='center', font=smallFont, fill='white',
+                        stroke_width=5, stroke_fill='black', )
+
+    if ro[1]: draw.text((int(W / 3.2), int((H / 8) * 4)), "F", align='center', font=smallFont, fill='white',
+                        stroke_width=5, stroke_fill='black')
+
+    if so[1]: draw.text((int(W - (W / 2.9)), int((H / 8) * 4)), "F", align='center', font=smallFont, fill='white',
+                        stroke_width=5, stroke_fill='black', )
+
+    if ro[0]: draw.text((int(W / 3.2), int((H / 8.8) * 5)), "NB", align='center', font=smallFont, fill='white',
+                        stroke_width=5, stroke_fill='black')
+
+    if so[0]: draw.text((int(W - (W / 2.7)), int((H / 8.8) * 5)), "NB", align='right', font=smallFont, fill='white',
+                        stroke_width=5, stroke_fill='black', )
+
+
+def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0,191,255,255),bgr=(255,105,180,255),trim=(218,165,32,255),wings=(0,0,0,255),ad=(255,255,255,255),glow=(218,165,32,75)):
+
+    i = np.asarray(Image.open('crest.png'))
+    im = Image.fromarray(np.uint8(i))
+    # Get the size of the image
+    width = im.width
+    height = im.height
+
+    x = srgint_to_bools(SRG[0])
+
+    if o:
+        print("custom colour")
+    elif x[7] and x[6]:
+        bgl=(0, 191, 255, 255)
+        bgr=(255, 105, 180, 255)
+    elif x[7]:
+        bgl = (0, 191, 255, 255)
+        bgr = (0, 191, 255, 255)
+    elif x[6]:
+        bgl = (255, 105, 180, 255)
+        bgr = (255, 105, 180, 255)
+    else:
+        bgl = (50, 50, 50, 255)
+        bgr = (50, 50, 50, 255)
+
+    # Process every pixel
+    for x in range(0, width):
+        for y in range(0, height):
+            current_color = im.getpixel((x, y))
+            ####################################################################
+            if current_color[3] > 0:
+                if current_color[0] >= 250 and current_color[1] >= 250 and current_color[2] >= 250:
+                    new_color = glow
+                elif current_color[0] >= 250 and current_color[1] == 0 and current_color[2] == 0:
+                    if x > width/2.03:
+                        new_color = bgr
+                    else:
+                        new_color = bgl
+                elif current_color[1] >= 250 and current_color[0] == 0 and current_color[2] == 0:
+                    new_color = trim
+                elif current_color[2] >= 250 and current_color[0] == 0 and current_color[1] == 0:
+                    new_color = ad
+                else:
+                    new_color = wings
+            else:
+                new_color = current_color
+            ####################################################################
+            im.putpixel((x, y), new_color)
+    crest_text(im, SRG[0], im.width, im.height,[True, True, True], [True, True, True],p1,p2,gt,gp=50,Q=SRG[1],T=SRG[2],rn=rn)
+
+    temp=tempfile.NamedTemporaryFile(suffix=".png",delete=False)
+    time.sleep(.2)
+    name = str(temp.name)
+    p=Path(temp.name)
+
+    im.save(p)
+    
+    from imgurpython import ImgurClient
+    client = ImgurClient("1ad9fa3c6cc700a", "a17ace1750e1e2c4610fed9ca65c2ee0778510af")
+    request=client.upload_from_path(p, anon=True)
+    print("Uploaded to "+request["link"])
+    temp.close()
+    os.remove(temp.name)
+    return request["link"]
+    
 def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=500,F=None,debug=False,gc=[[None,None,None],[None,None,None]],o=False,gt=""):
         
     if srg[0] == None:
@@ -386,7 +567,9 @@ def main(imported=False):
     gt=input("Gender Text: ")
     
     x=create([int(y),w,z],second, third,r,g,b,size,gc=[L,R],o=True,gt=gt)
-
+    y=crest(SRG=[253,False,False],rn=False,p2="Him",p1="He",gt="Male",o=True,bgl=(180, 0, 0, 255), bgr=(36, 36, 36, 255), trim=(218,165,32,255), wings=(0, 0, 0, 255),
+          ad=(255, 255, 255, 255), glow=(218,165,32,75))
+    
     input("press enter to continue")
     
 i=True
