@@ -329,7 +329,7 @@ def crest_text(im, text, W, H, so=[False, False, False], ro=[False, False, False
     draw.text((int(W / 3.2), int((H / 6.5) * 2)), "R", align='center', font=smallFont, fill='white', stroke_width=5,
               stroke_fill='black')
 
-    draw.text((int(W - (W / 2.8)), int((H / 6.5) * 2)), "S", align='center', font=smallFont, fill='white', stroke_width=5,
+    draw.text((int(W - (W / 2.9)), int((H / 6.5) * 2)), "S", align='center', font=smallFont, fill='white', stroke_width=5,
               stroke_fill='black', )
 
     if ro[2]: draw.text((int(W / 3.2), int((H / 7) * 3)), "M", align='center', font=smallFont, fill='white',
@@ -565,10 +565,18 @@ def main(imported=False):
     third=input("Pronoun 2: ")
 
     gt=input("Gender Text: ")
-    
-    x=create([int(y),w,z],second, third,r,g,b,size,gc=[L,R],o=True,gt=gt)
-    y=crest(SRG=[253,False,False],rn=False,p2="Him",p1="He",gt="Male",o=True,bgl=(180, 0, 0, 255), bgr=(36, 36, 36, 255), trim=(218,165,32,255), wings=(0, 0, 0, 255),
+
+    print("Type c for crest anything else for SEG")
+    ty==input("Type: ")
+
+    if ty == "C":
+        y=crest(SRG=[253,False,False],rn=False,p2="Him",p1="He",gt="Male",o=True,bgl=(180, 0, 0, 255), bgr=(36, 36, 36, 255), trim=(218,165,32,255), wings=(0, 0, 0, 255),
           ad=(255, 255, 255, 255), glow=(218,165,32,75))
+    else:
+        x=create([int(y),w,z],second, third,r,g,b,size,gc=[L,R],o=True,gt=gt)
+    
+    
+    
     
     input("press enter to continue")
     
