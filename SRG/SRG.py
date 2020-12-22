@@ -294,13 +294,15 @@ def crest_text(im, text, W, H, so=[False, False, False], ro=[False, False, False
         if T:
             text+="*"
     text=str(text)
+    print(text)
+    print("Setting Fonts")
     bigFont = ImageFont.truetype("Numerals.ttf", int(W / 15))
     smallFont = ImageFont.truetype("Numerals.ttf", int(W / 25))
 
     draw = ImageDraw.Draw(im)
     # w, h = draw.textsize(text)
     # draw.text(((W-w)/2,(H-h)/2), text, fill="black", align='center', font=bigFont)
-
+    print("Calculating bounding box")
     bounding_box = [0, 0, W, H]
     x1, y1, x2, y2 = bounding_box  # For easy reading
 
@@ -310,7 +312,7 @@ def crest_text(im, text, W, H, so=[False, False, False], ro=[False, False, False
     w, h = draw.textsize(text, font=bigFont)
     x = (x2 - x1 - w) / 2 + x1
     y = (y2 - y1 - h) / 2 + y1
-
+    print("Drawing SRG")
     # Write the text to the image, where (x,y) is the top left corner of the text
     draw.text((x, y), text, align='center', font=bigFont, fill='white', stroke_width=5, stroke_fill='black')
 
@@ -318,17 +320,18 @@ def crest_text(im, text, W, H, so=[False, False, False], ro=[False, False, False
     x = (W - w) / 2
     y = H / 3.5
 
+    print("Drawing gendertext")
     draw.text((x, y), gt, align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
 
     w, h = draw.textsize(p1 + " " + p2, font=smallFont)
     x = (W - w) / 2
     y = H - (H / 3)
-
+    print("Drawing pronouns")
     draw.text((x, y), p1 + " " + p2, align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
-
+    print("Drawing R")
     draw.text((int(W / 3.2), int((H / 6.5) * 2)), "R", align='center', font=smallFont, fill='white', stroke_width=5,
               stroke_fill='black')
-
+    print("Drawing S")
     draw.text((int(W - (W / 2.9)), int((H / 6.5) * 2)), "S", align='center', font=smallFont, fill='white', stroke_width=5,
               stroke_fill='black', )
 
