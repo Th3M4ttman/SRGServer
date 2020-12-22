@@ -405,7 +405,6 @@ def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0
                 continue
             ####################################################################
             im.putpixel((x, y), new_color)
-            print(str(x)+","+str(y))
     crest_text(im, SRG[0], im.width, im.height,ro,so,p1,p2,gt,gp=50,Q=SRG[1],T=SRG[2],rn=rn)
     print("Completed Colouring")
     temp=tempfile.NamedTemporaryFile(suffix=".png",delete=False)

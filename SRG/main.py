@@ -181,7 +181,7 @@ def create(debug=True):
         if not o or result.get("Go") != "":
             gt=gender
         print("Creating " + str(byte))
-        tempsrgurl = SRG.SRG.create([byte,Q,T],SPP,TPP,int(R),int(G),int(B),int(S),"Test",gc=[l,r],o=o,gt=gt)
+        tempsrgurl = SRG.SRG.create([byte,Q,T],SPP,TPP,int(R),int(G),int(B),int(S),"Test",gc=[l,r],o=o,gt=gt,debug=False)
         tempsrgurl = list(tempsrgurl)
         del tempsrgurl[4]
         srgurl=""
@@ -352,8 +352,8 @@ def crest(debug=True):
             print("Custom Colour")
         else:
             o=False
-            l=[255, 105, 180, 255]
-            r=[0, 191, 255, 255]
+            l=(255, 105, 180, 255)
+            r=(0, 191, 255, 255)
             print("Default Colour")
         bytetext=str(byte)
         if T:
@@ -363,7 +363,7 @@ def crest(debug=True):
         if not o or result.get("Go") != "":
             gt=gender
         print("Creating " + str(byte))
-        tempsrgurl = SRG.SRG.crest(SRG=[byte,Q,T],p1=SPP,p2=TPP,gt=gt,rn=True,o=False,bgl=(0,191,255,255),bgr=(255,105,180,255),trim=(218,165,32,255),wings=(0,0,0,255),ad=(255,255,255,255),glow=(218,165,32,75))
+        tempsrgurl = SRG.SRG.crest(SRG=[byte,Q,T],p1=SPP,p2=TPP,gt=gt,rn=True,o=False,bgl=l,bgr=r,trim=(218,165,32,255),wings=(0,0,0,255),ad=(255,255,255,255),glow=(218,165,32,75))
         tempsrgurl = list(tempsrgurl)
         del tempsrgurl[4]
         srgurl=""
