@@ -243,107 +243,108 @@ def crest(debug=True):
             elif x == "Q":
                 Q=False
 
-    R=result.get("R")
-    R=round(float(R))
-    R=round(int(R)*2.55)
+    if fs:
+        R=result.get("R")
+        R=round(float(R))
+        R=round(int(R)*2.55)
 
-    G=result.get("G")
-    G=round(float(G))
-    G=round(int(G)*2.55)
+        G=result.get("G")
+        G=round(float(G))
+        G=round(int(G)*2.55)
 
-    B=result.get("B")
-    B=round(float(B))
-    B=round(int(B)*2.55)
+        B=result.get("B")
+        B=round(float(B))
+        B=round(int(B)*2.55)
 
-    SPP=result.get("SPP")
+        SPP=result.get("SPP")
 
-    TPP=result.get("TPP")
+        TPP=result.get("TPP")
 
 
-            
-    o=result.get("O")
-    print(o)
-    if o=="y":
-        o=True
-        lr=str(result.get("BgRa"))
-        print(lr)
-        lr=float(lr)
-        if lr==0:
-            print(0)
+
+        o=result.get("O")
+        print(o)
+        if o=="y":
+            o=True
+            lr=str(result.get("BgRa"))
+            print(lr)
+            lr=float(lr)
+            if lr==0:
+                print(0)
+            else:
+                lr=float(lr)*2.25
+                lr=round(lr)
+
+            lg=str(result.get("BgGa"))
+            print(lg)
+            lg=float(lg)
+            if lg==0:
+                print(0)
+            else:
+                lg=lg*2.25
+                lg=round(lg)
+
+            lb=str(result.get("BgBa"))
+            print(lb)
+            lb=float(lb)
+            if lb==0:
+                print(0)
+            else:
+                lb=lb*2.25
+                lb=round(lb)
+
+            rr=str(result.get("BgRb"))
+            print(rr)
+            rr=float(rr)
+            if rr==0:
+                print(0)
+            else:
+                rr=rr*2.25
+                rr=round(rr)
+
+            rg=str(result.get("BgGb"))
+            print(rg)
+            rg=float(rg)
+            if rg==0:
+                print(0)
+            else:
+                rg=rg*2.25
+                rg=round(rg)
+
+            rb=str(result.get("BgBb"))
+            print(rb)
+            rb=float(rb)
+            if rb==0:
+                print(0)
+            else:
+                rb=rb*2.25
+                rb=round(rb)
+
+            l=(lr,lg,lb, 255)
+            r=(rr,rg,rb, 255)
+            print(l)
+            print(r)
+            print("Custom Colour")
         else:
-            lr=float(lr)*2.25
-            lr=round(lr)
-            
-        lg=str(result.get("BgGa"))
-        print(lg)
-        lg=float(lg)
-        if lg==0:
-            print(0)
-        else:
-            lg=lg*2.25
-            lg=round(lg)
-            
-        lb=str(result.get("BgBa"))
-        print(lb)
-        lb=float(lb)
-        if lb==0:
-            print(0)
-        else:
-            lb=lb*2.25
-            lb=round(lb)
-            
-        rr=str(result.get("BgRb"))
-        print(rr)
-        rr=float(rr)
-        if rr==0:
-            print(0)
-        else:
-            rr=rr*2.25
-            rr=round(rr)
-            
-        rg=str(result.get("BgGb"))
-        print(rg)
-        rg=float(rg)
-        if rg==0:
-            print(0)
-        else:
-            rg=rg*2.25
-            rg=round(rg)
-            
-        rb=str(result.get("BgBb"))
-        print(rb)
-        rb=float(rb)
-        if rb==0:
-            print(0)
-        else:
-            rb=rb*2.25
-            rb=round(rb)
-            
-        l=(lr,lg,lb, 255)
-        r=(rr,rg,rb, 255)
-        print(l)
-        print(r)
-        print("Custom Colour")
-    else:
-        o=False
-        l=(255, 105, 180, 255)
-        r=(0, 191, 255, 255)
-        print("Default Colour")
-        bytetext=str(byte)
-    if T:
-        bytetext+="*"
-    if Q:
-        bytetext+="?"
-    if not o or result.get("Go") != "":
-        gt=gender
-    print("Creating " + str(byte))
-    tempsrgurl = SRG.SRG.crest(SRG=[byte,Q,T],p1=SPP,p2=TPP,gt=gt,rn=True,o=False,bgl=l,bgr=r,trim=(218,165,32,255),wings=(0,0,0,255),ad=(255,255,255,255),glow=(218,165,32,75))
-    tempsrgurl = list(tempsrgurl)
-    del tempsrgurl[4]
-    srgurl=""
-    for character in tempsrgurl:
-        srgurl+=character
-    if fs==True:
+            o=False
+            l=(255, 105, 180, 255)
+            r=(0, 191, 255, 255)
+            print("Default Colour")
+            bytetext=str(byte)
+        if T:
+            bytetext+="*"
+        if Q:
+            bytetext+="?"
+        if not o or result.get("Go") != "":
+            gt=gender
+        print("Creating " + str(byte))
+        tempsrgurl = SRG.SRG.crest(SRG=[byte,Q,T],p1=SPP,p2=TPP,gt=gt,rn=True,o=False,bgl=l,bgr=r,trim=(218,165,32,255),wings=(0,0,0,255),ad=(255,255,255,255),glow=(218,165,32,75))
+        tempsrgurl = list(tempsrgurl)
+        del tempsrgurl[4]
+        srgurl=""
+        for character in tempsrgurl:
+            srgurl+=character
+
         return render_template('SRG.html', result=result, bytetext=bytetext, byte=byte, T=T, Q=Q, srgurl=srgurl)
     else:
         return render_template('crest.html', form=form)
