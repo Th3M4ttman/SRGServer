@@ -244,18 +244,7 @@ def crest(debug=True):
                 Q=False
 
     if fs:
-        R=result.get("R")
-        R=round(float(R))
-        R=round(int(R)*2.55)
-
-        G=result.get("G")
-        G=round(float(G))
-        G=round(int(G)*2.55)
-
-        B=result.get("B")
-        B=round(float(B))
-        B=round(int(B)*2.55)
-
+        
         SPP=result.get("SPP")
 
         TPP=result.get("TPP")
