@@ -284,18 +284,18 @@ def crest_text(im, text, W, H, so=[False, False, False], ro=[False, False, False
         text=int(text)
         text=toNumeral(text)
         if Q:
-            text+="?"
+            text=str(text)+"?"
             print("Questioning")
         if T:
-            text+="*"
+            text=str(text)+"*"
             print("Trans")
     else:
         text=int(text)
         if Q:
-            text+="?"
+            text=str(text)+"?"
             print("Questioning")
         if T:
-            text+="*"
+            text=str(text)+"*"
             print("Trans")
     text=str(text)
     print(text)
