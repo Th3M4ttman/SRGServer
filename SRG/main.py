@@ -314,7 +314,7 @@ def crest(debug=True):
             r=(rr,rg,rb, 255)
             print(l)
             print(r)
-            print("Custom Colour L:".join(l)+" R:".join(r))
+            print("Custom Colour L:".join(str(v) for v in l)+" R:".join(str(v) for v in r))
         else:
             o=False
             l=(255, 105, 180, 255)
