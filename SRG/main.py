@@ -328,7 +328,7 @@ def crest(debug=True):
         if not o or result.get("Go") != "":
             gt=gender
         print("Creating " + str(byte))
-        tempsrgurl = SRG.SRG.crest(SRG=[byte,Q,T],p1=SPP,p2=TPP,gt=gt,rn=True,o=False,bgl=l,bgr=r,trim=(218,165,32,255),wings=(0,0,0,255),ad=(255,255,255,255),glow=(218,165,32,75))
+        tempsrgurl = SRG.SRG.crest(SRG=[byte,Q,T],p1=SPP,p2=TPP,gt=gt,rn=False,o=False,bgl=l,bgr=r,trim=(218,165,32,255),wings=(0,0,0,255),ad=(255,255,255,255),glow=(218,165,32,75))
         tempsrgurl = list(tempsrgurl)
         del tempsrgurl[4]
         srgurl=""
