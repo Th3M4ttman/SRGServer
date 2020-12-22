@@ -244,7 +244,7 @@ def crest(debug=True):
                 Q=False
 
     if fs:
-        
+
         SPP=result.get("SPP")
 
         TPP=result.get("TPP")
@@ -254,6 +254,7 @@ def crest(debug=True):
         o=result.get("O")
         print(o)
         if o=="y":
+            bytetext = str(byte)
             o=True
             lr=str(result.get("BgRa"))
             print(lr)
