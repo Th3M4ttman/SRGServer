@@ -1,7 +1,7 @@
 from flask import Flask, render_template, flash, request
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 import SRG.SRG
-from SRG.forms import SRGForm as f
+from SRG.forms import SRGForm
 
 application = Flask(__name__)
 application.config['SECRET_KEY'] = 'poop'
@@ -12,7 +12,7 @@ def index():
 
 @application.route('/create', methods=['GET','POST'])
 def create(debug=True):
-    form = f.SRGForm()
+    form = SRGForm()
     if form.is_submitted():
         result = request.form
         byte=0
@@ -194,7 +194,7 @@ def create(debug=True):
 
 @application.route('/crest', methods=['GET','POST'])
 def crest(debug=True):
-    form = f.SRGCrestForm()
+    form = SRGCrestForm()
     if form.is_submitted():
         result = request.form
         byte=0
