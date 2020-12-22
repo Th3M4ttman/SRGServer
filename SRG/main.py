@@ -232,20 +232,20 @@ def crest(debug=True):
                 print(result.get("BgRa"))
             elif x=="BgGa":
                 print("BgGa")
-                print(result.get("BgRa"))
+                print(result.get("BgGa"))
             elif x=="BgBa":
                 print("BgBa")
-                print(result.get("BgRa"))
+                print(result.get("BgBa"))
                 
             elif x=="BgRb":
                 print("BgRb")
-                print(result.get("BgRa"))
+                print(result.get("BgRb"))
             elif x=="BgGb":
                 print("BgGb")
-                print(result.get("BgRa"))
+                print(result.get("BgGb"))
             elif x=="BgBb":
                 print("BgBb")
-                print(result.get("BgRa"))
+                print(result.get("BgBb"))
                 
 
             elif x == "Rm":
@@ -345,8 +345,8 @@ def crest(debug=True):
                 rb=rb*2.25
                 rb=round(rb)
             
-            l=[lr,lg,lb, 255]
-            r=[rr,rg,rb, 255]
+            l=(lr,lg,lb, 255)
+            r=(rr,rg,rb, 255)
             print(l)
             print(r)
             print("Custom Colour")

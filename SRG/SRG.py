@@ -360,19 +360,25 @@ def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0
     height = im.height
 
     x = srgint_to_bools(SRG[0])
+    ro=[x[0],x[1],x[2]]
+    so=[x[3],x[4],x[5]]
 
     if o:
         print("custom colour")
     elif x[7] and x[6]:
+        print("NB")
         bgl=(0, 191, 255, 255)
         bgr=(255, 105, 180, 255)
     elif x[7]:
+        print("Male")
         bgl = (0, 191, 255, 255)
         bgr = (0, 191, 255, 255)
     elif x[6]:
+        print("Female")
         bgl = (255, 105, 180, 255)
         bgr = (255, 105, 180, 255)
     else:
+        print("Agender")
         bgl = (50, 50, 50, 255)
         bgr = (50, 50, 50, 255)
 
@@ -396,10 +402,10 @@ def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0
                 else:
                     new_color = wings
             else:
-                new_color = current_color
+                continue
             ####################################################################
             im.putpixel((x, y), new_color)
-    crest_text(im, SRG[0], im.width, im.height,[True, True, True], [True, True, True],p1,p2,gt,gp=50,Q=SRG[1],T=SRG[2],rn=rn)
+    crest_text(im, SRG[0], im.width, im.height,ro,so,p1,p2,gt,gp=50,Q=SRG[1],T=SRG[2],rn=rn)
 
     temp=tempfile.NamedTemporaryFile(suffix=".png",delete=False)
     time.sleep(.2)
