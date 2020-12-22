@@ -193,7 +193,7 @@ def create(debug=True):
     return render_template('create.html', form=form)
 
 @application.route('/crest', methods=['GET','POST'])
-def create(debug=True):
+def crest(debug=True):
     form = SRGCrestForm()
     if form.is_submitted():
         result = request.form
