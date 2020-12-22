@@ -366,19 +366,19 @@ def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0
     if o:
         print("custom colour")
     elif x[7] and x[6]:
-        print("NB")
+        print("NB colour")
         bgl=(0, 191, 255, 255)
         bgr=(255, 105, 180, 255)
     elif x[7]:
-        print("Male")
+        print("Male colour")
         bgl = (0, 191, 255, 255)
         bgr = (0, 191, 255, 255)
     elif x[6]:
-        print("Female")
+        print("Female colour")
         bgl = (255, 105, 180, 255)
         bgr = (255, 105, 180, 255)
     else:
-        print("Agender")
+        print("Agender colour")
         bgl = (50, 50, 50, 255)
         bgr = (50, 50, 50, 255)
 
@@ -405,6 +405,7 @@ def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0
                 continue
             ####################################################################
             im.putpixel((x, y), new_color)
+            print(x+","+y)
     crest_text(im, SRG[0], im.width, im.height,ro,so,p1,p2,gt,gp=50,Q=SRG[1],T=SRG[2],rn=rn)
     print("Completed Colouring")
     temp=tempfile.NamedTemporaryFile(suffix=".png",delete=False)
