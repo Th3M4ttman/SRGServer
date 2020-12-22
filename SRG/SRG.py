@@ -352,8 +352,8 @@ def crest_text(im, text, W, H, so=[False, False, False], ro=[False, False, False
 
 
 def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0,191,255,255),bgr=(255,105,180,255),trim=(218,165,32,255),wings=(0,0,0,255),ad=(255,255,255,255),glow=(218,165,32,75)):
-
-    i = np.asarray(Image.open('crest.png'))
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    i = np.asarray(Image.open(os.path.join(script_dir, 'Crest.png')))
     im = Image.fromarray(np.uint8(i))
     # Get the size of the image
     width = im.width
@@ -567,9 +567,9 @@ def main(imported=False):
     gt=input("Gender Text: ")
 
     print("Type c for crest anything else for SEG")
-    ty==input("Type: ")
+    ty=input("Type: ")
 
-    if ty == "C":
+    if ty == "c":
         y=crest(SRG=[253,False,False],rn=False,p2="Him",p1="He",gt="Male",o=True,bgl=(180, 0, 0, 255), bgr=(36, 36, 36, 255), trim=(218,165,32,255), wings=(0, 0, 0, 255),
           ad=(255, 255, 255, 255), glow=(218,165,32,75))
     else:

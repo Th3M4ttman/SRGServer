@@ -22,13 +22,13 @@ class SRGForm(FlaskForm):
         
         O = fields.BooleanField('Override Gender Colour')
 
-        BgRa = DecimalRangeField('Custom gender colour left half', default=0)
-        BgGa = DecimalRangeField('Custom gender colour left half Green', default=75)
-        BgBa = DecimalRangeField('Custom gender colour left half Blue', default=100)
+        BgRa = fields.SelectField('Custom gender colour left half', choices=ch, default=0) DecimalRangeField('Custom gender colour left half', default=0)
+        BgGa = fields.SelectField('Custom gender colour left half', choices=ch, default=75)
+        BgBa = fields.SelectField('Custom gender colour left half', choices=ch, default=100)
 
-        BgRb = DecimalRangeField('Custom gender colour right half', default=100)
-        BgGb = DecimalRangeField('Custom gender colour right half Green', default=41)
-        BgBb = DecimalRangeField('Custom gender colour right half Blue', default=71)
+        BgRb = fields.SelectField('Custom gender colour right half', choices=ch, default=100)
+        BgGb = fields.SelectField('Custom gender colour right half', choices=ch, default=41)
+        BgBb = fields.SelectField('Custom gender colour right half', choices=ch, default=71)
         
         Submit = SubmitField("Create SRG")
 
@@ -64,28 +64,28 @@ class SRGCrestForm(FlaskForm):
 
         # Trim
 
-        TR = fields.SelectField('Trim colour', choices=ch, default=100)
-        TG = fields.SelectField('Trim colour', choices=ch, default=41)
-        TB = fields.SelectField('Trim colour', choices=ch, default=71)
+        TR = fields.SelectField('Trim colour', choices=ch, default=218)
+        TG = fields.SelectField('Trim colour', choices=ch, default=165)
+        TB = fields.SelectField('Trim colour', choices=ch, default=32)
 
         # wings
 
-        WR = fields.SelectField('Wing colour', choices=ch, default=100)
-        WG = fields.SelectField('Wing colour', choices=ch, default=41)
-        WB = fields.SelectField('Wing colour', choices=ch, default=71)
+        WR = fields.SelectField('Wing colour', choices=ch, default=0)
+        WG = fields.SelectField('Wing colour', choices=ch, default=0)
+        WB = fields.SelectField('Wing colour', choices=ch, default=0)
 
         # adornment
 
-        AR = fields.SelectField('Adornment colour', choices=ch, default=100)
-        AG = fields.SelectField('Adornment colour', choices=ch, default=41)
-        AB = fields.SelectField('Adornment colour', choices=ch, default=71)
+        AR = fields.SelectField('Adornment colour', choices=ch, default=255)
+        AG = fields.SelectField('Adornment colour', choices=ch, default=255)
+        AB = fields.SelectField('Adornment colour', choices=ch, default=255)
 
         # glow
 
-        GR = fields.SelectField('Glow colour', choices=ch, default=100)
-        GG = fields.SelectField('Glow colour', choices=ch, default=41)
-        GB = fields.SelectField('Glow colour', choices=ch, default=71)
-
+        GR = fields.SelectField('Glow colour', choices=ch, default=218)
+        GG = fields.SelectField('Glow colour', choices=ch, default=165)
+        GB = fields.SelectField('Glow colour', choices=ch, default=32)
+        GA = fields.SelectField('Glow colour', choices=ch, default=75)
         Roman = fields.BooleanField('Do you wish to convert your SRG into roman numerals')
 
         Submit = SubmitField("Create SRG")
