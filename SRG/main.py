@@ -328,9 +328,9 @@ def crest(debug=True):
             print("Default Colour")
             bytetext=str(byte)
         if T:
-            bytetext+="*"
+            bytetext=str(bytetext)+"*"
         if Q:
-            bytetext+="?"
+            bytetext=str(bytetext)+"?"
         if not o or result.get("Go") != "":
             gt=gender
         print("Creating " + str(byte))
