@@ -180,8 +180,13 @@ def create(debug=True):
             bytetext+="?"
         if not o or result.get("Go") != "":
             gt=gender
+        ShowGP = result.get("ShowGP")
+        if ShowGP == "y":
+            gp = result.get("GP")
+        else:
+            gp = False
         print("Creating " + str(byte))
-        tempsrgurl = SRG.SRG.create([byte,Q,T],SPP,TPP,int(R),int(G),int(B),int(S),"Test",gc=[l,r],o=o,gt=gt,debug=False)
+        tempsrgurl = SRG.SRG.create([byte,Q,T],SPP,TPP,int(R),int(G),int(B),int(S),"Test",gc=[l,r],o=o,gt=gt,gp=gp)
         tempsrgurl = list(tempsrgurl)
         del tempsrgurl[4]
         srgurl=""
@@ -342,13 +347,19 @@ def crest(debug=True):
         wings=(int(result.get("WR")),int(result.get("WG")),int(result.get("WB")),255)
         glow=(int(result.get("GR")),int(result.get("GG")),int(result.get("GB")),75)
         rn=result.get("Roman")
+
+        ShowGP=result.get("ShowGP")
+        if ShowGP == "y":
+            gp=result.get("GP")
+        else:
+            gp=False
         if rn == "y":
             rn=True
         else:
             rn=False
 
         print("Creating " + str(byte))
-        tempsrgurl = SRG.SRG.crest(SRG=[byte,Q,T],p1=SPP,p2=TPP,gt=gt,rn=rn,o=o,bgl=l,bgr=r,trim=trim,wings=wings,ad=ad,glow=glow)
+        tempsrgurl = SRG.SRG.crest(SRG=[byte,Q,T],p1=SPP,p2=TPP,gt=gt,rn=rn,o=o,bgl=l,bgr=r,trim=trim,wings=wings,ad=ad,glow=glow,gp=gp)
         tempsrgurl = list(tempsrgurl)
         del tempsrgurl[4]
         srgurl=""

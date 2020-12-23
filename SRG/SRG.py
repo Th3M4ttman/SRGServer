@@ -128,7 +128,7 @@ def gender_colour(x,array,width,height,p=False, lc=[0, 191, 255, 255], rc=[255, 
         array[:,:] = [50, 50, 50, 255]
 
 		
-def add_text(im,text,W,H,bordercolor=(0,0,0),so=[False,False,False],ro=[False,False,False],p1="They", p2="Them",gt="",gp=50):
+def add_text(im,text,W,H,bordercolor=(0,0,0),so=[False,False,False],ro=[False,False,False],p1="They", p2="Them",gt="",gp=False):
     
     
     bigFont = ImageFont.truetype("Font.ttf", int(W/4))
@@ -163,30 +163,23 @@ def add_text(im,text,W,H,bordercolor=(0,0,0),so=[False,False,False],ro=[False,Fa
 
     
     draw.text((x, y), p1+" "+p2, align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+    if gp != False:
+        gpxstart = (W/5)
+        gpxend = W-(W/5)
+        gpystart = H-(H/20)
+        gpyend = (H-(H/20))-(H/100)
+        draw.rectangle([gpxstart,gpystart,gpxend,gpyend], width=int(W/100), outline=bordercolor)
 
-    xa = (W/5)
-    xz = W-(W/5)
-    ya = H-(H/20)
-    yz = (H-(H/20))-(H/100)
-    draw.rectangle([xa,ya,xz,yz], width=int(W/100), outline=bordercolor)
-    
-    if gp > 50:
-        xa = (W/2) - (w/50) + (w/50) * (gp-50)
-        xz = (W/2) + (w/50) + (w/50) * (gp-50)
-        ya = H-(H/20)
-        yz = (H-(H/20))-(H/100)
-    elif gp == 50:
-        xa = (W/2) - (w/50)
-        xz = (W/2) + (w/50)
-        ya = H-(H/20)
-        yz = (H-(H/20))-(H/100)
-    else:
-        xa = (W/2) - (w/50) * (gp)
-        xz = (W/2) + (w/50) * (gp)
-        ya = H-(H/20)
-        yz = (H-(H/20))-(H/100)
+        increment = (gpxend-gpxstart)/100
+        markerwidth = W/30
+        markerheight = W / 40
 
-    draw.rectangle([xa,ya,xz,yz], width=int(W/100), outline=(0,0,0,255))
+        markerxstart = (gpxstart+(increment*gp))-(markerwidth/2)
+        markerxend = markerxstart+markerwidth
+        markerystart = gpystart-(markerheight/2)
+        markeryend = gpyend+(markerheight/2)
+
+        draw.rectangle([markerxstart,markerystart,markerxend,markeryend], width=int(W/100), outline=(0,0,0,255))
     
     #draw Frame
     
@@ -278,8 +271,10 @@ def toNumeral(Number):
             runningtotal -= 1
     return output
 
-def crest_text(im, text, W, H, so=[False, False, False], ro=[False, False, False], p1="They", p2="Them", gt="", gp=50, rn=True, Q=False, T=False):
+def crest_text(im, text, W, H, so=[False, False, False], ro=[False, False, False], p1="They", p2="Them", gt="", gp=False, rn=True, Q=False, T=False, Trim=(255,255,255,255), Ad=(0,0,0,255)):
     print("crest text")
+
+
     if rn:
         text=int(text)
         text=toNumeral(text)
@@ -362,7 +357,28 @@ def crest_text(im, text, W, H, so=[False, False, False], ro=[False, False, False
                         stroke_width=5, stroke_fill='black', )
     print("Drawing SM")
 
-def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0,191,255,255),bgr=(255,105,180,255),trim=(218,165,32,255),wings=(0,0,0,255),ad=(255,255,255,255),glow=(218,165,32,75)):
+    if gp != False:
+
+        barheight = H / 200
+        gpxstart = (W / 3)-10
+        gpxend = W - (W / 3)
+        gpystart = H - (H / 2.8)
+        gpyend = gpystart + barheight
+        draw.rectangle([gpxstart, gpystart, gpxend, gpyend], width=int(W / 100), fill=Ad)
+
+        increment = (gpxend - gpxstart) / 100
+        markerwidth = W / 100
+        markerheight = H / 100
+
+        markerxstart = (gpxstart + (increment * gp)) - (markerwidth / 2)
+        markerxend = markerxstart + markerwidth
+        markerystart = gpystart - (markerheight / 2)
+        markeryend = gpyend + (markerheight / 2)
+
+        draw.rectangle([markerxstart, markerystart, markerxend, markeryend], width=int(W / 100), fill=Trim)
+
+
+def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0,191,255,255),bgr=(255,105,180,255),trim=(218,165,32,255),wings=(0,0,0,255),ad=(255,255,255,255),glow=(218,165,32,75),gp=False):
     script_dir = os.path.dirname(os.path.abspath(__file__))
     i = np.asarray(Image.open(os.path.join(script_dir, 'Crest500.png')))
     im = Image.fromarray(np.uint8(i))
@@ -419,7 +435,7 @@ def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0
                 im.putpixel((x, y), new_color)
 
     print("Completed Colouring")
-    crest_text(im, SRG[0], im.width, im.height,ro=ro,so=so,p1=p1,p2=p2,gt=gt,gp=50,Q=SRG[1],T=SRG[2],rn=rn)
+    crest_text(im, SRG[0], im.width, im.height,ro=ro,so=so,p1=p1,p2=p2,gt=gt,gp=gp,Q=SRG[1],T=SRG[2],rn=rn,Trim=trim,Ad=ad)
     print("Text Added")
     temp=tempfile.NamedTemporaryFile(suffix=".png",delete=False)
     name = str(temp.name)
@@ -435,7 +451,7 @@ def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0
     os.remove(temp.name)
     return request["link"]
     
-def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=500,F=None,debug=False,gc=[[None,None,None],[None,None,None]],o=False,gt=""):
+def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=500,F=None,debug=False,gc=[[None,None,None],[None,None,None]],o=False,gt="",gp=False):
         
     if srg[0] == None:
         if debug: print("None")
@@ -478,7 +494,7 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
     if debug: print("Tempfile created")
     
     img = Image.fromarray(arr)
-    add_text(img,bs,width,height,(cr,cg,cb),so,ro,ps,pt,gt)
+    add_text(img,bs,width,height,(cr,cg,cb),so,ro,ps,pt,gt,gp=gp)
     img.save(p)
     
     from imgurpython import ImgurClient
@@ -588,11 +604,17 @@ def main(imported=False):
     print("Type c for crest anything else")
     ty=input("Type: ")
 
+    gp = input("Genital Preference")
+    try:
+        gp=int(gp)
+    except:
+        gp=False
+
     if ty == "c":
         y=crest(SRG=[253,False,False],rn=False,p2="Him",p1="He",gt="Male",o=True,bgl=(180, 0, 0, 255), bgr=(36, 36, 36, 255), trim=(218,165,32,255), wings=(0, 0, 0, 255),
-          ad=(255, 255, 255, 255), glow=(218,165,32,75))
+          ad=(255, 255, 255, 255), glow=(218,165,32,75),gp=gp)
     else:
-        x=create([int(y),w,z],second, third,r,g,b,size,gc=[L,R],o=True,gt=gt)
+        x=create([int(y),w,z],second, third,r,g,b,size,gc=[L,R],o=True,gt=gt,gp=gp)
     
     
     

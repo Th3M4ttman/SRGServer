@@ -13,6 +13,8 @@ class SRGForm(FlaskForm):
         Sm = fields.BooleanField('Are you sexually attracted to Males')
         Sf = fields.BooleanField('Are you sexually attracted to Females')
         Sn = fields.BooleanField('Are you sexually attracted to NBs')
+        GP = DecimalRangeField('Genital preference', default=50)
+        ShowGP = fields.BooleanField('Show genital preference')
 
         T = fields.BooleanField('Do you wish to identify as Trans')
         Q = fields.BooleanField('Are you certain of your orientation')
@@ -54,6 +56,8 @@ class SRGCrestForm(FlaskForm):
         SPP = StringField("Pronoun 1")
         TPP = StringField("Pronoun 2")
         S = DecimalRangeField('Resolution', default=50)
+        GP = DecimalRangeField('Genital preference', default=50)
+        ShowGP = fields.BooleanField('Show genital preference')
 
         O = fields.BooleanField('Override Gender Colour')
 

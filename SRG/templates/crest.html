@@ -45,19 +45,29 @@
 										</p>
 								</td>
 							</tr>
-								<tr>
-									<td style="width: 50%; text-align: left; color: #ffffff;">
-										{{form.BgRa.label}}
-										
-									</td>
-									<td style="width: 50%; text-align: right;">
-										<p style="color: #ffffff;">
+							<tr>
+								<td style="width: 50%; text-align: left; color: #ffffff;">
+									{{form.GP.label}}<br>
+									{{form.ShowGP.label}}<br>
+								</td>
+								<td style="width: 50%; text-align: center;">
+									<p style="color: #ffffff;">
+										{{form.GP(size=30)}}
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="width: 50%; text-align: left; color: #ffffff;">
+									{{form.BgRa.label}}
+								</td>
+								<td style="width: 50%; text-align: right;">
+									<p style="color: #ffffff;">
 										R:{{form.BgRa(size=1)}}<br>
 										G:{{form.BgGa(size=1)}}<br>
 										B:{{form.BgBa(size=1)}}<br>
-										</p>
-									</td>
-								</tr>
+									</p>
+								</td>
+							</tr>
 							<tr>
 								<td style="width: 50%; text-align: left; color: #ffffff;">
 									{{form.BgRb.label}}	
