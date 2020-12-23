@@ -360,8 +360,8 @@ def crest_text(im, text, W, H, so=[False, False, False], ro=[False, False, False
     if gp != False:
 
         barheight = H / 200
-        gpxstart = (W / 3)-10
-        gpxend = W - (W / 3)
+        gpxstart = (W / 2.5)-10
+        gpxend = W - (W / 2.5)
         gpystart = H - (H / 2.8)
         gpyend = gpystart + barheight
         draw.rectangle([gpxstart, gpystart, gpxend, gpyend], width=int(W / 100), fill=Ad)
