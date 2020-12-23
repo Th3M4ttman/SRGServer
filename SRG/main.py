@@ -182,7 +182,7 @@ def create(debug=True):
             gt=gender
         ShowGP = result.get("ShowGP")
         if ShowGP == "y":
-            gp = result.get("GP")
+            gp = round(float(result.get("GP")))
         else:
             gp = False
         print("Creating " + str(byte))
@@ -350,7 +350,7 @@ def crest(debug=True):
 
         ShowGP=result.get("ShowGP")
         if ShowGP == "y":
-            gp=result.get("GP")
+            gp = round(float(result.get("GP")))
         else:
             gp=False
         if rn == "y":
