@@ -8,9 +8,10 @@ FlagsList = []
 def getflags():
     i=0
     Flags = []
-    for file in glob.glob(__file__.removesuffix("Flagdir.py")+"*.jpg"):
+    name =str(__file__)
+    for file in glob.glob(name.removesuffix("Flagdir.py")+"*.jpg"):
         name=file.removesuffix(".jpg")
-        name=name.removeprefix(__file__.removesuffix("Flagdir.py"))
+        name=name.removeprefix(name.removesuffix("Flagdir.py"))
         Flag = [i, name, os.path.abspath(file)]
         Flags.append(Flag)
         i += 1
