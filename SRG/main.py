@@ -191,7 +191,7 @@ def create(debug=True):
         else:
             gp = False
         print("Creating " + str(byte))
-        tempsrgurl = SRG.create([byte,Q,T],SPP,TPP,int(R),int(G),int(B),int(S),"Test",gc=[l,r],o=o,gt=gt,gp=gp)
+        tempsrgurl = SRG.create([byte,Q,T],SPP,TPP,int(R),int(G),int(B),int(S),"Test",gc=[l,r],o=o,gt=gt,gp=gp,pride1="pride.jpg",pride2="pride.jpg",pride3="pride.jpg",pride4="pride.jpg")
         tempsrgurl = list(tempsrgurl)
         del tempsrgurl[4]
         srgurl=""
