@@ -136,17 +136,32 @@
 								<td style="width: 50%; text-align: right;">
 									<script>
    									function outputUpdate(R) {
-    								document.querySelector('#SelectedR').value = Math.round(R)*2.55;
+    								document.querySelector('#SelectedR').value = Math.round(R);
+    								}
+    								function outputUpdate(G) {
+    								document.querySelector('#SelectedG').value = Math.round(G);
+    								}
+    								function outputUpdate(B) {
+    								document.querySelector('#SelectedB').value = Math.round(B);
     								}
     								</script>
 									<p style="color: #ffffff;">
-										{{ form.R(min=0, max=100, oninput="outputUpdate(value)") }}
+										{{ form.R(min=0, max=255, oninput="outputUpdate(value)") }}
        									<output for="R" id="SelectedR">
 											{{ form.R.data }}
 										</output>
 										<br>
-										G:{{form.G(size=1)}}<br>
-										B:{{form.B(size=1)}}<br>
+										{{ form.G(min=0, max=255, oninput="outputUpdate(value)") }}
+       									<output for="G" id="SelectedG">
+											{{ form.G.data }}
+										</output>
+										<br>
+										{{ form.B(min=0, max=255, oninput="outputUpdate(value)") }}
+       									<output for="B" id="SelectedB">
+											{{ form.B.data }}
+										</output>
+										<br>
+
 									</p>
 									</td>
 								</tr>
