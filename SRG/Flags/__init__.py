@@ -1,6 +1,6 @@
 
 from .Flagdir import getflags
 
-debug=True
+debug=False
 FlagList=getflags()
 if debug: print(FlagList)
