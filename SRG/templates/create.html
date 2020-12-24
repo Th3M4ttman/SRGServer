@@ -135,28 +135,28 @@
 								</td>
 								<td style="width: 50%; text-align: center;">
 									<script>
-   									function outputUpdate(R) {
+   									function outputUpdater(R) {
     								document.querySelector('#SelectedR').value = Math.round(R);
     								}
-    								function outputUpdate(G) {
+    								function outputUpdateg(G) {
     								document.querySelector('#SelectedG').value = Math.round(G);
     								}
-    								function outputUpdate(B) {
+    								function outputUpdateb(B) {
     								document.querySelector('#SelectedB').value = Math.round(B);
     								}
     								</script>
 									<p style="color: #ffffff;">
-										{{ form.R(min=0, max=255, oninput="outputUpdate(value)") }}
+										{{ form.R(min=0, max=255, oninput="outputUpdater(value)") }}
        									<output for="R" id="SelectedR">
 											{{ form.R.data }}
 										</output>
 										<br>
-										{{ form.G(min=0, max=255, oninput="outputUpdate(value)") }}
+										{{ form.G(min=0, max=255, oninput="outputUpdateg(value)") }}
        									<output for="G" id="SelectedG">
 											{{ form.G.data }}
 										</output>
 										<br>
-										{{ form.B(min=0, max=255, oninput="outputUpdate(value)") }}
+										{{ form.B(min=0, max=255, oninput="outputUpdateb(value)") }}
        									<output for="B" id="SelectedB">
 											{{ form.B.data }}
 										</output>
