@@ -2,7 +2,7 @@ from wtforms import Form, fields, TextField, TextAreaField, validators, StringFi
 from wtforms.fields.html5 import DecimalRangeField, DecimalField
 from flask_wtf import FlaskForm
 import wtforms
-from Flags import Flagdir
+from .Flags import Flagdir
 flagchoices=Flagdir.getflags(True)
 flagchoices.insert(0,"None")
 print(flagchoices)
