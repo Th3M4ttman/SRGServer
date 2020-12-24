@@ -190,8 +190,40 @@ def create(debug=True):
                 gp=99
         else:
             gp = False
+        pride1=result.get("Pride1")
+
+        if pride1 in Flagdir.FlagNameList:
+            index = Flagdir.FlagNameList.index(pride1)
+            pride1 = Flagdir.FlagsList[index]
+        else:
+            pride1 = None
+
+        pride2 = result.get("Pride2")
+
+        if pride2 in Flagdir.FlagNameList:
+            index = Flagdir.FlagNameList.index(pride2)
+            pride2 = Flagdir.FlagsList[index]
+        else:
+            pride2 = None
+
+        pride3 = result.get("Pride3")
+
+        if pride3 in Flagdir.FlagNameList:
+            index = Flagdir.FlagNameList.index(pride3)
+            pride3 = Flagdir.FlagsList[index]
+        else:
+            pride3 = None
+
+        pride4 = result.get("Pride4")
+
+        if pride4 in Flagdir.FlagNameList:
+            index = Flagdir.FlagNameList.index(pride4)
+            pride4 = Flagdir.FlagsList[index]
+        else:
+            pride4 = None
+
         print("Creating " + str(byte))
-        tempsrgurl = SRG.create([byte,Q,T],SPP,TPP,int(R),int(G),int(B),int(S),"Test",gc=[l,r],o=o,gt=gt,gp=gp,pride1="pride.jpg",pride2="pride.jpg",pride3="pride.jpg",pride4="pride.jpg")
+        tempsrgurl = SRG.create([byte,Q,T],SPP,TPP,int(R),int(G),int(B),int(S),"Test",gc=[l,r],o=o,gt=gt,gp=gp,pride1=pride1,pride2=pride2,pride3=pride3,pride4=pride4)
         tempsrgurl = list(tempsrgurl)
         del tempsrgurl[4]
         srgurl=""

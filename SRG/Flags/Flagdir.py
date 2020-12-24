@@ -3,9 +3,9 @@ import os
 
 
 FlagsList = []
+FlagNameList = []
 
-
-def getflags():
+def getflags(namesonly=False):
     i=0
     Flags = []
     scriptname =str(__file__)
@@ -17,16 +17,18 @@ def getflags():
         name = name[len(name)-1]
         name = name.split(".")
         name = name[0]
-        Flag = [i, name, os.path.abspath(file)]
+        if namesonly:
+            Flag = name
+        else:
+            Flag = [i, name, os.path.abspath(file)]
         Flags.append(Flag)
         i += 1
 
     return Flags
 
-
 def __init__():
     global FlagsList
     FlagsList = getflags()
-
+    FlagNameList = getflags(True)
 
 __init__()
