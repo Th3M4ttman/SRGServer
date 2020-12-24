@@ -18,7 +18,7 @@ def getflags(namesonly=False):
         name = name.split(".")
         name = name[0]
         if namesonly:
-            Flag = name
+            Flag = file.removeprefix(".jpg")
         else:
             Flag = [i, name, os.path.abspath(file)]
         Flags.append(Flag)
