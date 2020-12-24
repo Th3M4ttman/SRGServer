@@ -23,9 +23,9 @@ class SRGForm(FlaskForm):
         SPP = StringField("Pronoun 1")
         TPP = StringField("Pronoun 2")
         S = DecimalRangeField('Resolution', default=100, places=0)
-        R = DecimalRangeField('BorderRGB', default=50, places=0)
-        G = DecimalRangeField('BorderRGB', default=50, places=0)
-        B = DecimalRangeField('BorderRGB', default=50, places=0)
+        R = DecimalRangeField('BorderRGB', default=255, places=0)
+        G = DecimalRangeField('BorderRGB', default=255, places=0)
+        B = DecimalRangeField('BorderRGB', default=255, places=0)
         
         O = fields.BooleanField('Override Gender Colour')
 
