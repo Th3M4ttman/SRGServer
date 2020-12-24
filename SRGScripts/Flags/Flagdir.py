@@ -2,15 +2,15 @@ import glob
 import os
 
 
-Flags = []
+FlagsList = []
 
 
 def getflags():
     i=0
     Flags = []
-    for file in glob.glob(__file__.removesuffix("Flags.py")+"*.jpg"):
+    for file in glob.glob(__file__.removesuffix("Flagdir.py")+"*.jpg"):
         name=file.removesuffix(".jpg")
-        name=name.removeprefix(__file__.removesuffix("Flags.py"))
+        name=name.removeprefix(__file__.removesuffix("Flagdir.py"))
         Flag = [i, name, os.path.abspath(file)]
         Flags.append(Flag)
         i += 1

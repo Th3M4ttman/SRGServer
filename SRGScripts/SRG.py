@@ -7,7 +7,11 @@ import os
 import time
 import numpy as np
 from pathlib import Path
-import Flags.Flags as Fg
+import sys
+
+SRGpath = os.path.abspath(__file__).removeprefix("SRG.py")
+Flagpath = SRGpath+'/Flags/'
+import Flags
 
 
 def clear(): 
@@ -661,10 +665,10 @@ def main(imported=False):
     else:
         choices=[]
         paths=[]
-        for flag in Fg.Flags:
+        for flag in Flags.FlagList:
             choices.append(flag[1])
             paths.append(flag[2])
-        print(Fg.getflags())
+        print(Flags.getflags())
         flag=pyip.inputMenu(choices,"Pick a flag",numbered=True)
         index = choices.index(flag)
         flag=paths[index]
