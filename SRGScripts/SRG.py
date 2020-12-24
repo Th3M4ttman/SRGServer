@@ -8,7 +8,7 @@ import time
 import numpy as np
 from pathlib import Path
 import sys
-import Flags
+import Flags.Flagdir as Flags
 
 
 def clear(): 
