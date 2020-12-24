@@ -1,5 +1,6 @@
 import glob
 import os
+from pathlib import Path
 
 
 FlagsList = []
@@ -13,14 +14,11 @@ def getflags(namesonly=False):
         scriptname = scriptname[:-10]
     for file in glob.glob(scriptname+"*.jpg"):
         name=os.path.abspath(file)
-        name = name.split("\\")
-        name = name[len(name)-1]
-        name = name.split(".")
-        name = name[0]
+
         if namesonly:
-            Flag = file.removeprefix(".jpg")
+            Flag = Path(name).stem
         else:
-            Flag = [i, name, os.path.abspath(file)]
+            Flag = [i, Path(name).stem, os.path.abspath(file)]
         Flags.append(Flag)
         i += 1
 
@@ -28,6 +26,7 @@ def getflags(namesonly=False):
 
 def __init__():
     global FlagsList
+    global FlagNameList
     FlagsList = getflags()
     FlagNameList = getflags(True)
 
