@@ -8,9 +8,6 @@ import time
 import numpy as np
 from pathlib import Path
 import sys
-
-SRGpath = os.path.abspath(__file__).removeprefix("SRG.py")
-Flagpath = SRGpath+'/Flags/'
 import Flags
 
 
