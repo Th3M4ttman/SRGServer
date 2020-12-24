@@ -1,8 +1,8 @@
 from flask import Flask, render_template, flash, request
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
-import SRGScripts.SRG
-from SRGScripts.forms import SRGForm, SRGCrestForm
-from SRGScripts.FLags import Flagdir
+from . import SRG
+from .forms import SRGForm, SRGCrestForm
+from .Flags import Flagdir
 
 application = Flask(__name__)
 application.config['SECRET_KEY'] = 'poop'
