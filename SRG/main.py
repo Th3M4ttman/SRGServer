@@ -191,7 +191,7 @@ def create(debug=True):
         else:
             gp = False
         print("Creating " + str(byte))
-        tempsrgurl = SRG.SRG.create([byte,Q,T],SPP,TPP,int(R),int(G),int(B),int(S),"Test",gc=[l,r],o=o,gt=gt,gp=gp)
+        tempsrgurl = SRG.create([byte,Q,T],SPP,TPP,int(R),int(G),int(B),int(S),"Test",gc=[l,r],o=o,gt=gt,gp=gp)
         tempsrgurl = list(tempsrgurl)
         del tempsrgurl[4]
         srgurl=""
@@ -364,7 +364,7 @@ def crest(debug=True):
             rn=False
 
         print("Creating " + str(byte))
-        tempsrgurl = SRG.SRG.crest(SRG=[byte,Q,T],p1=SPP,p2=TPP,gt=gt,rn=rn,o=o,bgl=l,bgr=r,trim=trim,wings=wings,ad=ad,glow=glow,gp=gp)
+        tempsrgurl = SRG.crest(SRG=[byte,Q,T],p1=SPP,p2=TPP,gt=gt,rn=rn,o=o,bgl=l,bgr=r,trim=trim,wings=wings,ad=ad,glow=glow,gp=gp)
         tempsrgurl = list(tempsrgurl)
         del tempsrgurl[4]
         srgurl=""
