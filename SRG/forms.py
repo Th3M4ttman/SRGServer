@@ -29,13 +29,13 @@ class SRGForm(FlaskForm):
         
         O = fields.BooleanField('Override Gender Colour')
 
-        BgRa = fields.SelectField('Custom gender colour left half', choices=ch, default=0)
-        BgGa = fields.SelectField('Custom gender colour left half', choices=ch, default=75)
-        BgBa = fields.SelectField('Custom gender colour left half', choices=ch, default=100)
+        BgRa = DecimalRangeField("Custom gender colour left half", default=0, places=0)
+        BgGa = DecimalRangeField("Custom gender colour left half", default=75, places=0)
+        BgBa = DecimalRangeField("Custom gender colour left half", default=100, places=0)
 
-        BgRb = fields.SelectField('Custom gender colour right half', choices=ch, default=100)
-        BgGb = fields.SelectField('Custom gender colour right half', choices=ch, default=41)
-        BgBb = fields.SelectField('Custom gender colour right half', choices=ch, default=71)
+        BgRb = DecimalRangeField("Custom gender colour right half", default=100, places=0)
+        BgGb = DecimalRangeField("Custom gender colour right half", default=41, places=0)
+        BgBb = DecimalRangeField("Custom gender colour right half", default=71, places=0)
         
         Submit = SubmitField("Create SRG")
 

@@ -51,23 +51,67 @@
 										{{form.BgRa.label}}
 										
 									</td>
-									<td style="width: 50%; text-align: right;">
-										<p style="color: #ffffff;">
-										R:{{form.BgRa(size=1)}}<br>
-										G:{{form.BgGa(size=1)}}<br>
-										B:{{form.BgBa(size=1)}}<br>
-										</p>
-									</td>
+									<td style="width: 50%; text-align: center;">
+									<script>
+   									function outputUpdateBgRa(BgRa) {
+    								document.querySelector('#SelectedBgRa').value = Math.round(BgRa);
+    								}
+    								function outputUpdateBgGa(BgGa) {
+    								document.querySelector('#SelectedBgGa').value = Math.round(BgGa);
+    								}
+    								function outputUpdateBgBa(BgBa) {
+    								document.querySelector('#SelectedBgBa').value = Math.round(BgBa);
+    								}
+    								</script>
+									<p style="color: #ffffff;">
+										{{ form.BgRa(min=0, max=255, oninput="outputUpdateBgRa(value)") }}
+       									<output for="BgRa" id="SelectedBgRa">
+											{{ form.BgRa.data }}
+										</output>
+										<br>
+										{{ form.BgGa(min=0, max=255, oninput="outputUpdateBgGa(value)") }}
+       									<output for="BgGa" id="SelectedBgGa">
+											{{ form.BgGa.data }}
+										</output>
+										<br>
+										{{ form.BgBa(min=0, max=255, oninput="outputUpdateBgBa(value)") }}
+       									<output for="BgBa" id="SelectedBgBa">
+											{{ form.BgBa.data }}
+										</output>
+									</p>
+								</td>
 								</tr>
 							<tr>
 								<td style="width: 50%; text-align: left; color: #ffffff;">
 									{{form.BgRb.label}}	
 								</td>
-								<td style="width: 50%; text-align: right;">
+								<td style="width: 50%; text-align: center;">
+									<script>
+   									function outputUpdateBgRb(BgRb) {
+    								document.querySelector('#SelectedBgRb').value = Math.round(BgRb);
+    								}
+    								function outputUpdateBgGb(BgGb) {
+    								document.querySelector('#SelectedBgGb').value = Math.round(BgGb);
+    								}
+    								function outputUpdateBgBb(BgBb) {
+    								document.querySelector('#SelectedBgBb').value = Math.round(BgBb);
+    								}
+    								</script>
 									<p style="color: #ffffff;">
-										R:{{form.BgRb(size=1)}}<br>
-										G:{{form.BgGb(size=1)}}<br>
-										B:{{form.BgBb(size=1)}}<br>
+										{{ form.BgRb(min=0, max=255, oninput="outputUpdateBgRb(value)") }}
+       									<output for="BgRb" id="SelectedBgRb">
+											{{ form.BgRb.data }}
+										</output>
+										<br>
+										{{ form.BgGb(min=0, max=255, oninput="outputUpdateBgGb(value)") }}
+       									<output for="BgGb" id="SelectedBgGb">
+											{{ form.BgGb.data }}
+										</output>
+										<br>
+										{{ form.BgBb(min=0, max=255, oninput="outputUpdateBgBb(value)") }}
+       									<output for="BgBb" id="SelectedBgBb">
+											{{ form.BgBb.data }}
+										</output>
 									</p>
 								</td>
 							</tr>
