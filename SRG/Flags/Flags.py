@@ -21,7 +21,6 @@ def getflags():
 def __init__():
     global Flags
     Flags = getflags()
-    print(Flags)
-    print(__file__.removesuffix("Flags.py"))
+
 
 __init__()

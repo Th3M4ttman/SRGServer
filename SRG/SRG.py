@@ -7,7 +7,7 @@ import os
 import time
 import numpy as np
 from pathlib import Path
-from Flags import Flags as Fg
+import Flags.Flags as Fg
 
 
 def clear(): 
