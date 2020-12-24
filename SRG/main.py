@@ -195,6 +195,7 @@ def create(debug=True):
         if pride1 in Flagdir.FlagNameList:
             index = Flagdir.FlagNameList.index(pride1)
             pride1 = Flagdir.FlagsList[index]
+            pride1=pride1[2]
         else:
             pride1 = None
 
@@ -203,6 +204,7 @@ def create(debug=True):
         if pride2 in Flagdir.FlagNameList:
             index = Flagdir.FlagNameList.index(pride2)
             pride2 = Flagdir.FlagsList[index]
+            pride2 = pride2[2]
         else:
             pride2 = None
 
@@ -211,6 +213,7 @@ def create(debug=True):
         if pride3 in Flagdir.FlagNameList:
             index = Flagdir.FlagNameList.index(pride3)
             pride3 = Flagdir.FlagsList[index]
+            pride3 = pride3[2]
         else:
             pride3 = None
 
@@ -219,6 +222,7 @@ def create(debug=True):
         if pride4 in Flagdir.FlagNameList:
             index = Flagdir.FlagNameList.index(pride4)
             pride4 = Flagdir.FlagsList[index]
+            pride4 = pride4[2]
         else:
             pride4 = None
 

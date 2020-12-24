@@ -18,7 +18,7 @@ def getflags(namesonly=False):
         if namesonly:
             Flag = Path(name).stem
         else:
-            Flag = [i, Path(name).stem, os.path.abspath(file)]
+            Flag = [i, Path(name).stem, Path(os.path.abspath(file))]
         Flags.append(Flag)
         i += 1
 
