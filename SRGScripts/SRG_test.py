@@ -1,3 +1,3 @@
-import SRG
+from . import SRG
 
 SRG.create()
