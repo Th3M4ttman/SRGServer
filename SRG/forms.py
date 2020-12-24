@@ -20,8 +20,8 @@ class SRGForm(FlaskForm):
         Q = fields.BooleanField('Are you certain of your orientation')
         SPP = StringField("Pronoun 1")
         TPP = StringField("Pronoun 2")
-        S = DecimalRangeField('Resolution', default=50)
-        R = fields.SelectField('BorderRGB', choices=ch, default=255)
+        S = DecimalRangeField('Resolution', default=100)
+        R = DecimalRangeField('BorderRGB', default=50)
         G = fields.SelectField('BorderRGB', choices=ch, default=255)
         B = fields.SelectField('BorderRGB', choices=ch, default=255)
         

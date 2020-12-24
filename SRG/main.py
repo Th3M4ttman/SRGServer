@@ -2,6 +2,7 @@ from flask import Flask, render_template, flash, request
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 import SRG.SRG
 from SRG.forms import SRGForm, SRGCrestForm
+from SRG.FLags import Flags
 
 application = Flask(__name__)
 application.config['SECRET_KEY'] = 'poop'
@@ -183,6 +184,10 @@ def create(debug=True):
         ShowGP = result.get("ShowGP")
         if ShowGP == "y":
             gp = round(float(result.get("GP")))
+            if gp==0:
+                gp=1
+            elif gp==100:
+                gp=99
         else:
             gp = False
         print("Creating " + str(byte))

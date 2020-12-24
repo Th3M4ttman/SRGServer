@@ -7,6 +7,7 @@ import os
 import time
 import numpy as np
 from pathlib import Path
+from Flags import Flags as Fg
 
 
 def clear(): 
@@ -128,9 +129,10 @@ def gender_colour(x,array,width,height,p=False, lc=[0, 191, 255, 255], rc=[255, 
         array[:,:] = [50, 50, 50, 255]
 
 		
-def add_text(im,text,W,H,bordercolor=(0,0,0),so=[False,False,False],ro=[False,False,False],p1="They", p2="Them",gt="",gp=False):
-    
-    
+def add_text(im,text,W,H,bordercolor=(0,0,0),so=[False,False,False],ro=[False,False,False],p1="They", p2="Them",gt="",gp=False,pride1=None,pride2=None,pride3=None,pride4=None):
+
+
+
     bigFont = ImageFont.truetype("Font.ttf", int(W/4))
     smallFont = ImageFont.truetype("Font.ttf", int(W/10))
 
@@ -192,24 +194,66 @@ def add_text(im,text,W,H,bordercolor=(0,0,0),so=[False,False,False],ro=[False,Fa
     draw.rectangle([0, 0, int(W/5), int(H/5)], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
     
     draw.rectangle([0, 0, int(W/5), int(H/5)], width=int(W/100), outline=bordercolor)
-    
+
+    if pride1 != None:
+        pride1 = Image.open(pride1)
+        size = (int(W/5.5),int(H/5))
+        pride1.thumbnail(size, Image.ANTIALIAS)
+        pride1loc = (int((int(int(W/5))-pride1.width)/2), int((int(int(H/5))-pride1.height)/2))
+        im.paste(pride1,pride1loc)
     #draw top right corner
     
     draw.rectangle([int(W-(W/5)), 0, W, int(H/5)], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
     
     draw.rectangle([int(W-(W/5)), 0, W, int(H/5)], width=int(W/100), outline=bordercolor)
+
+    if pride2 != None:
+        pride2 = Image.open(pride2)
+        size = (int(W/5.5),int(H/5))
+        pride2.thumbnail(size, Image.ANTIALIAS)
+        boxlength = W-(W-int(W/5))
+        boxstart = (W-int(W/5))
+        pridestart = boxstart + int((boxlength-pride2.width)/2)
+        pride2loc = (pridestart, int((int(int(H/5))-pride2.height)/2))
+        im.paste(pride2,pride2loc)
     
     #draw bottom left corner
     
     draw.rectangle([0, int(H-(H/5)),int(W/5),H], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
     
     draw.rectangle([0, int(H-(H/5)),int(W/5),H], width=int(W/100), outline=bordercolor)
+
+    if pride3 != None:
+        pride3 = Image.open(pride3)
+        size = (int(W/5.5),int(H/5))
+        pride3.thumbnail(size, Image.ANTIALIAS)
+        boxlength = W-(W-int(W/5))
+        boxheight = H - (H - int(H / 5))
+        boxstart = (W-int(W/5))
+        boxstarty = (H - int(H / 5))
+        pridestartx = int((int(int(W/5))-pride1.width)/2)
+        pridestarty = boxstarty + int((boxheight - pride3.height) / 2)
+        pride3loc = (pridestartx, pridestarty)
+        im.paste(pride3,pride3loc)
         
     #draw bottom right corner
     
     draw.rectangle([int(W-(W/5)), int(H-(H/5)),W,H], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
     
     draw.rectangle([int(W-(W/5)), int(H-(H/5)),W,H], width=int(W/100), outline=bordercolor)
+
+    if pride4 != None:
+        pride4 = Image.open(pride4)
+        size = (int(W/5.5),int(H/5))
+        pride4.thumbnail(size, Image.ANTIALIAS)
+        boxlength = W-(W-int(W/5))
+        boxheight = H - (H - int(H / 5))
+        boxstart = (W-int(W/5))
+        boxstarty = (H - int(H / 5))
+        pridestartx = boxstart + int((boxlength-pride4.width)/2)
+        pridestarty = boxstarty + int((boxheight - pride4.height) / 2)
+        pride4loc = (pridestartx, pridestarty)
+        im.paste(pride4,pride4loc)
     
     draw.text((int(W/30), int((H/8)*2)), "R", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
 
@@ -451,8 +495,9 @@ def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0
     os.remove(temp.name)
     return request["link"]
     
-def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=500,F=None,debug=False,gc=[[None,None,None],[None,None,None]],o=False,gt="",gp=False):
-        
+def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=500,F=None,debug=False,gc=[[None,None,None],[None,None,None]],o=False,gt="",gp=False,pride1=None,pride2=None,pride3=None,pride4=None):
+
+
     if srg[0] == None:
         if debug: print("None")
         x=input_srg()
@@ -494,7 +539,7 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
     if debug: print("Tempfile created")
     
     img = Image.fromarray(arr)
-    add_text(img,bs,width,height,(cr,cg,cb),so,ro,ps,pt,gt,gp=gp)
+    add_text(img,bs,width,height,(cr,cg,cb),so,ro,ps,pt,gt,gp=gp,pride1=pride1,pride2=pride2,pride3=pride3,pride4=pride4)
     img.save(p)
     
     from imgurpython import ImgurClient
@@ -614,7 +659,29 @@ def main(imported=False):
         y=crest(SRG=[253,False,False],rn=False,p2="Him",p1="He",gt="Male",o=True,bgl=(180, 0, 0, 255), bgr=(36, 36, 36, 255), trim=(218,165,32,255), wings=(0, 0, 0, 255),
           ad=(255, 255, 255, 255), glow=(218,165,32,75),gp=gp)
     else:
-        x=create([int(y),w,z],second, third,r,g,b,size,gc=[L,R],o=True,gt=gt,gp=gp)
+        choices=[]
+        paths=[]
+        for flag in Fg.Flags:
+            choices.append(flag[1])
+            paths.append(flag[2])
+        print(Fg.getflags())
+        flag=pyip.inputMenu(choices,"Pick a flag",numbered=True)
+        index = choices.index(flag)
+        flag=paths[index]
+        flag2 = pyip.inputMenu(choices, "Pick a flag", numbered=True)
+        index = choices.index(flag2)
+        flag2 = paths[index]
+        flag3 = pyip.inputMenu(choices, "Pick a flag", numbered=True)
+        index = choices.index(flag3)
+        flag3 = paths[index]
+        flag4 = pyip.inputMenu(choices, "Pick a flag", numbered=True)
+        index = choices.index(flag4)
+        flag4 = paths[index]
+        print(flag)
+        print(flag2)
+        print(flag3)
+        print(flag4)
+        x=create([int(y),w,z],second, third,r,g,b,size,gc=[L,R],o=True,gt=gt,gp=gp,pride1=flag,pride2=flag2,pride3=flag3,pride4=flag4)
     
     
     
