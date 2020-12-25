@@ -8,7 +8,6 @@ import time
 import numpy as np
 from pathlib import Path
 import sys
-
 from .Flags import Flagdir as Flags
 
 
@@ -545,9 +544,28 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
     img.save(p)
     
     from imgurpython import ImgurClient
-    client = ImgurClient("1ad9fa3c6cc700a", "a17ace1750e1e2c4610fed9ca65c2ee0778510af")
-    request=client.upload_from_path(p, anon=True)
-    print("Uploaded to "+request["link"])
+    try:
+        client = ImgurClient("1ad9fa3c6cc700a", "a17ace1750e1e2c4610fed9ca65c2ee0778510af")
+        request=client.upload_from_path(p, anon=True)
+        print("Uploaded to "+request["link"])
+    except:
+        print("Imgur Upload Failed Trying Flickr")
+        import flickrapi
+        import csv
+        import requests
+
+        api_key = u'5676c41472ddd05b0bb0c880c713273a'
+        api_secret = u'775ea4d65178a65f'
+        flickr = flickrapi.FlickrAPI(api_key, api_secret)
+        flickr.authenticate_via_browser(perms='delete')
+        photo = {'file': p}
+        try:
+            result = requests.post('https://up.flickr.com/services/upload/',
+                                   data={'photo': 'photo', 'title': 'title', 'description': 'description',
+                                         'tags': 'tags'})
+            print(result.text)
+        except Exception as error:
+            print('Upload photo ', error)
     temp.close()
     os.remove(temp.name)
     return request["link"]
