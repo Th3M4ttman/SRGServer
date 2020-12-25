@@ -227,15 +227,16 @@ def create(debug=True):
             pride4 = None
 
         print("Creating " + str(byte))
-        tempsrgurl = SRG.create([byte,Q,T],SPP,TPP,int(R),int(G),int(B),int(S),"Test",gc=[l,r],o=o,gt=gt,gp=gp,pride1=pride1,pride2=pride2,pride3=pride3,pride4=pride4)
-        tempsrgurl = list(tempsrgurl)
-        del tempsrgurl[4]
-        srgurl=""
-        for character in tempsrgurl:
-            srgurl+=character
-        
-        return render_template('SRG.html', result=result, bytetext=bytetext, byte=byte, T=T, Q=Q, srgurl=srgurl)
- 
+        try:
+            tempsrgurl = SRG.create([byte,Q,T],SPP,TPP,int(R),int(G),int(B),int(S),"Test",gc=[l,r],o=o,gt=gt,gp=gp,pride1=pride1,pride2=pride2,pride3=pride3,pride4=pride4)
+            tempsrgurl = list(tempsrgurl)
+            del tempsrgurl[4]
+            srgurl=""
+            for character in tempsrgurl:
+                srgurl+=character
+            return render_template('SRG.html', result=result, bytetext=bytetext, byte=byte, T=T, Q=Q, srgurl=srgurl)
+        except:
+            return render_template('SRG.html', result=None, bytetext="Upload Failed", byte="Upload Failed")
     return render_template('create.html', form=form)
 
 @application.route('/crest', methods=['GET','POST'])
