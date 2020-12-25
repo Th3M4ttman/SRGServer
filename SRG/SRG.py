@@ -545,6 +545,7 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
     
     from imgurpython import ImgurClient
     try:
+        IFail = False
         client = ImgurClient("1ad9fa3c6cc700a", "a17ace1750e1e2c4610fed9ca65c2ee0778510af")
         request=client.upload_from_path(p, anon=True)
         print("Uploaded to "+request["link"])
@@ -553,6 +554,7 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
         print("Imgur Upload Failed: "+error+" Trying Cloudinary")
         import cloudinary
         try:
+            CFail = False
             out=cloudinary.uploader.upload("p")
             print(out)
         except Exception as error:
@@ -561,10 +563,13 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
     temp.close()
     os.remove(temp.name)
     if not IFail:
+        print(request["link"])
         return request["link"]
     if not CFail:
+        print(out)
         return out
     else:
+        print("Failed Upload")
         return "Failed Upload"
         
 
