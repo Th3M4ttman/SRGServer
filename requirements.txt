@@ -8,3 +8,4 @@ pillow
 imgurpython
 wtforms
 flask_wtf
+flickrapi
