@@ -554,6 +554,7 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
         import cloudinary
         try:
             out=cloudinary.uploader.upload("p")
+            print(out)
         except Exception as error:
             print('Upload photo failed', error)
             CFail=True
