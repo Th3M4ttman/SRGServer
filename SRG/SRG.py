@@ -549,15 +549,22 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
         request=client.upload_from_path(p, anon=True)
         print("Uploaded to "+request["link"])
     except Exception as error:
+        IFail = True
         print("Imgur Upload Failed: "+error+" Trying Cloudinary")
         import cloudinary
         try:
-            cloudinary.uploader.upload("p")
+            out=cloudinary.uploader.upload("p")
         except Exception as error:
             print('Upload photo failed', error)
+            CFail=True
     temp.close()
     os.remove(temp.name)
-    return request["link"]
+    if not IFail:
+        return request["link"]
+    if not CFail:
+        return out
+    else:
+        return "Failed Upload"
         
 
 def main(imported=False):
