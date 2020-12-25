@@ -12,7 +12,7 @@ def index():
     return render_template('index.html')
 
 @application.route('/create', methods=['GET','POST'])
-def create(debug=True):
+def create(debug=False):
     form = SRGForm()
     if form.is_submitted():
         result = request.form
@@ -47,24 +47,30 @@ def create(debug=True):
 
 
             if x=="BgRa":
-                print("BgRa")
-                print(result.get("BgRa"))
+                if debug:
+                    print("BgRa")
+                    print(result.get("BgRa"))
             elif x=="BgGa":
-                print("BgGa")
-                print(result.get("BgRa"))
+                if debug:
+                    print("BgGa")
+                    print(result.get("BgRa"))
             elif x=="BgBa":
-                print("BgBa")
-                print(result.get("BgRa"))
+                if debug:
+                    print("BgBa")
+                    print(result.get("BgRa"))
                 
             elif x=="BgRb":
-                print("BgRb")
-                print(result.get("BgRa"))
+                if debug:
+                    print("BgRb")
+                    print(result.get("BgRa"))
             elif x=="BgGb":
-                print("BgGb")
-                print(result.get("BgRa"))
+                if debug:
+                    print("BgGb")
+                    print(result.get("BgRa"))
             elif x=="BgBb":
-                print("BgBb")
-                print(result.get("BgRa"))
+                if debug:
+                    print("BgBb")
+                    print(result.get("BgRa"))
                 
 
             elif x == "Rm":
@@ -107,14 +113,14 @@ def create(debug=True):
                     S=100
             
         o=result.get("O")
-        print(o)
+        if debug: print(o)
         if o=="y":
             o=True
             lr=str(result.get("BgRa"))
-            print(lr)
+            if debug: print(lr)
             lr=float(lr)
             if lr==0:
-                print(0)
+                if debug: print(0)
             else:
                 lr=float(lr)*2.25
                 lr=round(lr)
@@ -129,51 +135,51 @@ def create(debug=True):
                 lg=round(lg)
             
             lb=str(result.get("BgBa"))
-            print(lb)
+            if debug: print(lb)
             lb=float(lb)
             if lb==0:
-                print(0)
+                if debug: print(0)
             else:
                 lb=lb*2.25
                 lb=round(lb)
             
             rr=str(result.get("BgRb"))
-            print(rr)
+            if debug: print(rr)
             rr=float(rr)
             if rr==0:
-                print(0)
+                if debug: print(0)
             else:
                 rr=rr*2.25
                 rr=round(rr)
             
             rg=str(result.get("BgGb"))
-            print(rg)
+            if debug: print(rg)
             rg=float(rg)
             if rg==0:
-                print(0)
+                if debug: print(0)
             else:
                 rg=rg*2.25
                 rg=round(rg)
             
             rb=str(result.get("BgBb"))
-            print(rb)
+            if debug: print(rb)
             rb=float(rb)
             if rb==0:
-                print(0)
+                if debug: print(0)
             else:
                 rb=rb*2.25
                 rb=round(rb)
             
             l=[lr,lg,lb, 255]
             r=[rr,rg,rb, 255]
-            print(l)
-            print(r)
-            print("Custom Colour")
+            if debug: print(l)
+            if debug: print(r)
+            if debug: print("Custom Colour")
         else:
             o=False
             l=[255, 105, 180, 255]
             r=[0, 191, 255, 255]
-            print("Default Colour")
+            if debug: print("Default Colour")
         bytetext=str(byte)
         if T:
             bytetext+="*"
