@@ -48,40 +48,76 @@
 							</tr>
 							<tr>
 								<td style="width: 50%; text-align: left; color: #ffffff;">
-									{{form.GP.label}}<br>
-									{{form.ShowGP.label}}<br>
+									{{form.BgRa.label}}
+
 								</td>
 								<td style="width: 50%; text-align: center;">
+									<script>
+   									function outputUpdateBgRa(BgRa) {
+    								document.querySelector('#SelectedBgRa').value = Math.round(BgRa);
+    								}
+    								function outputUpdateBgGa(BgGa) {
+    								document.querySelector('#SelectedBgGa').value = Math.round(BgGa);
+    								}
+    								function outputUpdateBgBa(BgBa) {
+    								document.querySelector('#SelectedBgBa').value = Math.round(BgBa);
+    								}
+    								</script>
 									<p style="color: #ffffff;">
-										P {{form.GP(size=30)}} V<br>
-										{{form.ShowGP(size=30)}}
+										{{ form.BgRa(min=0, max=255, oninput="outputUpdateBgRa(value)") }}
+       									<output for="BgRa" id="SelectedBgRa">
+											{{ form.BgRa.data }}
+										</output>
+										<br>
+										{{ form.BgGa(min=0, max=255, oninput="outputUpdateBgGa(value)") }}
+       									<output for="BgGa" id="SelectedBgGa">
+											{{ form.BgGa.data }}
+										</output>
+										<br>
+										{{ form.BgBa(min=0, max=255, oninput="outputUpdateBgBa(value)") }}
+       									<output for="BgBa" id="SelectedBgBa">
+											{{ form.BgBa.data }}
+										</output>
+
 									</p>
-								</td>
-							</tr>
+									</td>
+								</tr>
 							<tr>
 								<td style="width: 50%; text-align: left; color: #ffffff;">
 									{{form.BgRa.label}}
+
 								</td>
-								<td style="width: 50%; text-align: right;">
+								<td style="width: 50%; text-align: center;">
+									<script>
+   									function outputUpdateBgRb(BgRb) {
+    								document.querySelector('#SelectedBgRb').value = Math.round(BgRb);
+    								}
+    								function outputUpdateBgGb(BgGb) {
+    								document.querySelector('#SelectedBgGb').value = Math.round(BgGb);
+    								}
+    								function outputUpdateBgBa(BgBb) {
+    								document.querySelector('#SelectedBgBb').value = Math.round(BgBb);
+    								}
+    								</script>
 									<p style="color: #ffffff;">
-										R:{{form.BgRa(size=1)}}<br>
-										G:{{form.BgGa(size=1)}}<br>
-										B:{{form.BgBa(size=1)}}<br>
+										{{ form.BgRb(min=0, max=255, oninput="outputUpdateBgRb(value)") }}
+       									<output for="BgRb" id="SelectedBgRb">
+											{{ form.BgRb.data }}
+										</output>
+										<br>
+										{{ form.BgGb(min=0, max=255, oninput="outputUpdateBgGb(value)") }}
+       									<output for="BgGb" id="SelectedBgGb">
+											{{ form.BgGb.data }}
+										</output>
+										<br>
+										{{ form.BgBb(min=0, max=255, oninput="outputUpdateBgBb(value)") }}
+       									<output for="BgBb" id="SelectedBgBb">
+											{{ form.BgBb.data }}
+										</output>
+
 									</p>
-								</td>
-							</tr>
-							<tr>
-								<td style="width: 50%; text-align: left; color: #ffffff;">
-									{{form.BgRb.label}}	
-								</td>
-								<td style="width: 50%; text-align: right;">
-									<p style="color: #ffffff;">
-										R:{{form.BgRb(size=1)}}<br>
-										G:{{form.BgGb(size=1)}}<br>
-										B:{{form.BgBb(size=1)}}<br>
-									</p>
-								</td>
-							</tr>
+									</td>
+								</tr>
 							<tr>
 								<td style="width: 50%; text-align: center; color: #ffffff;">
 									Are you romantically attracted to:	
@@ -103,6 +139,18 @@
 										Males:{{form.Sm(size=30)}}<br>
 										Females:{{form.Sf(size=30)}}<br>
 										NBs:{{form.Sn(size=30)}}<br>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="width: 50%; text-align: left; color: #ffffff;">
+									{{form.GP.label}}<br>
+									{{form.ShowGP.label}}<br>
+								</td>
+								<td style="width: 50%; text-align: center;">
+									<p style="color: #ffffff;">
+										P {{form.GP(size=30)}} V<br>
+										{{form.ShowGP(size=30)}}
 									</p>
 								</td>
 							</tr>
@@ -128,17 +176,38 @@
 								</td>
 							</tr>
 							<tr>
-
-								<tr>
 								<td style="width: 50%; text-align: left; color: #ffffff;">
 									{{form.TR.label}}
 
 								</td>
-								<td style="width: 50%; text-align: right;">
+								<td style="width: 50%; text-align: center;">
+									<script>
+   									function outputUpdateTR(TR) {
+    								document.querySelector('#SelectedTR').value = Math.round(TR);
+    								}
+    								function outputUpdateTG(TG) {
+    								document.querySelector('#SelectedTG').value = Math.round(TG);
+    								}
+    								function outputUpdateTB(TB) {
+    								document.querySelector('#SelectedTB').value = Math.round(TB);
+    								}
+    								</script>
 									<p style="color: #ffffff;">
-										R:{{form.TR(size=1)}}<br>
-										G:{{form.TG(size=1)}}<br>
-										B:{{form.TB(size=1)}}<br>
+										{{ form.TR(min=0, max=255, oninput="outputUpdateTR(value)") }}
+       									<output for="TR" id="SelectedTR">
+											{{ form.TR.data }}
+										</output>
+										<br>
+										{{ form.TG(min=0, max=255, oninput="outputUpdateTG(value)") }}
+       									<output for="TG" id="SelectedTG">
+											{{ form.TG.data }}
+										</output>
+										<br>
+										{{ form.TB(min=0, max=255, oninput="outputUpdateTB(value)") }}
+       									<output for="TB" id="SelectedTB">
+											{{ form.TB.data }}
+										</output>
+
 									</p>
 									</td>
 								</tr>
@@ -147,24 +216,70 @@
 									{{form.AR.label}}
 
 								</td>
-								<td style="width: 50%; text-align: right;">
+									<td style="width: 50%; text-align: center;">
+									<script>
+   									function outputUpdateAR(AR) {
+    								document.querySelector('#SelectedAR').value = Math.round(AR);
+    								}
+    								function outputUpdateAG(AG) {
+    								document.querySelector('#SelectedAG').value = Math.round(AG);
+    								}
+    								function outputUpdateAB(AB) {
+    								document.querySelector('#SelectedAB').value = Math.round(AB);
+    								}
+    								</script>
 									<p style="color: #ffffff;">
-										R:{{form.AR(size=1)}}<br>
-										G:{{form.AG(size=1)}}<br>
-										B:{{form.AB(size=1)}}<br>
+										{{ form.AR(min=0, max=255, oninput="outputUpdateAR(value)") }}
+       									<output for="AR" id="SelectedAR">
+											{{ form.AR.data }}
+										</output>
+										<br>
+										{{ form.AG(min=0, max=255, oninput="outputUpdateAG(value)") }}
+       									<output for="AG" id="SelectedAG">
+											{{ form.AG.data }}
+										</output>
+										<br>
+										{{ form.AB(min=0, max=255, oninput="outputUpdateAB(value)") }}
+       									<output for="AB" id="SelectedAB">
+											{{ form.AB.data }}
+										</output>
+
 									</p>
 									</td>
 								</tr>
-								<tr>
+							<tr>
 								<td style="width: 50%; text-align: left; color: #ffffff;">
 									{{form.WR.label}}
 
 								</td>
-								<td style="width: 50%; text-align: right;">
+								<td style="width: 50%; text-align: center;">
+									<script>
+   									function outputUpdateWR(WR) {
+    								document.querySelector('#SelectedWR').value = Math.round(WR);
+    								}
+    								function outputUpdateWG(WG) {
+    								document.querySelector('#SelectedWG').value = Math.round(WG);
+    								}
+    								function outputUpdateWB(WB) {
+    								document.querySelector('#SelectedWB').value = Math.round(WB);
+    								}
+    								</script>
 									<p style="color: #ffffff;">
-										R:{{form.WR(size=1)}}<br>
-										G:{{form.WG(size=1)}}<br>
-										B:{{form.WB(size=1)}}<br>
+										{{ form.WR(min=0, max=255, oninput="outputUpdateWR(value)") }}
+       									<output for="WR" id="SelectedWR">
+											{{ form.WR.data }}
+										</output>
+										<br>
+										{{ form.WG(min=0, max=255, oninput="outputUpdateWG(value)") }}
+       									<output for="WG" id="SelectedWG">
+											{{ form.WG.data }}
+										</output>
+										<br>
+										{{ form.WB(min=0, max=255, oninput="outputUpdateWB(value)") }}
+       									<output for="WB" id="SelectedWB">
+											{{ form.WB.data }}
+										</output>
+
 									</p>
 									</td>
 								</tr>
@@ -173,11 +288,34 @@
 									{{form.GR.label}}
 
 								</td>
-								<td style="width: 50%; text-align: right;">
+									<td style="width: 50%; text-align: center;">
+									<script>
+   									function outputUpdateGR(GR) {
+    								document.querySelector('#SelectedGR').value = Math.round(GR);
+    								}
+    								function outputUpdateGG(GG) {
+    								document.querySelector('#SelectedGG').value = Math.round(GG);
+    								}
+    								function outputUpdateGB(GB) {
+    								document.querySelector('#SelectedGB').value = Math.round(GB);
+    								}
+    								</script>
 									<p style="color: #ffffff;">
-										R:{{form.GR(size=1)}}<br>
-										G:{{form.GG(size=1)}}<br>
-										B:{{form.GB(size=1)}}<br>
+										{{ form.GR(min=0, max=255, oninput="outputUpdateGR(value)") }}
+       									<output for="GR" id="SelectedGR">
+											{{ form.GR.data }}
+										</output>
+										<br>
+										{{ form.GG(min=0, max=255, oninput="outputUpdateGG(value)") }}
+       									<output for="GG" id="SelectedGG">
+											{{ form.GG.data }}
+										</output>
+										<br>
+										{{ form.GB(min=0, max=255, oninput="outputUpdateGB(value)") }}
+       									<output for="GB" id="SelectedGB">
+											{{ form.GB.data }}
+										</output>
+
 									</p>
 									</td>
 								</tr>
