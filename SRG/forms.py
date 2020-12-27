@@ -103,7 +103,7 @@ class SRGCrestForm(FlaskForm):
         GG = DecimalRangeField('Glow colour', default=165, places=0)
         GB = DecimalRangeField('Glow colour', default=32, places=0)
         GA = DecimalRangeField('Glow colour', default=75, places=0)
-        
+
         Roman = fields.BooleanField('Do you wish to convert your SRG into roman numerals')
 
         Submit = SubmitField("Create SRG")
