@@ -386,7 +386,7 @@ def crest(debug=True):
         if T:
             bytetext+="*"
         if Q:
-            bytetext+=bytetext+"?"
+            bytetext=bytetext+"?"
         if result.get("Go") != "":
            gt=result.get("Go")
 
