@@ -390,10 +390,10 @@ def crest(debug=True):
         if result.get("Go") != "":
            gt=result.get("Go")
 
-        trim=(int(result.get("TR")),int(result.get("TG")),int(result.get("TB")),255)
-        ad=(int(result.get("AR")),int(result.get("AG")),int(result.get("AB")),255)
-        wings=(int(result.get("WR")),int(result.get("WG")),int(result.get("WB")),255)
-        glow=(int(result.get("GR")),int(result.get("GG")),int(result.get("GB")),75)
+        trim=(round(result.get("TR")),round(result.get("TG")),round(result.get("TB")),255)
+        ad=(round(result.get("AR")),round(result.get("AG")),round(result.get("AB")),255)
+        wings=(round(result.get("WR")),round(result.get("WG")),round(result.get("WB")),255)
+        glow=(round(result.get("GR")),round(result.get("GG")),round(result.get("GB")),75)
         rn=result.get("Roman")
 
         ShowGP=result.get("ShowGP")
