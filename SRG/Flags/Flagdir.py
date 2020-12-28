@@ -22,7 +22,7 @@ def getflags(namesonly=False):
         Flags.append(Flag)
         i += 1
 
-    return Flags
+    return sorted(Flags)
 
 def __init__():
     global FlagsList
