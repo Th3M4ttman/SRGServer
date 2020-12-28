@@ -174,11 +174,7 @@
 							</tr>
 							<tr>
 								<td style="width: 50%; text-align: left; color: #ffffff;">
-									{{form.R.label}}
-																				
-								</td>
-								<td style="width: 50%; text-align: center;">
-									<script>
+<script>
    									function outputUpdater(R) {
     								document.querySelector('#SelectedR').value = Math.round(R);
     								}
@@ -188,7 +184,20 @@
     								function outputUpdateb(B) {
     								document.querySelector('#SelectedB').value = Math.round(B);
     								}
+var bordercolorR = Math.round(R);
+var bordercolorG = Math.round(G);
+var bordercolorB = Math.round(B);
+var bordercolor = rgb(bordercolorR,bordercolorG,bordercolorB)
+
     								</script>
+									{{form.R.label}}
+                       <div style="width:60%; height:30%; background-color:bordercolor;">
+test
+                       </div>
+																				
+								</td>
+								<td style="width: 50%; text-align: center;">
+									
 									<p style="color: #ffffff;">
 										{{ form.R(min=0, max=255, oninput="outputUpdater(value)") }}
        									<output for="R" id="SelectedR">
