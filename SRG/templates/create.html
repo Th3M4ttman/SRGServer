@@ -189,16 +189,12 @@ var bordercolorG = Math.round(G);
 var bordercolorB = Math.round(B);
 var bordercolor = rgb(bordercolorR,bordercolorG,bordercolorB);
 
-    								</script>
-									{{form.R.label}}
-<script>
-var bordercolorR = Math.round(R);
-var bordercolorG = Math.round(G);
-var bordercolorB = Math.round(B);
-var bordercolor = rgb(bordercolorR,bordercolorG,bordercolorB);
+
+document.write({{form.R.label}}<br>);
 document.write(bordercolor);
 document.write(<div style="width:60%; height:30%;" background-color:bordercolor;>test</div>);
-</script>
+
+    								</script>
                        
 																				
 								</td>
