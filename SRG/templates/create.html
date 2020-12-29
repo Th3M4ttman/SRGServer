@@ -91,19 +91,22 @@
 								</td>
 									<td style="width: 50%; text-align: center;">
 										<p style="color: #ffffff;">
+											R:
 											{{ form.BgRa(min=0, max=255, oninput="outputUpdateBgRa(value)") }}
 											<output for="BgRa" id="SelectedBgRa">
-												R:{{ form.BgRa.data }}
+												{{ form.BgRa.data }}
 											</output>
 											<br>
+											G:
 											{{ form.BgGa(min=0, max=255, oninput="outputUpdateBgGa(value)") }}
 											<output for="BgGa" id="SelectedBgGa">
-												G:{{ form.BgGa.data }}
+												{{ form.BgGa.data }}
 											</output>
 											<br>
+											B:
 											{{ form.BgBa(min=0, max=255, oninput="outputUpdateBgBa(value)") }}
 											<output for="BgBa" id="SelectedBgBa">
-												B:{{ form.BgBa.data }}
+												{{ form.BgBa.data }}
 											</output>
 										
 										</p>
@@ -156,19 +159,22 @@
 								</td>
 								<td style="width: 50%; text-align: center;">
 									<p style="color: #ffffff;">
+										R:
 										{{ form.BgRb(min=0, max=255, oninput="outputUpdateBgRb(value)") }}
        									<output for="BgRb" id="SelectedBgRb">
-											R:{{ form.BgRb.data }}
+											{{ form.BgRb.data }}
 										</output>
 										<br>
+										G:
 										{{ form.BgGb(min=0, max=255, oninput="outputUpdateBgGb(value)") }}
        									<output for="BgGb" id="SelectedBgGb">
-											G:{{ form.BgGb.data }}
+											{{ form.BgGb.data }}
 										</output>
 										<br>
+										B:
 										{{ form.BgBb(min=0, max=255, oninput="outputUpdateBgBb(value)") }}
        									<output for="BgBb" id="SelectedBgBb">
-											B:{{ form.BgBb.data }}
+											{{ form.BgBb.data }}
 										</output>
 									
 									</p>
@@ -278,19 +284,22 @@
 								<td style="width: 50%; text-align: center;">
 									
 									<p style="color: #ffffff;">
+										R:
 										{{ form.R(min=0, max=255, oninput="outputUpdater(value)") }}
        									<output for="R" id="SelectedR">
-											R:{{ form.R.data }}
+											{{ form.R.data }}
 										</output>
 										<br>
+										G:
 										{{ form.G(min=0, max=255, oninput="outputUpdateg(value)") }}
        									<output for="G" id="SelectedG">
-											G:{{ form.G.data }}
+											{{ form.G.data }}
 										</output>
 										<br>
+										B:
 										{{ form.B(min=0, max=255, oninput="outputUpdateb(value)") }}
        									<output for="B" id="SelectedB">
-											B:{{ form.B.data }}
+											{{ form.B.data }}
 										</output>
 
 									</p>
