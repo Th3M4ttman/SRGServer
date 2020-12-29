@@ -207,13 +207,13 @@
 										var bb = document.querySelector('#SelectedB').value;
 										var bc = RGBToHex(br,bg,bb);
 										document.querySelector("#bordercolor").style.backgroundColor = bc;
-									
+										document.getElementById("RGB").innerHTML = bc;
 										}
 
     								</script>
 									{{form.R.label}}
 									<div id="bordercolor" style="background-color: white; width: 100%; height 100%;">
-									<br>
+										<p id="RGB">Hello World!</p>
 									</div>
 								</td>
 								<td style="width: 50%; text-align: center;">
@@ -235,6 +235,7 @@
 										</output>
 
 									</p>
+									<script>outputUpdatecolor("","","");</script>
 									</td>
 								</tr>
 								<tr>
