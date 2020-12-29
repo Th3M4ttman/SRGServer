@@ -174,29 +174,30 @@
 							</tr>
 							<tr>
 								<td style="width: 50%; text-align: left; color: #ffffff;">
-<script>
-   									function outputUpdater(R) {
-    								document.querySelector('#SelectedR').value = Math.round(R);
-    								}
-    								function outputUpdateg(G) {
-    								document.querySelector('#SelectedG').value = Math.round(G);
-    								}
-    								function outputUpdateb(B) {
-    								document.querySelector('#SelectedB').value = Math.round(B);
-    								}
-var bordercolorR = Math.round(R);
-var bordercolorG = Math.round(G);
-var bordercolorB = Math.round(B);
-var bordercolor = rgb(bordercolorR,bordercolorG,bordercolorB);
+									<script>
+										function outputUpdater(R) {
+										document.querySelector('#SelectedR').value = Math.round(R);
+										}
 
+										function outputUpdateg(G) {
+										document.querySelector('#SelectedG').value = Math.round(G);
+										}
 
-document.write("{{form.R.label}}<br>");
-document.write("bordercolor");
-document.write("<div style="width:60%; height:30%;" background-color:bordercolor;>test</div>");
+										function outputUpdateb(B) {
+										document.querySelector('#SelectedB').value = Math.round(B);
+										}
 
-    								</script>
-                       
-																				
+										function updateDiv(R,G,B) {
+										var bordercolorR = Math.round(R);
+										var bordercolorG = Math.round(G);
+										var bordercolorB = Math.round(B);
+										var bordercolor = rgb(bordercolorR,bordercolorG,bordercolorB);
+
+										document.write("{{form.R.label}}<br>");
+										document.write("bordercolor");
+										document.write("<div style="width:60%; height:30%;" background-color:bordercolor;>test</div>");
+										}
+    								</script>										
 								</td>
 								<td style="width: 50%; text-align: center;">
 									
