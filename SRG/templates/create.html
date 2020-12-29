@@ -161,28 +161,36 @@
     								</script>
 									{{form.BgRb.label}}
 									<div id="rcolor" style="background-color: white; width: 100%; height 100%;">
-										<p id="right">Hello World!</p>
+										<br>
 									</div>									
 								</td>
 								<td style="width: 50%; text-align: center;">
 									<p style="color: #ffffff;">
 										R:
 										{{ form.BgRb(min=0, max=255, oninput="outputUpdateBgRb(value)") }}
-       									<output for="BgRb" id="SelectedBgRb">
-											{{ form.BgRb.data }}
-										</output>
+       									
 										<br>
 										G:
 										{{ form.BgGb(min=0, max=255, oninput="outputUpdateBgGb(value)") }}
-       									<output for="BgGb" id="SelectedBgGb">
-											{{ form.BgGb.data }}
-										</output>
+										
 										<br>
 										B:
 										{{ form.BgBb(min=0, max=255, oninput="outputUpdateBgBb(value)") }}
-       									<output for="BgBb" id="SelectedBgBb">
+										
+										<br>
+										R:
+										<output for="BgRb" id="SelectedBgRb">
+											{{ form.BgRb.data }}
+										</output>
+										 G:
+       									<output for="BgGb" id="SelectedBgGb">
+											{{ form.BgGb.data }}
+										</output>
+										 B:
+										<output for="BgBb" id="SelectedBgBb">
 											{{ form.BgBb.data }}
 										</output>
+       									
 									
 									</p>
 									<script>outputUpdatecolorr();</script>
@@ -293,18 +301,25 @@
 									<p style="color: #ffffff;">
 										R:
 										{{ form.R(min=0, max=255, oninput="outputUpdater(value)") }}
-       									<output for="R" id="SelectedR">
-											{{ form.R.data }}
-										</output>
+       									
 										<br>
 										G:
 										{{ form.G(min=0, max=255, oninput="outputUpdateg(value)") }}
-       									<output for="G" id="SelectedG">
-											{{ form.G.data }}
-										</output>
+
 										<br>
 										B:
 										{{ form.B(min=0, max=255, oninput="outputUpdateb(value)") }}
+										
+										<br>
+										R:
+										<output for="R" id="SelectedR">
+											{{ form.R.data }}
+										</output>
+										 G:
+       									<output for="G" id="SelectedG">
+											{{ form.G.data }}
+										</output>
+										 B:
        									<output for="B" id="SelectedB">
 											{{ form.B.data }}
 										</output>
