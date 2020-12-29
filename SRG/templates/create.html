@@ -177,15 +177,40 @@
 									<script>
 										function outputUpdater(R) {
 										document.querySelector('#SelectedR').value = Math.round(R);
+										outputUpdatecolor(document.querySelector('#SelectedR').value,document.querySelector('#SelectedG').value,document.querySelector('#SelectedB').value);
 										}
 										function outputUpdateg(G) {
 										document.querySelector('#SelectedG').value = Math.round(G);
+										outputUpdatecolor(document.querySelector('#SelectedR').value,document.querySelector('#SelectedG').value,document.querySelector('#SelectedB').value);
 										}
 										function outputUpdateb(B) {
 										document.querySelector('#SelectedB').value = Math.round(B);
+										outputUpdatecolor(document.querySelector('#SelectedR').value,document.querySelector('#SelectedG').value,document.querySelector('#SelectedB').value);
 										}
+										function RGBToHex(r,g,b) {
+										  r = r.toString(16);
+										  g = g.toString(16);
+										  b = b.toString(16);
+
+										  if (r.length == 1)
+											r = "0" + r;
+										  if (g.length == 1)
+											g = "0" + g;
+										  if (b.length == 1)
+											b = "0" + b;
+
+										  return "#" + r + g + b;
+										}
+										function outputUpdatecolor(R,G,B) {
+										var bc = RGBToHex(R,G,B)
+										document.querySelector("#bordercolor").style.backgroundColor = bc;
+										}
+
     								</script>
 									{{form.R.label}}
+									<div id="bordercolor" style="background-color: white; width: 100%; height 100%;">
+									<br>
+									</div>
 								</td>
 								<td style="width: 50%; text-align: center;">
 									
