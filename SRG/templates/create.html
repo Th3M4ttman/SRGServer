@@ -202,7 +202,10 @@
 										  return "#" + r + g + b;
 										}
 										function outputUpdatecolor(R,G,B) {
-										var bc = RGBToHex(R,G,B)
+										var br = Math.round(R*2.55)
+										var bg = Math.round(G*2.55)
+										var bb = Math.round(B*2.55)
+										var bc = RGBToHex(br,bg,bb)
 										document.querySelector("#bordercolor").style.backgroundColor = bc;
 										}
 
