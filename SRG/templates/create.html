@@ -202,18 +202,12 @@
 										  return "#" + r + g + b;
 										}
 										function outputUpdatecolor(R,G,B) {
-										var br = Math.round(R*2.55);
-										var bg = Math.round(G*2.55);
-										var bb = Math.round(B*2.55);
+										var br = document.querySelector('#SelectedR').value;
+										var bg = document.querySelector('#SelectedG').value;
+										var bb = document.querySelector('#SelectedB').value;
 										var bc = RGBToHex(br,bg,bb);
 										document.querySelector("#bordercolor").style.backgroundColor = bc;
-										
-										var myForm = document.getElementById('form');
-										var tr = Math.round(myForm.elements['R'].value*2.55);
-										var tg = Math.round(myForm.elements['G'].value*2.55);
-										var tb = Math.round(myForm.elements['B'].value*2.55);
-										var tc = RGBToHex(tr,tg,tb);
-										text.innerText = tc;
+									
 										}
 
     								</script>
