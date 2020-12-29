@@ -86,28 +86,33 @@
 										</script>
 										{{form.BgRa.label}}
 										<div id="lcolor" style="background-color: white; width: 100%; height 100%;">
-											<p id="left">Hello World!</p>
+											R:
+											<output for="BgRa" id="SelectedBgRa">
+												{{ form.BgRa.data }}
+											</output>
+											 G:
+											<output for="BgGa" id="SelectedBgGa">
+												{{ form.BgGa.data }}
+											</output>
+											 B:
+											<output for="BgBa" id="SelectedBgBa">
+												{{ form.BgBa.data }}
+											</output>
 										</div>
 								</td>
 									<td style="width: 50%; text-align: center;">
 										<p style="color: #ffffff;">
 											R:
 											{{ form.BgRa(min=0, max=255, oninput="outputUpdateBgRa(value)") }}
-											<output for="BgRa" id="SelectedBgRa">
-												{{ form.BgRa.data }}
-											</output>
+											
 											<br>
 											G:
 											{{ form.BgGa(min=0, max=255, oninput="outputUpdateBgGa(value)") }}
-											<output for="BgGa" id="SelectedBgGa">
-												{{ form.BgGa.data }}
-											</output>
+											
 											<br>
 											B:
 											{{ form.BgBa(min=0, max=255, oninput="outputUpdateBgBa(value)") }}
-											<output for="BgBa" id="SelectedBgBa">
-												{{ form.BgBa.data }}
-											</output>
+
 										
 										</p>
 										<script>outputUpdatecolorl();</script>
