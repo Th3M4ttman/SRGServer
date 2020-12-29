@@ -78,14 +78,14 @@
 										var BgGa = document.querySelector('#SelectedBgGa').value;
 										var BgBa = document.querySelector('#SelectedBgBa').value;
 										var BgCa = fullColorHex(BgRa,BgGa,BgRa);
-										document.querySelector("#rcolor").style.backgroundColor = BgCa;
-										document.getElementById("l").innerHTML = BgCa;
+										document.querySelector("#lcolor").style.backgroundColor = BgCa;
+										document.getElementById("3").innerHTML = BgCa;
 										}
 
     								</script>
 									{{form.BgRa.label}}
-									<div id="rcolor" style="background-color: white; width: 100%; height 100%;">
-										<p id="l">Hello World!</p>
+									<div id="lcolor" style="background-color: white; width: 100%; height 100%;">
+										<p id="3">Hello World!</p>
 									</div>
 									<p style="color: #ffffff;">
 										{{ form.BgRa(min=0, max=255, oninput="outputUpdateBgRa(value)") }}
@@ -141,14 +141,14 @@
 										var BgBb = document.querySelector('#SelectedBgBb').value;
 										var BgCb = fullColorHex(BgRa,BgGa,BgRa);
 										document.querySelector("#rcolor").style.backgroundColor = BgCb;
-										document.getElementById("l").innerHTML = BgCb;
+										document.getElementById("2").innerHTML = BgCb;
 										}
 
 
     								</script>
 									{{form.BgRb.label}}
 									<div id="rcolor" style="background-color: white; width: 100%; height 100%;">
-										<p id="l">Hello World!</p>
+										<p id="2">Hello World!</p>
 									</div>									
 								</td>
 								<td style="width: 50%; text-align: center;">
