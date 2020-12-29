@@ -116,60 +116,16 @@ def create(debug=False):
         if debug: print(o)
         if o=="y":
             o=True
-            lr=str(result.get("BgRa"))
-            if debug: print(lr)
-            lr=float(lr)
-            if lr==0:
-                if debug: print(0)
-            else:
-                lr=float(lr)*2.25
-                lr=round(lr)
-            
-            lg=str(result.get("BgGa"))
-            print(lg)
-            lg=float(lg)
-            if lg==0:
-                print(0)
-            else:
-                lg=lg*2.25
-                lg=round(lg)
-            
-            lb=str(result.get("BgBa"))
-            if debug: print(lb)
-            lb=float(lb)
-            if lb==0:
-                if debug: print(0)
-            else:
-                lb=lb*2.25
-                lb=round(lb)
-            
-            rr=str(result.get("BgRb"))
-            if debug: print(rr)
-            rr=float(rr)
-            if rr==0:
-                if debug: print(0)
-            else:
-                rr=rr*2.25
-                rr=round(rr)
-            
-            rg=str(result.get("BgGb"))
-            if debug: print(rg)
-            rg=float(rg)
-            if rg==0:
-                if debug: print(0)
-            else:
-                rg=rg*2.25
-                rg=round(rg)
-            
-            rb=str(result.get("BgBb"))
-            if debug: print(rb)
-            rb=float(rb)
-            if rb==0:
-                if debug: print(0)
-            else:
-                rb=rb*2.25
-                rb=round(rb)
-            
+
+            lr=int(result.get("BgRa"))
+            lg=int(result.get("BgGa"))
+            lb=int(result.get("BgBa"))
+
+            rr=int(result.get("BgRb"))
+            rg=int(result.get("BgGb"))
+            rb=int(result.get("BgBb"))
+
+
             l=[lr,lg,lb, 255]
             r=[rr,rg,rb, 255]
             if debug: print(l)
