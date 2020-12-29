@@ -117,13 +117,13 @@ def create(debug=False):
         if o=="y":
             o=True
 
-            lr=int(result.get("BgRa"))
-            lg=int(result.get("BgGa"))
-            lb=int(result.get("BgBa"))
+            lr= round(float(result.get("BgRa")))
+            lg= round(float(result.get("BgGa")))
+            lb= round(float(result.get("BgBa")))
 
-            rr=int(result.get("BgRb"))
-            rg=int(result.get("BgGb"))
-            rb=int(result.get("BgBb"))
+            rr= round(float(result.get("BgRb")))
+            rg= round(float(result.get("BgGb")))
+            rb= round(float(result.get("BgBb")))
 
 
             l=[lr,lg,lb, 255]
