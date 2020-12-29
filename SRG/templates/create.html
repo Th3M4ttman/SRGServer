@@ -177,12 +177,15 @@
 									<script>
 										function outputUpdater(R) {
 										document.querySelector('#SelectedR').value = Math.round(R);
+										outputUpdatecolor(document.querySelector('#SelectedR').value,document.querySelector('#SelectedG').value,document.querySelector('#SelectedB').value);
 										}
 										function outputUpdateg(G) {
 										document.querySelector('#SelectedG').value = Math.round(G);
+										outputUpdatecolor(document.querySelector('#SelectedR').value,document.querySelector('#SelectedG').value,document.querySelector('#SelectedB').value);
 										}
 										function outputUpdateb(B) {
 										document.querySelector('#SelectedB').value = Math.round(B);
+										outputUpdatecolor(document.querySelector('#SelectedR').value,document.querySelector('#SelectedG').value,document.querySelector('#SelectedB').value);
 										}
 										function RGBToHex(r,g,b) {
 										  r = r.toString(16);
@@ -198,13 +201,9 @@
 
 										  return "#" + r + g + b;
 										}
-										function updateColor() {
-										var R = document.querySelector('#SelectedR').value;
-										var G = document.querySelector('#SelectedG').value;
-										var B = document.querySelector('#SelectedB').value;
-
-										var bc = RGBToHex(R,G,B);
-										document.querySelector("#bordercolor").style.backgroundColor = RGBToHex(R,G,B);
+										function outputUpdatecolor(R,G,B) {
+										var bc = RGBToHex(R,G,B)
+										document.querySelector("#bordercolor").style.backgroundColor = bc;
 										}
 
     								</script>
