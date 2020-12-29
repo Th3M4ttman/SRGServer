@@ -255,40 +255,80 @@
 							</tr>
 							<tr>
 								<td style="width: 50%; text-align: left; color: #ffffff;">
-									{{form.TR.label}}
+									<script>
+										function outputUpdateTR(TR) {
+										document.querySelector('#SelectedTR').value = Math.round(TR);
+										outputUpdatecolorT();
+										}
+										function outputUpdateTG(TG) {
+										document.querySelector('#SelectedTG').value = Math.round(TG);
+										outputUpdatecolorT();
+										}
+										function outputUpdateTB(TB) {
+										document.querySelector('#SelectedTB').value = Math.round(TB);
+										outputUpdatecolorT();
+										}
+										var rgbToHex = function (rgb) { 
+										var hex = Number(rgb).toString(16);
+										  if (hex.length < 2) {
+											   hex = "0" + hex;
+										  }
+										  return hex;
+										};
+										var fullColorHex = function(r,g,b) {   
+										var red = rgbToHex(r);
+										var green = rgbToHex(g);
+										var blue = rgbToHex(b);
+										return "#"+red+green+blue;
+										};
+										function outputUpdatecolorr() {
+										var TR = document.querySelector('#SelectedTR').value;
+										var TG = document.querySelector('#SelectedTG').value;
+										var TB = document.querySelector('#SelectedTB').value;
+										var TC = fullColorHex(TR,TG,TB);
+										document.querySelector("#Tcolor").style.backgroundColor = TC;
+										document.getElementById("Trim").innerHTML = TC;
+										}
 
+
+    								</script>
+									{{form.TR.label}}
+									<div id="Tcolor" style="background-color: white; width: 100%; height 100%;">
+										<br>
+									</div>									
 								</td>
 								<td style="width: 50%; text-align: center;">
-									<script>
-   									function outputUpdateTR(TR) {
-    								document.querySelector('#SelectedTR').value = Math.round(TR);
-    								}
-    								function outputUpdateTG(TG) {
-    								document.querySelector('#SelectedTG').value = Math.round(TG);
-    								}
-    								function outputUpdateTB(TB) {
-    								document.querySelector('#SelectedTB').value = Math.round(TB);
-    								}
-    								</script>
 									<p style="color: #ffffff;">
+										R:
 										{{ form.TR(min=0, max=255, oninput="outputUpdateTR(value)") }}
-       									<output for="TR" id="SelectedTR">
+       									
+										<br>
+										G:
+										{{ form.TG(min=0, max=255, oninput="outputUpdateBgTG(value)") }}
+										
+										<br>
+										B:
+										{{ form.TB(min=0, max=255, oninput="outputUpdateTB(value)") }}
+										
+										<br>
+										R:
+										<output for="TR" id="SelectedTR">
 											{{ form.TR.data }}
 										</output>
-										<br>
-										{{ form.TG(min=0, max=255, oninput="outputUpdateTG(value)") }}
+										 G:
        									<output for="TG" id="SelectedTG">
 											{{ form.TG.data }}
 										</output>
-										<br>
-										{{ form.TB(min=0, max=255, oninput="outputUpdateTB(value)") }}
-       									<output for="TB" id="SelectedTB">
+										 B:
+										<output for="TB" id="SelectedTB">
 											{{ form.TB.data }}
 										</output>
-
+       									
+									
 									</p>
-									</td>
-								</tr>
+									<script>outputUpdatecolorT();</script>
+								</td>
+							</tr>
 								<tr>
 								<td style="width: 50%; text-align: left; color: #ffffff;">
 									{{form.AR.label}}
