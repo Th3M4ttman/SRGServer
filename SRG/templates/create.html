@@ -392,7 +392,7 @@
 										var by = "x";
 										var tilde = "~";
 										var res = x.concat(by,y,tilde);
-										document.querySelector('#SelectedS').value = res ;
+										document.getElementById("SelectedS").innerHTML = res;
 										}
 										</script>
 										{{form.S.label}}
@@ -402,7 +402,7 @@
 											{{ form.S(min=50, max=1080, oninput="outputUpdateS(value)") }}<br>
 											<output for="S"id="SelectedS">
 											{{ form.S.data }} x {{ form.S.data }}
-									  	</output>
+									  		</output>
 										</p>
 									</td>
 								</tr>
