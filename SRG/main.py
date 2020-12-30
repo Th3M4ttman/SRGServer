@@ -273,8 +273,8 @@ def crest(debug=True):
             rg = round(float(result.get("BgGb")))
             rb = round(float(result.get("BgBb")))
 
-            l = [lr, lg, lb, 255]
-            r = [rr, rg, rb, 255]
+            l = (lr, lg, lb, 255)
+            r = (rr, rg, rb, 255)
             print(l)
             print(r)
             print("Custom Colour L:".join(str(v) for v in l)+" R:".join(str(v) for v in r))
