@@ -385,7 +385,7 @@
 								</tr>
 								<tr>
 									<td style="width: 50%; text-align: left; color: #ffffff;">
-											<script>
+										<script>
 										function outputUpdateS(S) {
 										var x = str(Math.round(S));
 										var y = str(Math.round(S));
@@ -400,9 +400,10 @@
 									<td style="width: 50%; text-align: center;">
 										<p style="color: #ffffff;">
 											{{ form.S(min=50, max=1080, oninput="outputUpdateS(value)") }}<br>
-											<output for="S"id="SelectedS">
+											<p id="SelectedS" style="color: #ffffff;">
 											{{ form.S.data }} x {{ form.S.data }}
-									  		</output>
+									  		</p>
+
 										</p>
 									</td>
 								</tr>
