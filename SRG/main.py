@@ -262,74 +262,19 @@ def crest(debug=True):
 
         o=result.get("O")
         print(o)
-        if o=="y":
-            gt=result.get("Go")
-            if gt == "":
-                gt=result.get("Gender")
-            bytetext = str(byte)
-            o=True
-            lr=str(result.get("BgRa"))
-            print(lr)
-            lr=float(lr)
-            if lr==0:
-                print(0)
-                lr = round(lr)
-            else:
-                lr=float(lr)*2.25
-                lr=round(lr)
+        if o == "y":
+            o = True
 
-            lg=str(result.get("BgGa"))
-            print(lg)
-            lg=float(lg)
-            if lg==0:
-                print(0)
-                lg = round(lg)
-            else:
-                lg=lg*2.25
-                lg=round(lg)
+            lr = round(float(result.get("BgRa")))
+            lg = round(float(result.get("BgGa")))
+            lb = round(float(result.get("BgBa")))
 
-            lb=str(result.get("BgBa"))
-            print(lb)
-            lb=float(lb)
-            if lb==0:
-                print(0)
-                lb = round(lb)
-            else:
-                lb=lb*2.25
-                lb=round(lb)
+            rr = round(float(result.get("BgRb")))
+            rg = round(float(result.get("BgGb")))
+            rb = round(float(result.get("BgBb")))
 
-            rr=str(result.get("BgRb"))
-            print(rr)
-            rr=float(rr)
-            if rr==0:
-                print(0)
-                rr = round(rr)
-            else:
-                rr=rr*2.25
-                rr=round(rr)
-
-            rg=str(result.get("BgGb"))
-            print(rg)
-            rg=float(rg)
-            if rg==0:
-                print(0)
-                rb = round(rg)
-            else:
-                rg=rg*2.25
-                rg=round(rg)
-
-            rb=str(result.get("BgBb"))
-            print(rb)
-            rb=float(rb)
-            if rb==0:
-                print(0)
-                rb = round(rb)
-            else:
-                rb=rb*2.25
-                rb=round(rb)
-
-            l=(lr,lg,lb, 255)
-            r=(rr,rg,rb, 255)
+            l = [lr, lg, lb, 255]
+            r = [rr, rg, rb, 255]
             print(l)
             print(r)
             print("Custom Colour L:".join(str(v) for v in l)+" R:".join(str(v) for v in r))
