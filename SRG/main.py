@@ -105,11 +105,9 @@ def create(debug=False):
                 SPP=result.get("SPP")
             elif x == "TPP":
                 TPP=result.get("TPP")
-            elif x == "S":
-                S=result.get("S")
-                S=int(S)
             
         o=result.get("O")
+        S= round(float(result.get("S")))
         if debug: print(o)
         if o=="y":
             o=True
