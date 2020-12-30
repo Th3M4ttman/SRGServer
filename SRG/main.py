@@ -211,7 +211,7 @@ def crest(debug=True):
         R=255
         G=255
         B=255
-        S=500
+        S=round(float(result.get("S")))
         gender=""
         gt=""
         
@@ -309,7 +309,7 @@ def crest(debug=True):
         print(ad)
         print(glow)
 
-        tempsrgurl = SRG.crest(SRG=[byte,Q,T],p1=SPP,p2=TPP,gt=gt,rn=rn,o=o,bgl=l,bgr=r,trim=trim,wings=wings,ad=ad,glow=glow,gp=gp)
+        tempsrgurl = SRG.crest(SRG=[byte,Q,T],p1=SPP,p2=TPP,gt=gt,rn=rn,o=o,bgl=l,bgr=r,trim=trim,wings=wings,ad=ad,glow=glow,gp=gp,s=S)
         tempsrgurl = list(tempsrgurl)
         del tempsrgurl[4]
         srgurl=""

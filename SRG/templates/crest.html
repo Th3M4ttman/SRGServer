@@ -591,7 +591,8 @@
 									<td style="width: 50%; text-align: left; color: #ffffff;">
 											<script>
 										function outputUpdateS(S) {
-										document.querySelector('#SelectedS').value = Math.round(S);
+										var size = str(S)+"x"+str(Math.round(S * 1.084));
+										document.querySelector('#SelectedS').value = Math.round(size);
 										}
 										</script>
 										{{form.S.label}}
@@ -601,7 +602,7 @@
 											{{ form.S(min=50, max=1080, oninput="outputUpdateS(value)") }}<br>
 											<output for="S"id="SelectedS">
 											{{ form.S.data }}
-									  	</output>
+									  		</output>
 										</p>
 									</td>
 								</tr>

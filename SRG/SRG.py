@@ -423,7 +423,7 @@ def crest_text(im, text, W, H, so=[False, False, False], ro=[False, False, False
         draw.rectangle([markerxstart, markerystart, markerxend, markeryend], width=int(W / 100), fill=Trim)
 
 
-def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0,191,255,255),bgr=(255,105,180,255),trim=(218,165,32,255),wings=(0,0,0,255),ad=(255,255,255,255),glow=(218,165,32,75),gp=False):
+def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0,191,255,255),bgr=(255,105,180,255),trim=(218,165,32,255),wings=(0,0,0,255),ad=(255,255,255,255),glow=(218,165,32,75),gp=False,s=950):
     script_dir = os.path.dirname(os.path.abspath(__file__))
     i = np.asarray(Image.open(os.path.join(script_dir, 'Crest500.png')))
     im = Image.fromarray(np.uint8(i))
@@ -486,6 +486,13 @@ def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0
     temp=tempfile.NamedTemporaryFile(suffix=".png",delete=False)
     name = str(temp.name)
     p=Path(temp.name)
+
+    wpercent = (s / float(im.size[0]))
+    hsize = int((float(im.size[1]) * float(wpercent)))
+    im = im.resize((s, hsize), Image.ANTIALIAS)
+    debugsize=[im.width,"x",im.height]
+    print(debugsize)
+
     print("Saving")
     im.save(p)
     print("Saved Uploading")
