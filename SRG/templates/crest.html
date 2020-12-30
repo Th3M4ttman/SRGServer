@@ -407,76 +407,156 @@
 							</tr>
 							<tr>
 								<td style="width: 50%; text-align: left; color: #ffffff;">
-									{{form.WR.label}}
+									<script>
+										function outputUpdateWR(WR) {
+										document.querySelector('#SelectedWR').value = Math.round(WR);
+										outputUpdatecolorW();
+										}
+										function outputUpdateWG(WG) {
+										document.querySelector('#SelectedWG').value = Math.round(WG);
+										outputUpdatecolorW();
+										}
+										function outputUpdateWB(WB) {
+										document.querySelector('#SelectedWB').value = Math.round(WB);
+										outputUpdatecolorW();
+										}
+										var rgbToHex = function (rgb) { 
+										var hex = Number(rgb).toString(16);
+										  if (hex.length < 2) {
+											   hex = "0" + hex;
+										  }
+										  return hex;
+										};
+										var fullColorHex = function(r,g,b) {   
+										var red = rgbToHex(r);
+										var green = rgbToHex(g);
+										var blue = rgbToHex(b);
+										return "#"+red+green+blue;
+										};
+										function outputUpdatecolorW() {
+										var WR = document.querySelector('#SelectedWR').value;
+										var WG = document.querySelector('#SelectedWG').value;
+										var WB = document.querySelector('#SelectedWB').value;
+										var WC = fullColorHex(WR,WG,WB);
+										document.querySelector("#Wcolor").style.backgroundColor = WC;
+										document.getElementById("Wings").innerHTML = WC;
+										}
 
+
+    								</script>
+									{{form.WR.label}}
+									<div id="Wcolor" style="background-color: white; width: 100%; height 100%;">
+										<br>
+									</div>									
 								</td>
 								<td style="width: 50%; text-align: center;">
-									<script>
-   									function outputUpdateWR(WR) {
-    								document.querySelector('#SelectedWR').value = Math.round(WR);
-    								}
-    								function outputUpdateWG(WG) {
-    								document.querySelector('#SelectedWG').value = Math.round(WG);
-    								}
-    								function outputUpdateWB(WB) {
-    								document.querySelector('#SelectedWB').value = Math.round(WB);
-    								}
-    								</script>
 									<p style="color: #ffffff;">
+										R:
 										{{ form.WR(min=0, max=255, oninput="outputUpdateWR(value)") }}
-       									<output for="WR" id="SelectedWR">
+       									
+										<br>
+										G:
+										{{ form.WG(min=0, max=255, oninput="outputUpdateWG(value)") }}
+										
+										<br>
+										B:
+										{{ form.WB(min=0, max=255, oninput="outputUpdateWB(value)") }}
+										
+										<br>
+										R:
+										<output for="WR" id="SelectedWR">
 											{{ form.WR.data }}
 										</output>
-										<br>
-										{{ form.WG(min=0, max=255, oninput="outputUpdateWG(value)") }}
+										 G:
        									<output for="WG" id="SelectedWG">
 											{{ form.WG.data }}
 										</output>
-										<br>
-										{{ form.WB(min=0, max=255, oninput="outputUpdateWB(value)") }}
-       									<output for="WB" id="SelectedWB">
+										 B:
+										<output for="WB" id="SelectedWB">
 											{{ form.WB.data }}
 										</output>
-
+       									
+									
 									</p>
-									</td>
-								</tr>
-								<tr>
-								<td style="width: 50%; text-align: left; color: #ffffff;">
-									{{form.GR.label}}
-
+									<script>outputUpdatecolorW();</script>
 								</td>
-									<td style="width: 50%; text-align: center;">
+							</tr>
+							<tr>
+								<td style="width: 50%; text-align: left; color: #ffffff;">
 									<script>
-   									function outputUpdateGR(GR) {
-    								document.querySelector('#SelectedGR').value = Math.round(GR);
-    								}
-    								function outputUpdateGG(GG) {
-    								document.querySelector('#SelectedGG').value = Math.round(GG);
-    								}
-    								function outputUpdateGB(GB) {
-    								document.querySelector('#SelectedGB').value = Math.round(GB);
-    								}
+										function outputUpdateGR(GR) {
+										document.querySelector('#SelectedGR').value = Math.round(GR);
+										outputUpdatecolorG();
+										}
+										function outputUpdateGG(GG) {
+										document.querySelector('#SelectedGG').value = Math.round(GG);
+										outputUpdatecolorG();
+										}
+										function outputUpdateGB(GB) {
+										document.querySelector('#SelectedGB').value = Math.round(GB);
+										outputUpdatecolorG();
+										}
+										var rgbToHex = function (rgb) { 
+										var hex = Number(rgb).toString(16);
+										  if (hex.length < 2) {
+											   hex = "0" + hex;
+										  }
+										  return hex;
+										};
+										var fullColorHex = function(r,g,b) {   
+										var red = rgbToHex(r);
+										var green = rgbToHex(g);
+										var blue = rgbToHex(b);
+										return "#"+red+green+blue;
+										};
+										function outputUpdatecolorG() {
+										var GR = document.querySelector('#SelectedGR').value;
+										var GG = document.querySelector('#SelectedGG').value;
+										var GB = document.querySelector('#SelectedGB').value;
+										var GC = fullColorHex(GR,GG,GB);
+										document.querySelector("#Gcolor").style.backgroundColor = GC;
+										document.getElementById("Glow").innerHTML = GC;
+										}
+
+
     								</script>
+									{{form.GR.label}}
+									<div id="Gcolor" style="background-color: white; width: 100%; height 100%;">
+										<br>
+									</div>									
+								</td>
+								<td style="width: 50%; text-align: center;">
 									<p style="color: #ffffff;">
+										R:
 										{{ form.GR(min=0, max=255, oninput="outputUpdateGR(value)") }}
-       									<output for="GR" id="SelectedGR">
+       									
+										<br>
+										G:
+										{{ form.GG(min=0, max=255, oninput="outputUpdateGG(value)") }}
+										
+										<br>
+										B:
+										{{ form.GB(min=0, max=255, oninput="outputUpdateGB(value)") }}
+										
+										<br>
+										R:
+										<output for="GR" id="SelectedGR">
 											{{ form.GR.data }}
 										</output>
-										<br>
-										{{ form.GG(min=0, max=255, oninput="outputUpdateGG(value)") }}
+										 G:
        									<output for="GG" id="SelectedGG">
 											{{ form.GG.data }}
 										</output>
-										<br>
-										{{ form.GB(min=0, max=255, oninput="outputUpdateGB(value)") }}
-       									<output for="GB" id="SelectedGB">
+										 B:
+										<output for="GB" id="SelectedGB">
 											{{ form.GB.data }}
 										</output>
-
+       									
+									
 									</p>
-									</td>
-								</tr>
+									<script>outputUpdatecolorG();</script>
+								</td>
+							</tr>
 								<tr>
 									<td style="width: 50%; text-align: left; color: #ffffff;">
 										{{form.Roman.label}}
