@@ -107,10 +107,7 @@ def create(debug=False):
                 TPP=result.get("TPP")
             elif x == "S":
                 S=result.get("S")
-                S=round(float(S))
-                S=round(int(S)*10.80)
-                if S<100:
-                    S=100
+                S=int(S)
             
         o=result.get("O")
         if debug: print(o)

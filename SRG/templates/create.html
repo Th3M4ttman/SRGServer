@@ -385,11 +385,19 @@
 								</tr>
 								<tr>
 									<td style="width: 50%; text-align: left; color: #ffffff;">
+											<script>
+										function outputUpdateS(S) {
+										document.querySelector('#SelectedS').value = Math.round(S);
+										
+										</script>
 										{{form.S.label}}
 									</td>
 									<td style="width: 50%; text-align: center;">
 										<p style="color: #ffffff;">
-											{{form.S(size=30)}}
+											{{ form.S(min=100, max=1080, oninput="outputUpdateS(value)") }}<br>
+											<output for="S"id="SelectedS">
+											{{ form.S.data }}
+									  	</output>
 										</p>
 									</td>
 								</tr>
