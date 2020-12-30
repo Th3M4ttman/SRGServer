@@ -26,7 +26,7 @@ class SRGForm(FlaskForm):
         Q = fields.BooleanField('Are you certain of your orientation')
         SPP = StringField("Pronoun 1")
         TPP = StringField("Pronoun 2")
-        S = DecimalRangeField('Resolution', default=50, places=0)
+        S = DecimalRangeField('Resolution', default=500, places=0)
         R = DecimalRangeField('BorderRGB', default=255, places=0)
         G = DecimalRangeField('BorderRGB', default=255, places=0)
         B = DecimalRangeField('BorderRGB', default=255, places=0)
@@ -67,7 +67,7 @@ class SRGCrestForm(FlaskForm):
         Q = fields.BooleanField('Are you certain of your orientation')
         SPP = StringField("Pronoun 1")
         TPP = StringField("Pronoun 2")
-        S = DecimalRangeField('Resolution', default=50)
+        S = DecimalRangeField('Resolution', default=500)
         GP = DecimalRangeField('Genital preference', default=50)
         ShowGP = fields.BooleanField('Show genital preference')
 
