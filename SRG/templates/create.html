@@ -387,13 +387,14 @@
 									<td style="width: 50%; text-align: left; color: #ffffff;">
 										<script>
 										function outputUpdateS(S) {
-										var x = str(Math.round(S));
-										var y = str(Math.round(S));
+										var x = Math.round(S);
+										var y = Math.round(S);
+										var xstr = str(x);
+										var ystr = str(y);
 										var by = "x";
 										var tilde = "~";
-										var res = x.concat(by,y,tilde);
-										document.getElementById("SelectedS").innerHTML = res;
-										alert(res);
+										var res = xstr.concat(by,ystr);
+										document.querySelector('#SelectedS').value = res;
 										}
 										</script>
 										{{form.S.label}}
@@ -403,7 +404,7 @@
 											{{ form.S(min=50, max=1080, oninput="outputUpdateS(value)") }}
 											<br>
 											<output for="S" id="SelectedS">
-											{{ form.S.data }}
+											{{ form.S.data }} x {{ form.S.data }}
 											</output>
 										</p>
 									</td>
