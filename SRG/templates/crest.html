@@ -589,25 +589,19 @@
 								</tr>
 								<tr>
 									<td style="width: 50%; text-align: left; color: #ffffff;">
-										<script>
+											<script>
 										function outputUpdateS(S) {
-										var size = str(S)+"x"+str(Math.round(S * 1.084));
-
-										var x = document.getElementById("res");
-  										x.querySelector(".resolutionout").innerHTML = size;
+										document.querySelector('#SelectedS').value = Math.round(S);
 										}
 										</script>
 										{{form.S.label}}
 									</td>
 									<td style="width: 50%; text-align: center;">
 										<p style="color: #ffffff;">
-											{{ form.S(min=50, max=1080, oninput="outputUpdateS(value)") }}
-											<br>
-											<div id="res">
-												<p class="resolutionout">
-												Test
-												</p>
-											</div>
+											{{ form.S(min=50, max=1080, oninput="outputUpdateS(value)") }}<br>
+											<output for="S"id="SelectedS">
+											{{ form.S.data }} x {{ form.S.data }}˜
+									  	</output>
 										</p>
 									</td>
 								</tr>
