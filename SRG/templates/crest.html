@@ -591,7 +591,11 @@
 									<td style="width: 50%; text-align: left; color: #ffffff;">
 											<script>
 										function outputUpdateS(S) {
-										document.querySelector('#SelectedS').value = str(Math.round(S))+"x"+str(Math.round(S))+"~";
+										var x = str(Math.round(S))
+										var y = str(Math.round(S))
+										var by = "x"
+										var res = x.concat(by,y)
+										document.querySelector('#SelectedS').value = res ;
 										}
 										</script>
 										{{form.S.label}}
