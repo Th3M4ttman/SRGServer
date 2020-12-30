@@ -329,42 +329,82 @@
 									<script>outputUpdatecolorT();</script>
 								</td>
 							</tr>
-								<tr>
+							<tr>
 								<td style="width: 50%; text-align: left; color: #ffffff;">
-									{{form.AR.label}}
-
-								</td>
-									<td style="width: 50%; text-align: center;">
 									<script>
-   									function outputUpdateAR(AR) {
-    								document.querySelector('#SelectedAR').value = Math.round(AR);
-    								}
-    								function outputUpdateAG(AG) {
-    								document.querySelector('#SelectedAG').value = Math.round(AG);
-    								}
-    								function outputUpdateAB(AB) {
-    								document.querySelector('#SelectedAB').value = Math.round(AB);
-    								}
+										function outputUpdateAR(AR) {
+										document.querySelector('#SelectedAR').value = Math.round(AR);
+										outputUpdatecolorA();
+										}
+										function outputUpdateAG(AG) {
+										document.querySelector('#SelectedAG').value = Math.round(AG);
+										outputUpdatecolorA();
+										}
+										function outputUpdateAB(AB) {
+										document.querySelector('#SelectedAB').value = Math.round(AB);
+										outputUpdatecolorA();
+										}
+										var rgbToHex = function (rgb) { 
+										var hex = Number(rgb).toString(16);
+										  if (hex.length < 2) {
+											   hex = "0" + hex;
+										  }
+										  return hex;
+										};
+										var fullColorHex = function(r,g,b) {   
+										var red = rgbToHex(r);
+										var green = rgbToHex(g);
+										var blue = rgbToHex(b);
+										return "#"+red+green+blue;
+										};
+										function outputUpdatecolorA() {
+										var AR = document.querySelector('#SelectedAR').value;
+										var AG = document.querySelector('#SelectedAG').value;
+										var AB = document.querySelector('#SelectedAB').value;
+										var AC = fullColorHex(AR,AG,AB);
+										document.querySelector("#Acolor").style.backgroundColor = AC;
+										document.getElementById("Adornment").innerHTML = AC;
+										}
+
+
     								</script>
+									{{form.AR.label}}
+									<div id="Tcolor" style="background-color: white; width: 100%; height 100%;">
+										<br>
+									</div>									
+								</td>
+								<td style="width: 50%; text-align: center;">
 									<p style="color: #ffffff;">
+										R:
 										{{ form.AR(min=0, max=255, oninput="outputUpdateAR(value)") }}
-       									<output for="AR" id="SelectedAR">
+       									
+										<br>
+										G:
+										{{ form.AG(min=0, max=255, oninput="outputUpdateAG(value)") }}
+										
+										<br>
+										B:
+										{{ form.AB(min=0, max=255, oninput="outputUpdateAB(value)") }}
+										
+										<br>
+										R:
+										<output for="AR" id="SelectedAR">
 											{{ form.AR.data }}
 										</output>
-										<br>
-										{{ form.AG(min=0, max=255, oninput="outputUpdateAG(value)") }}
+										 G:
        									<output for="AG" id="SelectedAG">
 											{{ form.AG.data }}
 										</output>
-										<br>
-										{{ form.AB(min=0, max=255, oninput="outputUpdateAB(value)") }}
-       									<output for="AB" id="SelectedAB">
+										 B:
+										<output for="AB" id="SelectedAB">
 											{{ form.AB.data }}
 										</output>
-
+       									
+									
 									</p>
-									</td>
-								</tr>
+									<script>outputUpdatecolorA();</script>
+								</td>
+							</tr>
 							<tr>
 								<td style="width: 50%; text-align: left; color: #ffffff;">
 									{{form.WR.label}}
