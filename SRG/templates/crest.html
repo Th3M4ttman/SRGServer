@@ -592,7 +592,9 @@
 										<script>
 										function outputUpdateS(S) {
 										var size = str(S)+"x"+str(Math.round(S * 1.084));
-										document.querySelector('#SelectedS').value = size;
+
+										var x = document.getElementById("res");
+  										x.querySelector(".resolutionout").innerHTML = size;
 										}
 										</script>
 										{{form.S.label}}
@@ -601,9 +603,11 @@
 										<p style="color: #ffffff;">
 											{{ form.S(min=50, max=1080, oninput="outputUpdateS(value)") }}
 											<br>
-											<output for="S"id="SelectedS">
-											{{ form.S.data }}
-									  		</output>
+											<div id="res">
+												<p class="resolutionout">
+												Test
+												</p>
+											</div>
 										</p>
 									</td>
 								</tr>
