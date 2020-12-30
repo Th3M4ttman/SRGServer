@@ -34,12 +34,12 @@ class SRGForm(FlaskForm):
         O = fields.BooleanField('Override Gender Colour')
 
         BgRa = DecimalRangeField("Custom gender colour left half", default=0, places=0)
-        BgGa = DecimalRangeField("Custom gender colour left half", default=75, places=0)
-        BgBa = DecimalRangeField("Custom gender colour left half", default=100, places=0)
+        BgGa = DecimalRangeField("Custom gender colour left half", default=190, places=0)
+        BgBa = DecimalRangeField("Custom gender colour left half", default=255, places=0)
 
-        BgRb = DecimalRangeField("Custom gender colour right half", default=100, places=0)
-        BgGb = DecimalRangeField("Custom gender colour right half", default=41, places=0)
-        BgBb = DecimalRangeField("Custom gender colour right half", default=71, places=0)
+        BgRb = DecimalRangeField("Custom gender colour right half", default=255, places=0)
+        BgGb = DecimalRangeField("Custom gender colour right half", default=105, places=0)
+        BgBb = DecimalRangeField("Custom gender colour right half", default=180, places=0)
 
         Pride1 = fields.SelectField('Pride Flag Top Left', choices=flagchoices, default="None")
         Pride2 = fields.SelectField('Pride Flag Top Right', choices=flagchoices, default="None")
@@ -74,12 +74,12 @@ class SRGCrestForm(FlaskForm):
         O = fields.BooleanField('Override Gender Colour')
 
         BgRa = DecimalRangeField("Custom gender colour left half", default=0, places=0)
-        BgGa = DecimalRangeField("Custom gender colour left half", default=75, places=0)
-        BgBa = DecimalRangeField("Custom gender colour left half", default=100, places=0)
+        BgGa = DecimalRangeField("Custom gender colour left half", default=190, places=0)
+        BgBa = DecimalRangeField("Custom gender colour left half", default=255, places=0)
 
-        BgRb = DecimalRangeField("Custom gender colour right half", default=100, places=0)
-        BgGb = DecimalRangeField("Custom gender colour right half", default=41, places=0)
-        BgBb = DecimalRangeField("Custom gender colour right half", default=71, places=0)
+        BgRb = DecimalRangeField("Custom gender colour right half", default=255, places=0)
+        BgGb = DecimalRangeField("Custom gender colour right half", default=105, places=0)
+        BgBb = DecimalRangeField("Custom gender colour right half", default=180, places=0)
 
         # Trim
         TR = DecimalRangeField("Trim colour", default=218, places=0)
