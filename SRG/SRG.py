@@ -477,7 +477,9 @@ def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0
                 new_color = False
             ####################################################################
             if new_color != False:
-                print("Type: "+type(new_color)+"Value: "+new_color)
+                print("Type: ")
+                print(type(new_color))
+                print("Value: "+str(new_color))
                 im.putpixel((x, y), new_color)
 
     print("Completed Colouring")
