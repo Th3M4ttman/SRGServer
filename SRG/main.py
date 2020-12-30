@@ -309,6 +309,11 @@ def crest(debug=True):
             rn=False
 
         print("Creating " + str(byte))
+        print(type(trim))
+        print(type(wings))
+        print(type(ad))
+        print(type(glow))
+
         tempsrgurl = SRG.crest(SRG=[byte,Q,T],p1=SPP,p2=TPP,gt=gt,rn=rn,o=o,bgl=l,bgr=r,trim=trim,wings=wings,ad=ad,glow=glow,gp=gp)
         tempsrgurl = list(tempsrgurl)
         del tempsrgurl[4]
