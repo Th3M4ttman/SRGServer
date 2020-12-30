@@ -71,13 +71,13 @@ class SRGCrestForm(FlaskForm):
         GP = DecimalRangeField('Genital preference', default=50)
         ShowGP = fields.BooleanField('Show genital preference')
 
-        O = fields.BooleanField('Override Gender Colour')
+        O = fields.BooleanField('Override Background Gender Colour')
 
-        BgRa = DecimalRangeField("Custom gender colour left half", default=0, places=0)
+        BgRa = DecimalRangeField("Background colour left half", default=0, places=0)
         BgGa = DecimalRangeField("Custom gender colour left half", default=190, places=0)
         BgBa = DecimalRangeField("Custom gender colour left half", default=255, places=0)
 
-        BgRb = DecimalRangeField("Custom gender colour right half", default=255, places=0)
+        BgRb = DecimalRangeField("Background colour right half", default=255, places=0)
         BgGb = DecimalRangeField("Custom gender colour right half", default=105, places=0)
         BgBb = DecimalRangeField("Custom gender colour right half", default=180, places=0)
 
