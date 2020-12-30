@@ -292,10 +292,10 @@ def crest(debug=True):
         if result.get("Go") != "":
            gt=result.get("Go")
 
-        trim = tuple((round(float(result.get("TR"))),round(float(result.get("TG"))),round(float(result.get("TB"))),255))
-        ad = tuple((round(float(result.get("AR"))),round(float(result.get("AG"))),round(float(result.get("AB"))),255))
-        wings = tuple((round(float(result.get("WR"))),round(float(result.get("WG"))),round(float(result.get("WB"))),255))
-        glow = tuple((round(float(result.get("GR"))),round(float(result.get("GG"))),round(float(result.get("GB"))),75))
+        trim = (round(float(result.get("TR"))),round(float(result.get("TG"))),round(float(result.get("TB"))),255)
+        ad = (round(float(result.get("AR"))),round(float(result.get("AG"))),round(float(result.get("AB"))),255)
+        wings = (round(float(result.get("WR"))),round(float(result.get("WG"))),round(float(result.get("WB"))),255)
+        glow = (round(float(result.get("GR"))),round(float(result.get("GG"))),round(float(result.get("GB"))),75)
         rn = result.get("Roman")
 
         ShowGP=result.get("ShowGP")
