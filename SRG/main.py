@@ -278,16 +278,17 @@ def crest(debug=True):
             print(l)
             print(r)
             print("Custom Colour L:".join(str(v) for v in l)+" R:".join(str(v) for v in r))
+
         else:
             o=False
             l=(255, 105, 180, 255)
             r=(0, 191, 255, 255)
             print("Default Colour")
-            bytetext=str(byte)
+        bytetext=str(byte)
         if T:
             bytetext+="*"
         if Q:
-            bytetext=bytetext+"?"
+            bytetext+="?"
         if result.get("Go") != "":
            gt=result.get("Go")
 
