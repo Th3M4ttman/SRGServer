@@ -4,7 +4,7 @@ django-heroku
 flask
 pyinputplus
 numpy
-pillow==9.1.1
+Pillow==9.1.1
 imgurpython
 wtforms==2.3.3
 flask_wtf
