@@ -466,8 +466,8 @@ def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0
     """
     wpercent = (s / float(im.size[0]))
     hsize = int((float(im.size[1]) * float(wpercent)))
-    im = im.resize((s, hsize), Image.Resampling.LANCZOS)
-    debugsize = [im.width, "x", im.height]
+    img = im.resize((s, hsize), Image.Resampling.LANCZOS)
+    debugsize = [img.width, "x", img.height]
     print(debugsize)
     print("Saving")
     img_bytes = BytesIO()
