@@ -165,18 +165,32 @@ def add_text(im, text, W, H, bordercolor=(0,0,0), so=[False,False,False], ro=[Fa
     draw = ImageDraw.Draw(im)
     bounding_box = [0, 0, W, H]
     x1, y1, x2, y2 = bounding_box
-    w, h = draw.textsize(text, font=bigFont)
+
+    # Replace draw.textsize with draw.textbbox for 'text'
+    bbox = draw.textbbox((0, 0), text, font=bigFont)
+    w = bbox[2] - bbox[0]
+    h = bbox[3] - bbox[1]
     x = (x2 - x1 - w)/2 + x1
     y = (y2 - y1 - h)/2 + y1
     draw.text((x, y), text, align='center', font=bigFont, fill='white', stroke_width=5, stroke_fill='black')
-    w, h = draw.textsize(gt, font=smallFont)
-    x = (W - w)/2 
+
+    # For 'gt'
+    bbox = draw.textbbox((0, 0), gt, font=smallFont)
+    w = bbox[2] - bbox[0]
+    h = bbox[3] - bbox[1]
+    x = (W - w)/2
     y = H/15
     draw.text((x, y), gt, align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
-    w, h = draw.textsize(p1+" "+p2, font=smallFont)
-    x = (W - w)/2 
-    y = H-(H/6)
-    draw.text((x, y), p1+" "+p2, align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+
+    # For p1 + p2
+    combined_text = p1 + " " + p2
+    bbox = draw.textbbox((0, 0), combined_text, font=smallFont)
+    w = bbox[2] - bbox[0]
+    h = bbox[3] - bbox[1]
+    x = (W - w)/2
+    y = H - (H/6)
+    draw.text((x, y), combined_text, align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+
     if gp != False:
         gpxstart = (W/5)
         gpxend = W-(W/5)
@@ -191,66 +205,58 @@ def add_text(im, text, W, H, bordercolor=(0,0,0), so=[False,False,False], ro=[Fa
         markerystart = gpystart-(markerheight/2)
         markeryend = gpyend+(markerheight/2)
         draw.rectangle([markerxstart,markerystart,markerxend,markeryend], width=int(W/100), outline=(0,0,0,255))
+
     # Draw frame and corners
     draw.rectangle([x1, y1, x2, y2], width=int(W/50), outline=tuple(int(int(ti)/0.5) for ti in bordercolor))
     draw.rectangle([x1, y1, x2, y2], width=int(W/100), outline=bordercolor)
-    draw.rectangle([0, 0, int(W/5), int(H/5)], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
+    draw.rectangle([0, 0, int(W/5), int(H/5)], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor), fill=tuple(int(ti/1.5) for ti in bordercolor))
     draw.rectangle([0, 0, int(W/5), int(H/5)], width=int(W/100), outline=bordercolor)
-    if pride1 != None:
-        pride1 = Image.open(pride1)
-        size = (int(W/5.5),int(H/5))
-        pride1.thumbnail(size, Image.ANTIALIAS)
-        pride1loc = (int((int(int(W/5))-pride1.width)/2), int((int(int(H/5))-pride1.height)/2))
-        im.paste(pride1,pride1loc)
-    draw.rectangle([int(W-(W/5)), 0, W, int(H/5)], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
+
+    # Pride images (if provided)
+    def process_pride(pride_path, x_start, y_start):
+        pride_img = Image.open(pride_path)
+        size = (int(W/5.5), int(H/5))
+        pride_img.thumbnail(size, Image.ANTIALIAS)
+        loc = (int((int(int(W/5)) - pride_img.width) / 2) + x_start, int((int(int(H/5)) - pride_img.height) / 2) + y_start)
+        im.paste(pride_img, loc)
+
+    if pride1 is not None:
+        process_pride(pride1, 0, 0)
+
+    draw.rectangle([int(W-(W/5)), 0, W, int(H/5)], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor), fill=tuple(int(ti/1.5) for ti in bordercolor))
     draw.rectangle([int(W-(W/5)), 0, W, int(H/5)], width=int(W/100), outline=bordercolor)
-    if pride2 != None:
-        pride2 = Image.open(pride2)
-        size = (int(W/5.5),int(H/5))
-        pride2.thumbnail(size, Image.ANTIALIAS)
-        boxlength = W-(W-int(W/5))
-        boxstart = (W-int(W/5))
-        pridestart = boxstart + int((boxlength-pride2.width)/2)
-        pride2loc = (pridestart, int((int(int(H/5))-pride2.height)/2))
-        im.paste(pride2,pride2loc)
-    draw.rectangle([0, int(H-(H/5)),int(W/5),H], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
-    draw.rectangle([0, int(H-(H/5)),int(W/5),H], width=int(W/100), outline=bordercolor)
-    if pride3 != None:
-        pride3 = Image.open(pride3)
-        size = (int(W/5.5),int(H/5))
-        pride3.thumbnail(size, Image.ANTIALIAS)
-        boxlength = W-(W-int(W/5))
-        boxheight = H - (H - int(H / 5))
-        boxstart = (W-int(W/5))
-        boxstarty = (H - int(H / 5))
-        pridestartx = int((int(int(W/5))-pride1.width)/2)
-        pridestarty = boxstarty + int((boxheight - pride3.height) / 2)
-        pride3loc = (pridestartx, pridestarty)
-        im.paste(pride3,pride3loc)
-    draw.rectangle([int(W-(W/5)), int(H-(H/5)),W,H], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor),fill=tuple(int(ti/1.5) for ti in bordercolor))
-    draw.rectangle([int(W-(W/5)), int(H-(H/5)),W,H], width=int(W/100), outline=bordercolor)
-    if pride4 != None:
-        pride4 = Image.open(pride4)
-        size = (int(W/5.5),int(H/5))
-        pride4.thumbnail(size, Image.ANTIALIAS)
-        boxlength = W-(W-int(W/5))
-        boxheight = H - (H - int(H / 5))
-        boxstart = (W-int(W/5))
-        boxstarty = (H - int(H / 5))
-        pridestartx = boxstart + int((boxlength-pride4.width)/2)
-        pridestarty = boxstarty + int((boxheight - pride4.height) / 2)
-        pride4loc = (pridestartx, pridestarty)
-        im.paste(pride4,pride4loc)
+    if pride2 is not None:
+        boxlength = int(W/5)
+        process_pride(pride2, W - boxlength, 0)
+
+    draw.rectangle([0, int(H-(H/5)), int(W/5), H], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor), fill=tuple(int(ti/1.5) for ti in bordercolor))
+    draw.rectangle([0, int(H-(H/5)), int(W/5), H], width=int(W/100), outline=bordercolor)
+    if pride3 is not None:
+        boxlength = int(W/5)
+        boxheight = int(H/5)
+        pridestartx = int((int(int(W/5)) - im.width) / 2)
+        pridestarty = H - boxheight
+        process_pride(pride3, 0, pridestarty)
+
+    draw.rectangle([int(W-(W/5)), int(H-(H/5)), W, H], width=int(W/50), outline=tuple(int(int(ti)/1.5) for ti in bordercolor), fill=tuple(int(ti/1.5) for ti in bordercolor))
+    draw.rectangle([int(W-(W/5)), int(H-(H/5)), W, H], width=int(W/100), outline=bordercolor)
+    if pride4 is not None:
+        boxlength = int(W/5)
+        boxheight = int(H/5)
+        pridestartx = W - boxlength
+        pridestarty = H - boxheight
+        process_pride(pride4, pridestartx, pridestarty)
+
     # Draw labels
     draw.text((int(W/30), int((H/8)*2)), "R", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
-    draw.text((int(W-(W/9)), int((H/8)*2)), "S", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black', )
+    draw.text((int(W-(W/9)), int((H/8)*2)), "S", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
     if ro[2]: draw.text((int(W/30), int((H/8)*3)), "M", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
-    if so[2]: draw.text((int(W-(W/9)), int((H/8)*3)), "M", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black', )
+    if so[2]: draw.text((int(W-(W/9)), int((H/8)*3)), "M", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
     if ro[1]: draw.text((int(W/30), int((H/8)*4)), "F", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
-    if so[1]: draw.text((int(W-(W/9)), int((H/8)*4)), "F", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black', )
+    if so[1]: draw.text((int(W-(W/9)), int((H/8)*4)), "F", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
     if ro[0]: draw.text((int(W/30), int((H/8)*5)), "NB", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
-    if so[0]: draw.text((int(W-(W/6)), int((H/8)*5)), "NB", align='right', font=smallFont, fill='white', stroke_width=5, stroke_fill='black', )
-
+    if so[0]: draw.text((int(W-(W/6)), int((H/8)*5)), "NB", align='right', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+    
 # Converts integer to Roman numeral string
 def toNumeral(Number):
     runningtotal = Number
@@ -323,40 +329,68 @@ def crest_text(im, text, W, H, so=[False, False, False], ro=[False, False, False
     print("Calculating bounding box")
     bounding_box = [0, 0, W, H]
     x1, y1, x2, y2 = bounding_box
-    w, h = draw.textsize(text, font=bigFont)
+
+    # Replace draw.textsize with draw.textbbox for 'text'
+    bbox = draw.textbbox((0, 0), text, font=bigFont)
+    w = bbox[2] - bbox[0]
+    h = bbox[3] - bbox[1]
     x = (x2 - x1 - w) / 2 + x1
     y = (y2 - y1 - h) / 2 + y1
     print("Drawing SRG")
     draw.text((x, y), text, align='center', font=bigFont, fill='white', stroke_width=5, stroke_fill='black')
-    w, h = draw.textsize(gt, font=smallFont)
+
+    # For gt
+    bbox = draw.textbbox((0, 0), gt, font=smallFont)
+    w = bbox[2] - bbox[0]
+    h = bbox[3] - bbox[1]
     x = (W - w) / 2
     y = H / 3.5
     print("Drawing gendertext")
     draw.text((x, y), gt, align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
-    w, h = draw.textsize(p1 + " " + p2, font=smallFont)
+
+    # For p1 + p2 pronouns
+    combined_text = p1 + " " + p2
+    bbox = draw.textbbox((0, 0), combined_text, font=smallFont)
+    w = bbox[2] - bbox[0]
+    h = bbox[3] - bbox[1]
     x = (W - w) / 2
     y = H - (H / 3)
     print("Drawing pronouns")
-    draw.text((x, y), p1 + " " + p2, align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+    draw.text((x, y), combined_text, align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+
     print("Drawing R")
     draw.text((int(W / 3.2), int((H / 6.5) * 2)), "R", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+
     print("Drawing S")
-    draw.text((int(W - (W / 2.9)), int((H / 6.5) * 2)), "S", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black', )
-    if ro[2]: draw.text((int(W / 3.2), int((H / 7) * 3)), "M", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
-    print("Drawing RN")
-    if so[2]: draw.text((int(W - (W / 2.8)), int((H / 7) * 3)), "M", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black', )
-    print("Drawing SN")
-    if ro[1]: draw.text((int(W / 3.2), int((H / 8) * 4)), "F", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
-    print("Drawing RF")
-    if so[1]: draw.text((int(W - (W / 2.9)), int((H / 8) * 4)), "F", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black', )
-    print("Drawing SF")
-    if ro[0]: draw.text((int(W / 3.2), int((H / 8.8) * 5)), "NB", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
-    print("Drawing RM")
-    if so[0]: draw.text((int(W - (W / 2.7)), int((H / 8.8) * 5)), "NB", align='right', font=smallFont, fill='white', stroke_width=5, stroke_fill='black', )
-    print("Drawing SM")
+    draw.text((int(W - (W / 2.9)), int((H / 6.5) * 2)), "S", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+
+    if ro[2]: 
+        draw.text((int(W / 3.2), int((H / 7) * 3)), "M", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+        print("Drawing RN")
+
+    if so[2]: 
+        draw.text((int(W - (W / 2.8)), int((H / 7) * 3)), "M", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+        print("Drawing SN")
+
+    if ro[1]: 
+        draw.text((int(W / 3.2), int((H / 8) * 4)), "F", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+        print("Drawing RF")
+
+    if so[1]: 
+        draw.text((int(W - (W / 2.9)), int((H / 8) * 4)), "F", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+        print("Drawing SF")
+
+    if ro[0]: 
+        draw.text((int(W / 3.2), int((H / 8.8) * 5)), "NB", align='center', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+        print("Drawing RM")
+
+    if so[0]: 
+        draw.text((int(W - (W / 2.7)), int((H / 8.8) * 5)), "NB", align='right', font=smallFont, fill='white', stroke_width=5, stroke_fill='black')
+        print("Drawing SM")
+
     if gp != False:
         barheight = H / 200
-        gpxstart = (W / 2.5)-10
+        gpxstart = (W / 2.5) - 10
         gpxend = W - (W / 2.5)
         gpystart = H - (H / 2.8)
         gpyend = gpystart + barheight
@@ -458,7 +492,7 @@ def crest(SRG=[255,True,True],p1="P1",p2="P2",gt="Gender",rn=True,o=False,bgl=(0
     res.raise_for_status()
     link = res.json()['data']['link']
     print("Uploaded to", link)
-
+    
     return link
 
 # Creates SRG image, adds text, uploads to Imgur or Cloudinary
