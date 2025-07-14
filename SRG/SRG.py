@@ -510,10 +510,11 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
     img.save(img_bytes, format='PNG')
     img_bytes.seek(0)
     
-    from imgurpython import ImgurClient
+    
     try:
         IFail = False
         """
+        from imgurpython import ImgurClient
         client = ImgurClient("1ad9fa3c6cc700a", "a17ace1750e1e2c4610fed9ca65c2ee0778510af")
         request = client.upload_from_path(p, anon=True)"""
         
@@ -536,7 +537,7 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
         print("Uploaded to", link)
         
     except Exception as error:
-        print("Failed Upload")
+        print("Failed Upload", error)
         return "Failed Upload"
     
 # Main function for interactive CLI
