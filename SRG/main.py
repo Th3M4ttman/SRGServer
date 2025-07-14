@@ -194,7 +194,8 @@ def create(debug=False):
                 srgurl+=character
             # Render result template
             return render_template('SRG.html', result=result, bytetext=bytetext, byte=byte, T=T, Q=Q, srgurl=srgurl)
-        except:
+        except Exception as e:
+            print("Error creating SRG:", e)
             # Render error template
             return render_template('SRG.html', result=None, bytetext="Upload Failed", byte="Upload Failed")
     # Render form template if not submitted
