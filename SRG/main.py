@@ -187,6 +187,7 @@ def create(debug=False):
         try:
             # Call SRG.create to generate SRG URL
             tempsrgurl = SRG.create([byte,Q,T],SPP,TPP,int(R),int(G),int(B),int(S),"Test",gc=[l,r],o=o,gt=gt,gp=gp,pride1=pride1,pride2=pride2,pride3=pride3,pride4=pride4)
+            print("created", tempsrgurl)
             tempsrgurl = list(tempsrgurl)
             del tempsrgurl[4]  # Remove 5th element
             srgurl=""
