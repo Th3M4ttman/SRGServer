@@ -6,6 +6,6 @@ pyinputplus
 numpy
 pillow
 imgurpython
-wtforms
+wtforms==2.3.3
 flask_wtf
 flickrapi
