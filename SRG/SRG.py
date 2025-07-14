@@ -569,6 +569,8 @@ def create(srg=[None,False,False],ps="They",pt="Them",cr=255,cg=255,cb=255,res=5
         res.raise_for_status()
         link = res.json()['data']['link']
         print("Uploaded to", link)
+        return link
+    
         
     except Exception as error:
         print("Failed Upload", error)
